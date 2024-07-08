@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'components/top_pick_section.dart';
-import 'components/history_section.dart'; // 히스토리 섹션 import
+import '_components/history_section.dart';
+import '_components/top_pick_section.dart';
 
 class HomePage extends StatelessWidget {
   @override

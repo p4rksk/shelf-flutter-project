@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // For Riverpod state management
 import 'package:untitled/_core/constants/size.dart';
-import 'package:untitled/ui/startview/components/sign_in.dart';
 import '../../../_core/constants/constants.dart';
 import '../../../_core/constants/theme.dart';
 import '../../../data/store/checkbox.dart';

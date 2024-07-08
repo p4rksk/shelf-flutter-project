@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/ui/main/search/search.dart';
+import 'package:untitled/ui/main/mypage/mypage.dart';
+import 'package:untitled/ui/startview/start_view_page.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SearchPage(),
+      home: StartViewPage(),
     );
   }
 }

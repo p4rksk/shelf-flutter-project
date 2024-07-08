@@ -20,10 +20,18 @@ class SearchBarV2 extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8.0),
-        Image.asset(
-          "assets/icon/system/filter_icon.png",
-          width: 30,
-          height: 30,
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {
+              // 사이드 탭바로 필터 불러오기
+            },
+            child: Image.asset(
+              "assets/icon/system/filter_icon.png",
+              width: 35,
+              height: 35,
+            ),
+          ),
         )
       ],
     );

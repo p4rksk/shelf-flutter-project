@@ -19,16 +19,17 @@ class AuthorButtons extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 20),
         Text(
-          '작가별 책 모아보기',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          '작가의 책 모아보기',
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8.0),
+        SizedBox(height: 10),
         GridView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5,
+            crossAxisCount: 2,
             mainAxisSpacing: 8.0,
             crossAxisSpacing: 8.0,
             childAspectRatio: 4,
@@ -39,7 +40,7 @@ class AuthorButtons extends StatelessWidget {
               onPressed: () {
                 // Implement author selection
               },
-              child: Text(authors[index]),
+              child: Text('#' + authors[index]),
             );
           },
         ),

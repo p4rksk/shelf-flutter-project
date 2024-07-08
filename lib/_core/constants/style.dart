@@ -39,3 +39,11 @@ TextStyle overLine({Color mColor = Colors.black}) {
 TextStyle body1({Color mColor = Colors.black}) {
   return TextStyle(fontSize: 16, color: mColor);
 }
+
+TextStyle p3({Color mColor = Colors.black}) {
+  return TextStyle(fontSize: 16, color: mColor, fontWeight: FontWeight.w500);
+}
+
+TextStyle plainText({Color mColor = Colors.black54}) {
+  return TextStyle(fontSize: 14, color: mColor, fontWeight: FontWeight.w500);
+}

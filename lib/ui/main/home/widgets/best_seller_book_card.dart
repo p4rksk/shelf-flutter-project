@@ -3,61 +3,75 @@ import '../../../../data/model/home/home_page_data.dart';
 
 class BestsellerBookCard extends StatelessWidget {
   final BestsellerBook book;
+  final bool isFirst;
 
-  BestsellerBookCard({required this.book});
+  BestsellerBookCard({required this.book, this.isFirst = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-      child: Row(
+      width: isFirst ? 180 : 100,
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            book.rank,
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(width: 20),
-          Container(
-            width: 50,
-            height: 75,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(book.imagePath),
-                fit: BoxFit.cover,
+          Stack(
+            children: [
+              Container(
+                width: isFirst ? 180 : 100,
+                height: isFirst ? 270 : 160,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(book.imagePath),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-            ),
-          ),
-          SizedBox(width: 20),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  book.title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+              Positioned(
+                top: 8,
+                left: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(4.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(5),
                   ),
-                ),
-                Text(
-                  book.author,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                ),
-                if (book.salesInfo.isNotEmpty)
-                  Text(
-                    book.salesInfo,
+                  child: Text(
+                    book.rank,
                     style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
-              ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          Container(
+            height: 40,
+            child: Text(
+              book.title,
+              style: TextStyle(
+                fontSize: isFirst ? 16 : 14,
+                fontWeight: FontWeight.bold,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          SizedBox(height: 5),
+          Container(
+            height: 20,
+            child: Text(
+              book.author,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

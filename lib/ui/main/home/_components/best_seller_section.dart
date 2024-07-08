@@ -19,13 +19,32 @@ class BestSellerSection extends StatelessWidget {
           ),
         ),
         Container(
-          height: 400,
-          child: ListView.builder(
-            itemCount: bestsellerBooks.length,
-            itemBuilder: (context, index) {
-              final book = bestsellerBooks[index];
-              return BestsellerBookCard(book: book);
-            },
+          height: 600,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              BestsellerBookCard(
+                book: bestsellerBooks[0],
+                isFirst: true,
+              ),
+              Row(
+                children: List.generate(
+                  (bestsellerBooks.length - 1) ~/ 2,
+                      (index) {
+                    return Column(
+                      children: [
+                        BestsellerBookCard(
+                          book: bestsellerBooks[2 * index + 1],
+                        ),
+                        BestsellerBookCard(
+                          book: bestsellerBooks[2 * index + 2],
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ],

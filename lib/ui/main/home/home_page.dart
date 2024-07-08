@@ -16,12 +16,6 @@ class HomePage extends StatelessWidget {
             HistorySection(),
             BookOfTheDaySection(),
             BestSellerSection(),
-            Container(
-              height: 400,
-              child: Center(
-                child: Text('홈'),
-              ),
-            ),
           ],
         ),
       ),

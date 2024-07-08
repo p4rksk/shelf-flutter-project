@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/startview/components/sign_up.dart';
 import '../../../_core/constants/constants.dart';
 import '../../../_core/constants/size.dart';
 import '../../../_core/constants/theme.dart';

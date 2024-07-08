@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:untitled/ui/startview/widgets/show_custom_bottom_sheet.dart';
 
 import '../../../_core/constants/constants.dart';
-import '../components/bottom_sheet.dart';
-import '../components/sign_in.dart';
-import '../components/sign_up.dart';
 import 'gradient_text_button.dart';
 
 Widget PageContent(

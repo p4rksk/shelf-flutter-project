@@ -4,9 +4,7 @@ import 'package:untitled/ui/main/mypage/pages/myinfo/_components/save_button.dar
 import 'package:untitled/ui/main/mypage/pages/myinfo/_components/user_icon.dart';
 
 class MyInfo extends StatelessWidget {
-  String? username;
-
-  MyInfo(this.username);
+  const MyInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class MyInfo extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: 20),
-            UserIcon(username: username),
+            UserIcon(username: "김성훈"),
             InputFields(),
             SaveButton(buttonName: "저장하기")
           ],

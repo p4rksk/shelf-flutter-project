@@ -9,6 +9,13 @@ const kAccentColor3 = Color(0xFF92A3FD);
 
 const kAccentColor4 = Color(0xFF9DCEFF);
 
+const kAccentColor5 = Color(0xFFEAEFFE);
+
+const kAccentColor6 = Color(0xFF99C0F2);
+
+
+
+
 class TColor {
   static Color get primaryColor1 => const Color(0xff92A3FD);
 

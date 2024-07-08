@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../../../data/model/home/home_page_data.dart';
-import '../widgets/history_book_card.dart';
+import '../widgets/best_seller_book_card.dart';
 
-class HistorySection extends StatelessWidget {
+class BestSellerSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 16, bottom: 40),
+          padding: const EdgeInsets.only(top: 50, left: 16, bottom: 20),
           child: Text(
-            '히스토리',
+            '베스트셀러',
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -19,16 +19,12 @@ class HistorySection extends StatelessWidget {
           ),
         ),
         Container(
-          height: 200,
+          height: 400,
           child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: historyBooks.length,
+            itemCount: bestsellerBooks.length,
             itemBuilder: (context, index) {
-              final book = historyBooks[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: HistoryBookCard(book: book),
-              );
+              final book = bestsellerBooks[index];
+              return BestsellerBookCard(book: book);
             },
           ),
         ),

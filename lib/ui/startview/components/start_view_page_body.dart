@@ -18,7 +18,7 @@ class StartViewPageBody extends ConsumerWidget {
     return Container(
       width: media.width,
       height: media.height,
-      color: Colors.white,
+      color: TColor.white,
       child: Stack(
         children: [
           PageView(

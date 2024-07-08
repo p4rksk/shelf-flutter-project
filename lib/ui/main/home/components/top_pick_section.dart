@@ -49,7 +49,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: 460,
       child: Stack(
         children: [
           ClipPath(
@@ -60,7 +60,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 30, left: 16, right: 16, bottom: 5),
+            padding: const EdgeInsets.only(top: 30, left: 16, right: 16, bottom: 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -75,7 +75,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                 ),
                 SizedBox(height: gap_xl),
                 Container(
-                  height: 300,
+                  height: 270,
                   child: NotificationListener<ScrollNotification>(
                     onNotification: (ScrollNotification notification) {
                       if (notification is ScrollEndNotification) {

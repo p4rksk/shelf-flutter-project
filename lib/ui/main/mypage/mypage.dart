@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/ui/main/mypage/_components/logout_button.dart';
 import 'package:untitled/ui/main/mypage/_components/lower_component.dart';
@@ -10,18 +9,17 @@ class MyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: ListView(
-        children: [
-          UpperComponent(name: '김성훈'),
-          LowerComponent(),
-          LogoutButton(),
-        ],
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: ListView(
+          children: [
+            UpperComponent(name: '김성훈'),
+            LowerComponent(),
+            LogoutButton(),
+          ],
+        ),
       ),
     );
   }
 }
-
-
-

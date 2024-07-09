@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/_core/constants/size.dart';
-import 'package:untitled/_core/constants/style.dart';
-import 'package:untitled/data/model/home/home_page_data.dart' as data;
 import '../../../../_core/constants/constants.dart';
 import '../../../../data/model/home/home_page_data.dart';
+import '../widgets/book_card.dart';
+import '../widgets/top_pick_clipper.dart';
 
 class TopPicksSection extends StatefulWidget {
   @override
@@ -11,9 +11,10 @@ class TopPicksSection extends StatefulWidget {
 }
 
 class _TopPicksSectionState extends State<TopPicksSection> {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   final double _itemExtent = 140.0;
   bool _isAutoScrolling = false;
+  bool _isMenuOpen = false;
 
   @override
   void initState() {
@@ -22,6 +23,12 @@ class _TopPicksSectionState extends State<TopPicksSection> {
       _scrollController.jumpTo(_itemExtent * books.length);
     });
     _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   void _onScroll() async {
@@ -46,142 +53,157 @@ class _TopPicksSectionState extends State<TopPicksSection> {
     }
   }
 
+  void _toggleMenu() {
+    setState(() {
+      _isMenuOpen = !_isMenuOpen;
+    });
+  }
+
+  void _closeMenu() {
+    setState(() {
+      _isMenuOpen = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 460,
+    return GestureDetector(
+      onTap: () {
+        if (_isMenuOpen) {
+          _closeMenu();
+        }
+      },
       child: Stack(
         children: [
-          ClipPath(
-            clipper: TopPicksClipper(),
-            child: Container(
-              color: kAccentColor3,
-              height: 350,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 16, right: 16, bottom: 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Container(
+            height: 460,
+            child: Stack(
               children: [
-                SizedBox(height: gap_xxxl),
-                Text(
-                  'Our Top Picks',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                ClipPath(
+                  clipper: TopPicksClipper(),
+                  child: Container(
+                    color: kAccentColor4,
+                    height: 350,
                   ),
                 ),
-                SizedBox(height: gap_xl),
-                Container(
-                  height: 270,
-                  child: NotificationListener<ScrollNotification>(
-                    onNotification: (ScrollNotification notification) {
-                      if (notification is ScrollEndNotification) {
-                        _onScroll();
-                      }
-                      setState(() {});
-                      return true;
-                    },
-                    child: ListView.builder(
-                      controller: _scrollController,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: books.length * 3,
-                      itemBuilder: (context, index) {
-                        final book = books[index % books.length];
-                        double scale = 1.0;
-                        if (_scrollController.hasClients) {
-                          double itemOffset = index * _itemExtent; // 각 아이템의 위치
-                          double viewportCenter = _scrollController.offset + MediaQuery.of(context).size.width / 2;
-                          double diff = (itemOffset - viewportCenter + _itemExtent / 2).abs();
-                          scale = (1 - (diff / 400)).clamp(0.8, 1.0);
-                        }
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              double targetOffset = index * _itemExtent - (MediaQuery.of(context).size.width / 2) + _itemExtent / 2;
-                              _scrollController.animateTo(
-                                targetOffset,
-                                duration: Duration(seconds: 1),
-                                curve: Curves.easeInOut,
-                              );
-                            },
-                            child: Transform.scale(
-                              scale: scale,
-                              child: BookCard(book: book, isFocused: scale > 0.9),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30, left: 16, right: 16, bottom: 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: gap_xxxl),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Our Top Picks',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        );
-                      },
-                    ),
+                          IconButton(
+                            icon: Icon(Icons.menu, color: Colors.white),
+                            onPressed: _toggleMenu,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: gap_xl),
+                      Container(
+                        height: 270,
+                        child: NotificationListener<ScrollNotification>(
+                          onNotification: (ScrollNotification notification) {
+                            if (notification is ScrollEndNotification) {
+                              _onScroll();
+                            }
+                            setState(() {});
+                            return true;
+                          },
+                          child: ListView.builder(
+                            controller: _scrollController,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: books.length * 3,
+                            itemBuilder: (context, index) {
+                              final book = books[index % books.length];
+                              double scale = 1.0;
+                              if (_scrollController.hasClients) {
+                                double itemOffset = index * _itemExtent;
+                                double viewportCenter = _scrollController.offset + MediaQuery.of(context).size.width / 2;
+                                double diff = (itemOffset - viewportCenter + _itemExtent / 2).abs();
+                                scale = (1 - (diff / 400)).clamp(0.8, 1.0);
+                              }
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    double targetOffset = index * _itemExtent - (MediaQuery.of(context).size.width / 2) + _itemExtent / 2;
+                                    _scrollController.animateTo(
+                                      targetOffset,
+                                      duration: Duration(seconds: 1),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  },
+                                  child: Transform.scale(
+                                    scale: scale,
+                                    child: BookCard(book: book, isFocused: scale > 0.9),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
+            ),
+          ),
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 300),
+            right: _isMenuOpen ? 0 : -250,
+            top: 0,
+            bottom: 0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                bottomLeft: Radius.circular(30),
+              ),
+              child: Container(
+                width: 250,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    SizedBox(height: 50),
+                    _buildMenuItem(Icons.home, "홈"),
+                    _buildMenuItem(Icons.fiber_new, "Brand New"),
+                    _buildMenuItem(Icons.search, "찾기"),
+                    _buildMenuItem(Icons.library_books, "내 서재"),
+                    _buildMenuItem(Icons.person, "내 정보"),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         ],
       ),
     );
   }
-}
 
-class BookCard extends StatelessWidget {
-  final Book book;
-  final bool isFocused;
-
-  BookCard({required this.book, required this.isFocused});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 120,
-          height: 180,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: AssetImage(book.imagePath),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          book.title,
-          style: TextStyle(
-            color: isFocused ? Colors.black87 : Colors.grey,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          book.author,
-          style: TextStyle(
-            color: isFocused ? Colors.black54 : Colors.grey,
-            fontSize: 16,
-          ),
-        ),
-      ],
+  Widget _buildMenuItem(IconData icon, String title) {
+    return ListTile(
+      leading: Icon(icon, color: kAccentColor3),
+      title: Text(title, style: TextStyle(color: Colors.black)),
+      onTap: () {
+      },
     );
   }
 }
 
-class TopPicksClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height - 80); // 높이 조정
-    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height - 80);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
 
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
+

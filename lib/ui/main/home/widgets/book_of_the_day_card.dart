@@ -27,7 +27,14 @@ class BookOfTheDayCard extends StatelessWidget {
             width: 150,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: kAccentColor6,
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purpleAccent.withOpacity(0.1),
+                  Colors.blue.withOpacity(0.3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(

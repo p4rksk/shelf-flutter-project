@@ -84,7 +84,7 @@ class CategoryButtons extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      side: BorderSide(color: Colors.grey, width: 1.0),
+                      side: BorderSide(color: Color(0xFFE6E6E6), width: 1.0),
                     ),
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black),
@@ -125,7 +125,11 @@ class CategoryButtons extends StatelessWidget {
                       ),
                       Expanded(
                         flex: 1,
-                        child: ClipRect(
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                            ),
                           child: Container(
                             height: double.infinity,
                             width: 300, // 부모 높이를 모두 채우도록 설정

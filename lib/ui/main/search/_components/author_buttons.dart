@@ -4,13 +4,13 @@ class AuthorButtons extends StatelessWidget {
   final List<String> authors = [
     '이병훈',
     '김유림',
-    '이서윤 김서형',
-    '어른이 되기까지',
-    '하늘로 태어나',
+    '이서윤 ',
+    '김서형',
+    '유발하라리',
     '강준혁',
     '박영선',
-    '기후 위크',
-    '장하리 하부르타',
+    '김성훈',
+    '장하리',
     '강수정'
   ];
 
@@ -24,15 +24,16 @@ class AuthorButtons extends StatelessWidget {
           '작가의 책 모아보기',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         GridView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 8.0,
-            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 15,
             childAspectRatio: 4,
+            mainAxisExtent: 50,
           ),
           itemCount: authors.length,
           itemBuilder: (context, index) {
@@ -40,7 +41,26 @@ class AuthorButtons extends StatelessWidget {
               onPressed: () {
                 // Implement author selection
               },
-              child: Text('#' + authors[index]),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white, // 배경색 설정
+                foregroundColor: Colors.black, // 텍스트 색상 설정
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0), // borderRadius 설정
+                  side: BorderSide(
+                    color: Color(0xFFE6E6E6), // border 색상 설정
+                    width: 1.0, // border 두께 설정
+                  ),
+                ),
+                shadowColor: Colors.transparent,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text('#' + authors[index],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),),
+              ),
             );
           },
         ),

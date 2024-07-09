@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/ui/main/home/home_page.dart';
 import 'package:untitled/ui/main/myshelf/my_shelf.dart';
-import 'package:untitled/ui/main/search/search.dart';
+import 'package:untitled/ui/main/search/search_page.dart';
 
 import '../common/components/custom_bottom_navigation_bar.dart';
 import 'mypage/mypage.dart';

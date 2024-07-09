@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchBarV2 extends StatelessWidget {
   @override
@@ -25,14 +26,17 @@ class SearchBarV2 extends StatelessWidget {
           child: InkWell(
             onTap: () {
               // 사이드 탭바로 필터 불러오기
+              Scaffold.of(context).openEndDrawer(); // EndDrawer 열기
             },
-            child: Image.asset(
-              "assets/icon/system/filter_icon.png",
-              width: 35,
-              height: 35,
+            child: Container(
+              child: SvgPicture.asset(
+                "assets/icon/system/filter_icon.svg",
+                width: 30,
+                height: 30,
+              ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

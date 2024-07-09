@@ -45,10 +45,10 @@ class _SearchPageState extends State<SearchPage> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        onItemSelected: _onItemTapped,
-      ),
+      // bottomNavigationBar: CustomBottomNavigationBar(
+      //   selectedIndex: _selectedIndex,
+      //   onItemSelected: _onItemTapped,
+      // ),
       endDrawer: CustomDrawer(
         selectedOption: _selectedOption,
         onOptionChanged: (String? newValue) {

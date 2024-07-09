@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/ui/common/components/custom_bottom_navigation_bar.dart';
 import 'package:untitled/ui/main/search/_components/author_buttons.dart';
 import 'package:untitled/ui/main/search/_components/category_buttons.dart';
 import 'package:untitled/ui/main/search/_components/custom_drawer.dart';
@@ -11,6 +12,14 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String? _selectedOption;
+  int _selectedIndex = 0;
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +45,9 @@ class _SearchPageState extends State<SearchPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white, // 배경색 설정
-        selectedItemColor: Colors.black, // 선택된 아이템 색상 설정
-        unselectedItemColor: Colors.black,
-        showSelectedLabels: false, // 선택된 아이템 레이블 숨기기
-        showUnselectedLabels: false, // 선택되지 않은 아이템 레이블 숨기기
-        type: BottomNavigationBarType.fixed, // 고정된 타입 설정
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: '서치'),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: '위시리스트'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: '내정보'),
-        ],
+      bottomNavigationBar: CustomBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        onItemSelected: _onItemTapped,
       ),
       endDrawer: CustomDrawer(
         selectedOption: _selectedOption,
@@ -63,3 +62,4 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
+

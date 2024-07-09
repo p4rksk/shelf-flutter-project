@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/category_result_page.dart';
+import 'package:untitled/ui/main/home/pages/book_detail_page.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CategoryResultPage(),
+      home: BookDetailPage(),
     );
   }
 }

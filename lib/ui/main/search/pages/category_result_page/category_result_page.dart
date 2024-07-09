@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/_core/constants/line.dart';
 import 'package:untitled/_core/constants/style.dart';
+import 'package:untitled/data/model/category_page/category_list.dart';
 import 'package:untitled/data/model/category_page/category_page_data.dart';
 import 'package:untitled/ui/common/components/custom_bottom_navigation_bar.dart';
+import 'package:untitled/ui/main/search/pages/category_result_page/_components/curation_bottm_sheet.dart';
+import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
+import 'package:untitled/ui/main/search/pages/category_result_page/data/category_data.dart';
 
 class CategoryResultPage extends StatefulWidget {
   @override
@@ -13,12 +17,7 @@ class CategoryResultPage extends StatefulWidget {
 class _CategoryResultPageState extends State<CategoryResultPage> {
   String? categoryName = "인문";
   int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  int _curationIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
                 children: [
                   Container(
                     child: Text(
-                      "${categoryName}책 모아보기",
+                      "${categoryName}분야 모아보기",
                       style: h5(),
                     ),
                   ),
@@ -54,7 +53,7 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
               ),
               onTap: () {
                 // drawer 사용
-                curationBottomSheet(context);
+                _showCurationBottomSheet(context);
               },
             ),
             SizedBox(height: 10),
@@ -89,6 +88,7 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
                     ),
                     onTap: () {
                       // draw 기능
+                      _showSortBottomSheet(context);
                     },
                   ),
                 ],
@@ -157,53 +157,56 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
     );
   }
 
-  void curationBottomSheet(BuildContext context) {
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void _applySelection() {
+    setState(() {
+      categoryName = categories[_curationIndex]['name'];
+      // 여기서 categoryName 검색 로직
+    });
+  }
+
+  void _showCurationBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
-          child: Container(
-            height: 500,
-            color: Colors.white,
-            child: Column(
-              children: [
-                SizedBox(height: 30),
-                Container(
-                  child: Text(
-                    "큐레이션 선택",
-                    style: h8(),
-                  ),
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.4,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 0,
-                    ),
-                    itemCount: books.length,
-                    itemBuilder: (context, index) {
-                      final book = books[index];
-                      return Container(
-                        child: ListTile(
-                          leading: Icon(Icons.book),
-                          title: Text('Option 1'),
-                          onTap: () {
-                            // Handle option 1 tap
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
+        return CurationBottomSheet(
+          categories: categories,
+          selectedIndex: _curationIndex,
+          onCategorySelected: (index) {
+            setState(() {
+              _curationIndex = index;
+            });
+          },
+          onApply: () {
+            _applySelection();
+            Navigator.pop(context);
+          },
+        );
+      },
+    );
+  }
+
+  void _showSortBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SortBottmSheet(
+          sortBy: sortBy,
+          selectedIndex: _curationIndex,
+          onSortSelected: (index) {
+            setState(() {
+              _curationIndex = index;
+            });
+          },
+          onApply: () {
+            _applySelection();
+            Navigator.pop(context);
+          },
         );
       },
     );

@@ -31,3 +31,11 @@ final line4 = Container(
     color: Colors.grey,
   ),
 );
+
+final greyLine1 = Container(
+  width: double.infinity,
+  height: 1,
+  decoration: BoxDecoration(
+    color: Color(0xFFE6E6E6),
+  ),
+);

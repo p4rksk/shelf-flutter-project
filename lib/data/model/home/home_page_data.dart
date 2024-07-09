@@ -121,4 +121,40 @@ final List<BestsellerBook> bestsellerBooks = [
     author: '클레어 키건',
     rank: '9',
   ),
+  BestsellerBook(
+    imagePath: 'assets/images/book10.png',
+    title: '이처럼 사소한 것들',
+    author: '클레어 키건',
+    rank: '10',
+  ),
+  BestsellerBook(
+    imagePath: 'assets/images/book1.png',
+    title: '이처럼 사소한 것들',
+    author: '클레어 키건',
+    rank: '11',
+  ),
+  BestsellerBook(
+    imagePath: 'assets/images/book9.png',
+    title: '이처럼 사소한 것들',
+    author: '클레어 키건',
+    rank: '12',
+  ),
+  BestsellerBook(
+    imagePath: 'assets/images/book10.png',
+    title: '이처럼 사소한 것들',
+    author: '클레어 키건',
+    rank: '13',
+  ),
+  BestsellerBook(
+    imagePath: 'assets/images/book1.png',
+    title: '이처럼 사소한 것들',
+    author: '클레어 키건',
+    rank: '14',
+  ),
+  BestsellerBook(
+    imagePath: 'assets/images/book9.png',
+    title: '이처럼 사소한 것들',
+    author: '클레어 키건',
+    rank: '15',
+  ),
 ];

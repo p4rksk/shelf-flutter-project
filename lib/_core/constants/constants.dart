@@ -16,6 +16,8 @@ const kAccentColor6 = Color(0xFF99C0F2);
 
 
 
+
+
 class TColor {
   static Color get primaryColor1 => const Color(0xff92A3FD);
 

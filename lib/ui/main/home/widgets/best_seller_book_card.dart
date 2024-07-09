@@ -10,16 +10,17 @@ class BestsellerBookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: isFirst ? 180 : 100,
+      width: isFirst ? 250 : 120,
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
+            clipBehavior: Clip.none,
             children: [
               Container(
-                width: isFirst ? 180 : 100,
-                height: isFirst ? 270 : 160,
+                width: isFirst ? 325 : 100,
+                height: isFirst ? 415 : 160,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(book.imagePath),
@@ -29,20 +30,21 @@ class BestsellerBookCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  padding: const EdgeInsets.all(4.0),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Text(
-                    book.rank,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
+                bottom: isFirst ? -35 : -10,
+                left: isFirst ? -40 : -15,
+                child: Text(
+                  book.rank,
+                  style: TextStyle(
+                    fontSize: isFirst ? 120 : 50,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black,
+                        offset: Offset(2.0, 2.0),
+                      ),
+                    ],
                   ),
                 ),
               ),

@@ -15,24 +15,28 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 70,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black12),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
         ),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
         ),
         child: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: kAccentColor4,
           type: BottomNavigationBarType.fixed,
           currentIndex: selectedIndex,
-          selectedItemColor: kAccentColor3,
+          selectedItemColor: TColor.white,
+          unselectedItemColor: Colors.white54,
           onTap: onItemSelected,
+          showSelectedLabels: false, // 선택된 라벨 숨기기
+          showUnselectedLabels: false, // 선택되지 않은 라벨 숨기기
           items: const [
             BottomNavigationBarItem(
                 label: "홈", icon: Icon(FontAwesomeIcons.house)),

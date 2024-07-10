@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/data/model/category_page/category_list.dart';
-class CategoryButtons extends StatelessWidget {
+import 'package:untitled/ui/main/search/pages/category_result_page/category_result_page.dart';
 
+class CategoryButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,14 @@ class CategoryButtons extends StatelessWidget {
             itemBuilder: (context, index) {
               return ElevatedButton(
                 onPressed: () {
-                  // Implement category selection
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CategoryResultPage(
+                        categoryName: categories[index]['name']!,
+                      ),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.all(0),
@@ -74,10 +82,10 @@ class CategoryButtons extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(8.0),
-                              bottomRight: Radius.circular(8.0),
-                            ),
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8.0),
+                            bottomRight: Radius.circular(8.0),
+                          ),
                           child: Container(
                             height: double.infinity,
                             width: 300, // 부모 높이를 모두 채우도록 설정

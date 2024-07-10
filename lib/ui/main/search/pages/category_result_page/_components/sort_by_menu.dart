@@ -5,9 +5,9 @@ import 'package:untitled/_core/constants/style.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/result_items.dart';
 
 class SortByMenu extends StatelessWidget {
-  final String categoryName;
-  final VoidCallback onCurationTap;
-  final VoidCallback onSortTap;
+  final String? categoryName;
+  final VoidCallback? onCurationTap;
+  final VoidCallback? onSortTap;
 
   SortByMenu({
     this.categoryName,

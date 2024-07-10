@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitled/_core/constants/move.dart';
 
 import '../../../_core/constants/constants.dart';
 
-class CustomBottomNavigationBar extends StatelessWidget {
+class ModifiedBottomNavigator extends StatelessWidget {
   final int selectedIndex;
-  final Function(int) onItemSelected;
 
-  const CustomBottomNavigationBar({
+  const ModifiedBottomNavigator({
     Key? key,
     required this.selectedIndex,
-    required this.onItemSelected,
   }) : super(key: key);
 
   @override
@@ -35,7 +34,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
           currentIndex: selectedIndex,
           selectedItemColor: TColor.white,
           unselectedItemColor: Colors.white54,
-          onTap: onItemSelected,
+          onTap: (index) {
+            _onItemTapped(context, index);
+          },
           showSelectedLabels: false, // 선택된 라벨 숨기기
           showUnselectedLabels: false, // 선택되지 않은 라벨 숨기기
           items: const [
@@ -51,5 +52,23 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onItemTapped(BuildContext context, int index) {
+    // <--- 여기서 경로에 따라 네비게이션을 변경
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, Move.homePage);
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, Move.searchPage);
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, Move.myShelfPage);
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, Move.myPage);
+        break;
+    }
   }
 }

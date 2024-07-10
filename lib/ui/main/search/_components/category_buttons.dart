@@ -19,7 +19,7 @@ class CategoryButtons extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
-              mainAxisSpacing: 15,
+              mainAxisSpacing: 10,
               crossAxisSpacing: 8.0,
               childAspectRatio: 4,
             ),

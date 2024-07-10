@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/_core/constants/constants.dart';
 import 'package:untitled/_core/constants/size.dart';
+import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
+
 import '../../../data/model/home/my_shelf_data.dart';
 import '_components/book_list_tab.dart';
 import '_components/review_management_tab.dart';
 import '_components/wish_list_tab.dart';
 
-class MyShelf extends StatelessWidget {
+class MyShelf extends StatefulWidget {
+  @override
+  State<MyShelf> createState() => _MyShelfState();
+}
+
+class _MyShelfState extends State<MyShelf> {
+  final int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -62,12 +71,17 @@ class MyShelf extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                         foreground: Paint()
                                           ..shader = LinearGradient(
-                                            colors: [Colors.blue, Colors.purple],
-                                          ).createShader(Rect.fromLTWH(0, 0, 100, 20)),
+                                            colors: [
+                                              Colors.blue,
+                                              Colors.purple
+                                            ],
+                                          ).createShader(
+                                              Rect.fromLTWH(0, 0, 100, 20)),
                                       ),
                                     ),
                                     TextSpan(
-                                      text: ' 와 함께한지 ${userData.daysWithShelf}일 되셨어요!',
+                                      text:
+                                          ' 와 함께한지 ${userData.daysWithShelf}일 되셨어요!',
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.black,
@@ -102,8 +116,10 @@ class MyShelf extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: ModifiedBottomNavigator(
+          selectedIndex: _selectedIndex,
+        ),
       ),
     );
   }
 }
-

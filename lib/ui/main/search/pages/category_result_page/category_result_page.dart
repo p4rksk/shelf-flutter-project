@@ -5,6 +5,7 @@ import 'package:untitled/_core/constants/style.dart';
 import 'package:untitled/data/model/category_page/category_list.dart';
 import 'package:untitled/data/model/category_page/category_page_data.dart';
 import 'package:untitled/ui/common/components/custom_bottom_navigation_bar.dart';
+import 'package:untitled/ui/main/search/pages/category_result_page/_components/back_arrow_appbar.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/curation_bottm_sheet.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/data/category_data.dart';
@@ -22,13 +23,7 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
-        child: AppBar(
-          leading: Icon(Icons.arrow_back),
-          backgroundColor: Colors.white,
-        ),
-      ),
+      appBar: BackArrowAppBar(),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
         color: Colors.white,

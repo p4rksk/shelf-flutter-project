@@ -35,7 +35,7 @@ class BestSellerSection extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    '서점 베스트셀러 더보기>',
+                    '베스트셀러 더보기>',
                     style: TextStyle(
                       fontSize: 16,
                       color: kAccentColor3,
@@ -46,33 +46,36 @@ class BestSellerSection extends StatelessWidget {
             ),
           ),
           Container(
-            height: 600,
-            child: Row(
+            height: 550,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
                 BestsellerBookCard(
                   book: bestsellerBooks[0],
                   isFirst: true,
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: (bestsellerBooks.length - 1) ~/ 2 + 1, // 18위 책
-                    itemBuilder: (context, index) {
-                      if (index < (bestsellerBooks.length - 1) / 2) {
-                        return Column(
-                          children: [
-                            BestsellerBookCard(
-                              book: bestsellerBooks[2 * index + 1],
+                Row(
+                  children: List.generate(
+                    (bestsellerBooks.length - 1) ~/ 2,
+                        (index) => Column(
+                      children: [
+                        Container(
+                          width: 120,
+                          child: BestsellerBookCard(
+                            book: bestsellerBooks[2 * index + 1],
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        if (2 * index + 2 < bestsellerBooks.length)
+                          Container(
+                            width: 120,
+                            child: BestsellerBookCard(
+                              book: bestsellerBooks[2 * index + 2],
                             ),
-                            if (2 * index + 2 < bestsellerBooks.length)
-                              BestsellerBookCard(
-                                book: bestsellerBooks[2 * index + 2],
-                              ),
-                          ],
-                        );
-                      }
-                    },
-                  ),
+                          ),
+                      ],
+                    ),
+                  ).toList(),
                 ),
               ],
             ),

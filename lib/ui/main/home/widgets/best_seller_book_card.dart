@@ -10,8 +10,8 @@ class BestsellerBookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: isFirst ? 250 : 120,
-      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+      width: isFirst ? 280 : 200, // 1등 책의 너비를 더 늘림
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,8 +19,8 @@ class BestsellerBookCard extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                width: isFirst ? 325 : 100,
-                height: isFirst ? 415 : 160,
+                width: isFirst ? 250 : 100, // 1등 책의 너비를 더 늘림
+                height: isFirst ? 384 : 160,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(book.imagePath),
@@ -51,30 +51,24 @@ class BestsellerBookCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 10),
-          Container(
-            height: 40,
-            child: Text(
-              book.title,
-              style: TextStyle(
-                fontSize: isFirst ? 16 : 14,
-                fontWeight: FontWeight.bold,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+          Text(
+            book.title,
+            style: TextStyle(
+              fontSize: isFirst ? 25 : 14,
+              fontWeight: FontWeight.bold,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           SizedBox(height: 5),
-          Container(
-            height: 20,
-            child: Text(
-              book.author,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+          Text(
+            book.author,
+            style: TextStyle(
+              fontSize: isFirst ? 15 : 12,
+              color: Colors.grey,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

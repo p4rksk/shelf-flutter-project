@@ -87,7 +87,7 @@ final List<BestsellerBook> bestsellerBooks = [
   ),
   BestsellerBook(
     imagePath: 'assets/images/book4.png',
-    title: '인사이드 아웃 2 스토...',
+    title: '인사이드 아웃 2 스토리북',
     author: 'Disney Books',
     rank: '4',
   ),

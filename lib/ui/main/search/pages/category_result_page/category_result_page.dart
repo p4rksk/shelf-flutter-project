@@ -14,15 +14,27 @@ import 'package:untitled/ui/main/search/pages/category_result_page/_components/s
 import 'data/category_data.dart';
 
 class CategoryResultPage extends StatefulWidget {
+  final String? categoryName;
+
   @override
   State<CategoryResultPage> createState() => _CategoryResultPageState();
+
+  CategoryResultPage({
+    this.categoryName,
+  });
 }
 
 class _CategoryResultPageState extends State<CategoryResultPage> {
-  String? categoryName = "인문";
+  late String currentCategoryName;
   int _selectedIndex = 0;
   int _curationIndex = 0;
   String selectedSort = "완독할 확률 높은 순"; // 초기 정렬 기준
+
+  @override
+  void initState() {
+    super.initState();
+    currentCategoryName = widget.categoryName!; // 초기 상태 설정
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +47,7 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
           children: [
             ResultTitle(
               // ~분야 모아보기 탭
-              categoryName: categoryName!,
+              categoryName: currentCategoryName,
               categories: categories,
               curationIndex: _curationIndex,
               applySelection: _applySelection,
@@ -75,14 +87,14 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
 
   void _applySelection(String selectedCategoryName) {
     setState(() {
-      categoryName = selectedCategoryName;
+      currentCategoryName = selectedCategoryName;
       // 여기서 categoryName 검색 로직
     });
   }
 
   void _applySort(String selectedCategoryName) {
     setState(() {
-      categoryName = selectedCategoryName;
+      currentCategoryName = selectedCategoryName;
       // 여기서 sort 정렬 로직
     });
   }

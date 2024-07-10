@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:untitled/ui/main/search/_components/widget_options.dart';
 
 class MainPage extends StatefulWidget {
@@ -21,9 +20,6 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: Center(
         child: widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: ModifiedBottomNavigator(
-        selectedIndex: _selectedIndex,
       ),
     );
   }

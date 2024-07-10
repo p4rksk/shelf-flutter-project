@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/common/components/custom_bottom_navigation_bar.dart';
+import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:untitled/ui/main/search/_components/author_buttons.dart';
 import 'package:untitled/ui/main/search/_components/category_buttons.dart';
 import 'package:untitled/ui/main/search/_components/custom_drawer.dart';
@@ -12,14 +12,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String? _selectedOption;
-  int _selectedIndex = 0;
-
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +38,9 @@ class _SearchPageState extends State<SearchPage> {
           ],
         ),
       ),
-      // bottomNavigationBar: CustomBottomNavigationBar(
-      //   selectedIndex: _selectedIndex,
-      //   onItemSelected: _onItemTapped,
-      // ),
+      bottomNavigationBar: ModifiedBottomNavigator(
+        selectedIndex: _selectedIndex,
+      ),
       endDrawer: CustomDrawer(
         selectedOption: _selectedOption,
         onOptionChanged: (String? newValue) {
@@ -62,4 +54,3 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
-

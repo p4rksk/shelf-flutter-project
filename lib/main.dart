@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:untitled/ui/main/home/pages/book_detail_page.dart';
 import 'ui/main/search/pages/category_result_page/category_result_page.dart';
 import 'package:cosmos_epub/cosmos_epub.dart';
+import 'ui/main/search/pages/writer_result_page/writer_result_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BookDetailPage(),
+      home: CategoryResultPage(),
     );
   }
 }

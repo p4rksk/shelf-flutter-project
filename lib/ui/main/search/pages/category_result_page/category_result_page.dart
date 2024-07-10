@@ -6,6 +6,7 @@ import 'package:untitled/data/model/category_page/category_list.dart';
 import 'package:untitled/data/model/category_page/category_page_data.dart';
 import 'package:untitled/ui/common/components/custom_bottom_navigation_bar.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/back_arrow_appbar.dart';
+import 'package:untitled/ui/main/search/pages/category_result_page/_components/book_grid.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/result_title.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_section.dart';
@@ -44,63 +45,14 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
             SortSection(
               // 정렬 방식 선택
               bookCount: books.length,
-              selectedSort: selectedSort, // 현재 선택된 정렬 기준 전달
+              selectedSort: selectedSort,
               onSortTap: () {
                 _showSortBottomSheet(context);
               },
             ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 0.4,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 0,
-                ),
-                itemCount: books.length,
-                itemBuilder: (context, index) {
-                  final book = books[index];
-                  return Container(
-                    padding: EdgeInsets.all(0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: Container(
-                            height: 160,
-                            width: double.infinity,
-                            child: Image.asset(
-                              book.path,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: Text(
-                            book.title,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 0),
-                          child: Text(
-                            '${book.author}',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+            BookGrid(
+              // 검색 결과 아이템들
+              books: books,
             ),
           ],
         ),
@@ -111,6 +63,9 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
       ),
     );
   }
+
+
+  // 내부 메소드=========================================
 
   void _onItemTapped(int index) {
     setState(() {
@@ -131,7 +86,6 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
       // 여기서 sort 정렬 로직
     });
   }
-
 
   void _showSortBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -154,3 +108,4 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
     );
   }
 }
+

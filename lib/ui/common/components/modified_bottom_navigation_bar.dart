@@ -29,7 +29,7 @@ class ModifiedBottomNavigator extends StatelessWidget {
           topRight: Radius.circular(10),
         ),
         child: BottomNavigationBar(
-          backgroundColor: kAccentColor4,
+          backgroundColor: kAccentColor2,
           type: BottomNavigationBarType.fixed,
           currentIndex: selectedIndex,
           selectedItemColor: TColor.white,

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/_core/constants/constants.dart';
 import 'package:untitled/_core/constants/size.dart';
-
 import '../../../../data/model/home/book_detail_data.dart';
 
 class ReviewTab extends StatelessWidget {
+  final Book book;
+
+  ReviewTab({required this.book});
+
   @override
   Widget build(BuildContext context) {
     return Padding(

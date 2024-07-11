@@ -16,6 +16,7 @@ class Move {
   static String homePage = "/home";
   static String bookDetailPage = "/home/detail";
   static String sellerDetailPage = "/home/seller-detail";
+  static String brandNewPage = "/home/brand-new";
   static String searchPage = "/search";
   static String categoryResultPage = "/search/category";
   static String writerResultPage = "/search/writer";

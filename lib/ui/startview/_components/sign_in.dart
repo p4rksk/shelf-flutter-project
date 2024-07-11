@@ -107,7 +107,7 @@ class SignIn extends StatelessWidget {
                 child: const Text('로그인'),
               ),
             ),
-            const SizedBox(height: 25.0),
+            const SizedBox(height: gap_l),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
@@ -130,7 +130,32 @@ class SignIn extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 25.0),
+            const SizedBox(height: gap_l),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    // 카카오 로그인 구현 필요함
+                  },
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundImage: AssetImage('assets/images/kakao.png'),
+                  ),
+                ),
+                SizedBox(width: gap_xl),
+                GestureDetector(
+                  onTap: () {
+                    // 네이버 로그인 구현 필요함
+                  },
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundImage: AssetImage('assets/images/naver.png'),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: gap_l),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

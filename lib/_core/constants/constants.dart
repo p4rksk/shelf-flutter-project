@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // 청록색
 const kAccentColor1 = Color(0xFFC588F2);
 // 진한 녹색
-const kAccentColor2 = Color(0xffeea4ce);
+const kAccentColor2 = Color(0xfff3b8d9);
 // 물 색
 const kAccentColor3 = Color(0xFF92A3FD);
 

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/size.dart';
 import '../../../../data/model/home/book_detail_data.dart';
 import 'package:untitled/_core/constants/constants.dart';
+import 'package:untitled/_core/constants/size.dart';
 
 class BookIntroductionTab extends StatelessWidget {
+  final Book book;
+
+  BookIntroductionTab({required this.book});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,7 +17,7 @@ class BookIntroductionTab extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              bookDetail.oneLineSummary,
+              book.oneLineSummary,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 10),
@@ -22,14 +26,14 @@ class BookIntroductionTab extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            _buildCollapsibleSection(bookDetail.introduction),
+            _buildCollapsibleSection(book.introduction),
             SizedBox(height: 20),
             Text(
               '작가 소개',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            _buildCollapsibleSection(bookDetail.authorIntroduction),
+            _buildCollapsibleSection(book.authorIntroduction),
           ],
         ),
       ),

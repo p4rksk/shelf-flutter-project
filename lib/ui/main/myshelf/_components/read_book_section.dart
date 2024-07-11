@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/_core/constants/size.dart';
-import '../../../../data/model/home/my_shelf_data.dart'; // UserData 클래스 가져오기
+import '../../../../data/model/myshelf/my_shelf_data.dart'; // UserData 클래스 가져오기
 
 class ReadBooksSection extends StatelessWidget {
   @override

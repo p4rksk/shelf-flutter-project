@@ -3,7 +3,7 @@ import 'package:untitled/_core/constants/constants.dart';
 import 'package:untitled/_core/constants/size.dart';
 import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
 
-import '../../../data/model/home/my_shelf_data.dart';
+import '../../../data/model/myshelf/my_shelf_data.dart';
 import '_components/book_list_tab.dart';
 import '_components/review_management_tab.dart';
 import '_components/wish_list_tab.dart';
@@ -28,6 +28,8 @@ class _MyShelfState extends State<MyShelf> {
               SliverAppBar(
                 pinned: true,
                 expandedHeight: 200.0,
+                collapsedHeight: 20,
+                toolbarHeight: 20,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
                     children: [
@@ -97,13 +99,21 @@ class _MyShelfState extends State<MyShelf> {
                     ],
                   ),
                 ),
-                bottom: TabBar(
-                  labelColor: Colors.black,
-                  tabs: [
-                    Tab(text: '책 목록'),
-                    Tab(text: '위시리스트'),
-                    Tab(text: '리뷰관리'),
-                  ],
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(50.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: TColor.white,
+                    ),
+                    child: TabBar(
+                      labelColor: Colors.black,
+                      tabs: [
+                        Tab(text: '책 목록'),
+                        Tab(text: '위시리스트'),
+                        Tab(text: '리뷰관리'),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ];

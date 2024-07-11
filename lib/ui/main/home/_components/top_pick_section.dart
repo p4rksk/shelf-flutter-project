@@ -4,6 +4,7 @@ import '../../../../_core/constants/constants.dart';
 import '../../../../data/model/home/home_page_data.dart';
 import '../widgets/book_card.dart';
 import '../widgets/top_pick_clipper.dart';
+import 'package:untitled/_core/constants/move.dart';
 
 class TopPicksSection extends StatefulWidget {
   @override
@@ -187,11 +188,21 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                 child: Column(
                   children: [
                     SizedBox(height: 50),
-                    _buildMenuItem(Icons.home, "홈"),
-                    _buildMenuItem(Icons.fiber_new, "Brand New"),
-                    _buildMenuItem(Icons.search, "찾기"),
-                    _buildMenuItem(Icons.library_books, "내 서재"),
-                    _buildMenuItem(Icons.person, "내 정보"),
+                    _buildMenuItem(Icons.home, "홈", () {
+                      Navigator.pushNamed(context, Move.homePage);
+                    }),
+                    _buildMenuItem(Icons.fiber_new, "Brand New", () {
+                      Navigator.pushNamed(context, Move.brandNewPage);
+                    }),
+                    _buildMenuItem(Icons.search, "찾기", () {
+                      Navigator.pushNamed(context, Move.searchPage);
+                    }),
+                    _buildMenuItem(Icons.library_books, "내 서재", () {
+                      Navigator.pushNamed(context, Move.myShelfPage);
+                    }),
+                    _buildMenuItem(Icons.person, "내 정보", () {
+                      Navigator.pushNamed(context, Move.myInfo);
+                    }),
                     Spacer(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -206,11 +217,11 @@ class _TopPicksSectionState extends State<TopPicksSection> {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String title) {
+  Widget _buildMenuItem(IconData icon, String title, VoidCallback onTap) {
     return ListTile(
       leading: Icon(icon, color: kAccentColor3),
       title: Text(title, style: TextStyle(color: Colors.black)),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }

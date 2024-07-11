@@ -16,11 +16,16 @@ class WriterAppBar extends StatelessWidget implements PreferredSizeWidget {
     return PreferredSize(
       preferredSize: Size.fromHeight(40),
       child: AppBar(
-        leading: Icon(Icons.arrow_back),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "#유발 하라리",
+          "#" + writerName!,
           style: h8(),
         ),
       ),

@@ -9,8 +9,14 @@ import 'package:untitled/ui/main/search/pages/writer_result_page/_components/wri
 import '../../../../../data/model/category_page/category_page_data.dart';
 
 class WriterResultPage extends StatefulWidget {
+  String? authorName;
+
   @override
   State<WriterResultPage> createState() => _WriterResultPageState();
+
+  WriterResultPage({
+    this.authorName,
+  });
 }
 
 class _WriterResultPageState extends State<WriterResultPage> {
@@ -19,9 +25,9 @@ class _WriterResultPageState extends State<WriterResultPage> {
   int _curationIndex = 0;
 
   @override
-  Widget build(BuildContext context) {
+  build(BuildContext context) {
     return Scaffold(
-      appBar: WriterAppBar(writerName: "유발 하라리"),
+      appBar: WriterAppBar(writerName: widget.authorName),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
         color: Colors.white,

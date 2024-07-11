@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // For Riverpod state management
 import 'package:untitled/_core/constants/size.dart';
+import 'package:untitled/data/dto/user_request.dart';
+import 'package:untitled/data/store/session_store.dart';
+
 import '../../../_core/constants/constants.dart';
 import '../../../_core/constants/theme.dart';
 import '../../../data/store/checkbox.dart';
 import '../widgets/show_custom_bottom_sheet.dart';
 
 class SignUp extends ConsumerWidget {
+  final TextEditingController _emailController =
+      TextEditingController(text: "kim@nate.com");
+  final TextEditingController _nickNameController =
+      TextEditingController(text: "kim1");
+  final TextEditingController _passwordController =
+      TextEditingController(text: "1234");
+  final TextEditingController _confirmPasswordController =
+      TextEditingController(text: "1234");
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
@@ -18,8 +30,8 @@ class SignUp extends ConsumerWidget {
             Text(
               '회원가입',
               style: textTheme().titleLarge?.copyWith(
-                color: kAccentColor3,
-              ),
+                    color: kAccentColor3,
+                  ),
             ),
             const SizedBox(height: 40.0),
             Row(
@@ -27,9 +39,11 @@ class SignUp extends ConsumerWidget {
                 Expanded(
                   flex: 4,
                   child: TextFormField(
+                    controller: _emailController,
                     cursorColor: TColor.grey,
                     decoration: InputDecoration(
-                      label: const Text('이메일', style: TextStyle(color: Colors.grey)),
+                      label: const Text('이메일',
+                          style: TextStyle(color: Colors.grey)),
                       hintText: '이메일를 입력하세요',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -66,9 +80,11 @@ class SignUp extends ConsumerWidget {
                 Expanded(
                   flex: 4,
                   child: TextFormField(
+                    controller: _nickNameController,
                     cursorColor: TColor.grey,
                     decoration: InputDecoration(
-                      label: const Text('닉네임', style: TextStyle(color: Colors.grey)),
+                      label: const Text('닉네임',
+                          style: TextStyle(color: Colors.grey)),
                       hintText: '닉네임을 입력하세요',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -101,6 +117,7 @@ class SignUp extends ConsumerWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
+              controller: _passwordController,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
@@ -119,10 +136,12 @@ class SignUp extends ConsumerWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
+              controller: _confirmPasswordController,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
-                label: const Text('비밀번호 확인', style: TextStyle(color: Colors.grey)),
+                label:
+                    const Text('비밀번호 확인', style: TextStyle(color: Colors.grey)),
                 hintText: '비밀번호를 다시 입력하세요',
                 hintStyle: const TextStyle(color: Colors.black26),
                 border: OutlineInputBorder(
@@ -169,7 +188,15 @@ class SignUp extends ConsumerWidget {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      JoinReqDTO joinReqDTO = JoinReqDTO(
+                        email: _emailController.text.trim(),
+                        nickName: _nickNameController.text.trim(),
+                        password: _passwordController.text.trim(),
+                        isAgreed: false,
+                      );
+                      ref.read(sessionProvider).join(joinReqDTO);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: kAccentColor3,
                       foregroundColor: TColor.white,

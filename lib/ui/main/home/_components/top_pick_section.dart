@@ -20,13 +20,18 @@ class _TopPicksSectionState extends State<TopPicksSection> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.jumpTo(_itemExtent * books.length);
+      Future.delayed(Duration(milliseconds: 100), () {
+        if (_scrollController.hasClients) {
+          _scrollController.jumpTo(_itemExtent * books.length);
+        }
+      });
     });
     _scrollController.addListener(_onScroll);
   }
 
   @override
   void dispose() {
+    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
   }
@@ -199,11 +204,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
     return ListTile(
       leading: Icon(icon, color: kAccentColor3),
       title: Text(title, style: TextStyle(color: Colors.black)),
-      onTap: () {
-      },
+      onTap: () {},
     );
   }
 }
-
-
-

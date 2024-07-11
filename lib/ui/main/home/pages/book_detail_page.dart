@@ -1,106 +1,197 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../_core/constants/constants.dart';
+import '../../../../_core/constants/size.dart';
 import '../../../../data/model/home/book_detail_data.dart';
+import '../../../../data/store/wishlist_toggle.dart';
+import '../_components/book_introduction_tab.dart';
+import '../_components/review_tab.dart';
+import '../widgets/bottom_action_bar.dart';
+import '../widgets/pie_chart_widget.dart';
 
-
-class BookDetailPage extends StatelessWidget {
+class BookDetailPage extends ConsumerWidget {
   final Book book;
 
   BookDetailPage({required this.book});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final wishlist = ref.watch(wishlistProvider);
+    final isFavorite = wishlist.contains(book);
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(book.title),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(book.imagePath, fit: BoxFit.cover),
-              SizedBox(height: 16.0),
-              Text(
-                book.title,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [TColor.primaryColor1, TColor.secondaryColor2],
+          ),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          ref.read(wishlistProvider.notifier).toggleWishlist(book);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Text(
-                '저자: ${book.author}',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    '이 책이 담긴 서재 $libraryCount',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                '출판사: ${book.publisher}',
-                style: TextStyle(
-                  fontSize: 16,
+                SizedBox(height: 10),
+                Image.asset(
+                  book.imagePath,
+                  height: 200,
                 ),
-              ),
-              Text(
-                '카테고리: ${book.category}',
-                style: TextStyle(
-                  fontSize: 16,
+                SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(gap_l),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              book.title,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              book.author,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              '${book.publisher} · ${book.category} · ${book.registrationDate}',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Container(
+                              padding: EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
+                              decoration: BoxDecoration(
+                                color: Colors.white54.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    spreadRadius: 3,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 100,
+                                    height: 100,
+                                    child: PieChartWidget(
+                                      totalViews: book.totalViews,
+                                      completedViews: book.completedViews,
+                                    ),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${((book.completedViews ?? 0) / (book.totalViews ?? 1) * 100).toStringAsFixed(1)}%의 구독자가 완독했어요!',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      Text(
+                                        '총 완독자 수 ${book.completedViews ?? 0}명',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      DefaultTabController(
+                        length: 2,
+                        child: Column(
+                          children: [
+                            TabBar(
+                              indicatorColor: TColor.primaryColor1,
+                              labelColor: Colors.black,
+                              tabs: [
+                                Tab(text: '책 소개'),
+                                Tab(text: '리뷰'),
+                              ],
+                            ),
+                            Container(
+                              height: 400,
+                              child: TabBarView(
+                                children: [
+                                  BookIntroductionTab(book: book),
+                                  ReviewTab(book: book),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Text(
-                '등록일: ${book.registrationDate}',
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                '한 줄 요약',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                book.oneLineSummary,
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                '책 소개',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                book.introduction,
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                '작가 소개',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                book.authorIntroduction,
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
+      bottomNavigationBar: BottomActionBar(),
     );
   }
 }

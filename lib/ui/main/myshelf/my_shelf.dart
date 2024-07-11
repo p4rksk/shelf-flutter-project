@@ -36,7 +36,7 @@ class _MyShelfState extends State<MyShelf> {
                       Container(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [kAccentColor2, kAccentColor3],
+                            colors: [kAccentColor3, kAccentColor2],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ),

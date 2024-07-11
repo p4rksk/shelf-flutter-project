@@ -87,8 +87,14 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                 ClipPath(
                   clipper: TopPicksClipper(),
                   child: Container(
-                    color: kAccentColor4,
                     height: 350,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [TColor.primaryColor1, TColor.secondaryColor2],
+                      ),
+                    ),
                   ),
                 ),
                 Padding(

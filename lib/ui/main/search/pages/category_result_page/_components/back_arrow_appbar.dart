@@ -9,10 +9,10 @@ class BackArrowAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
+        icon: Icon(Icons.arrow_back),
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: Icon(Icons.arrow_back),
       ),
       backgroundColor: Colors.white,
     );

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/ui/main/search/pages/writer_result_page/writer_result_page.dart';
 
 class AuthorButtons extends StatelessWidget {
-  final List<String> authors = [
-    '이병훈',
-    '김유림',
-    '이서윤 ',
-    '김서형',
-    '유발하라리',
-    '강준혁',
-    '박영선',
-    '김성훈',
-    '장하리',
-    '강수정'
+  final List<Map<String, String>> authors = [
+    {'name': '이병훈'},
+    {'name': '김유림'},
+    {'name': '이서윤 '},
+    {'name': '김서형'},
+    {'name': '유발하라리'},
+    {'name': '강준혁'},
+    {'name': '박영선'},
+    {'name': '김성훈'},
+    {'name': '장하리'},
+    {'name': '강수정'},
   ];
 
   @override
@@ -39,7 +40,13 @@ class AuthorButtons extends StatelessWidget {
           itemBuilder: (context, index) {
             return ElevatedButton(
               onPressed: () {
-                // Implement author selection
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        WriterResultPage(authorName: authors[index]['name']!),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white, // 배경색 설정
@@ -55,11 +62,13 @@ class AuthorButtons extends StatelessWidget {
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text('#' + authors[index],
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),),
+                child: Text(
+                  '#' + authors[index]['name']!,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
               ),
             );
           },

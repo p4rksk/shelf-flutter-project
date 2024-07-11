@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/ui/main/home/pages/book_detail_page.dart';
 
-import '../../../../../../data/model/category_page/category_page_data.dart';
+import '../../../../../../data/model/home/book_detail_data.dart';
 
 class BookGrid extends StatelessWidget {
   final List<Book> books;
@@ -22,43 +23,54 @@ class BookGrid extends StatelessWidget {
         ),
         itemCount: books.length,
         itemBuilder: (context, index) {
-          final book = books[index];
-          return Container(
-            padding: EdgeInsets.all(0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Container(
-                    height: 160,
-                    width: double.infinity,
-                    child: Image.asset(
-                      book.path,
-                      fit: BoxFit.fitWidth,
+          var book = books[index];
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookDetailPage(book: book),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      height: 160,
+                      width: double.infinity,
+                      child: Image.asset(
+                        book.imagePath,
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Text(
-                    book.title,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0),
-                  child: Text(
-                    '${book.author}',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 12,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Text(
+                      book.title,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 0),
+                    child: Text(
+                      '${book.author}',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

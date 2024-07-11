@@ -26,19 +26,13 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
   int _selectedIndex = 0;
   int _curationIndex = 0;
   String selectedSort = "완독할 확률 높은 순";
-  List<Book> books = []; // 초기 상태 설정
+  List<Book> books = newBooks; // 초기 상태 설정
   // 초기 정렬 기준
 
   @override
   void initState() {
     super.initState();
     currentCategoryName = widget.categoryName!;
-    fetchBooks();
-  }
-
-  void fetchBooks() {
-    books = [bookDetail];
-    setState(() {});
   }
 
   @override

@@ -23,9 +23,16 @@ class CategoryResultPage extends StatefulWidget {
 }
 
 class _CategoryResultPageState extends State<CategoryResultPage> {
-  final int _selectedIndex = 0;
+  late String currentCategoryName;
+  int _selectedIndex = 0;
   int _curationIndex = 0;
   String selectedSort = "완독할 확률 높은 순"; // 초기 정렬 기준
+
+  @override
+  void initState() {
+    super.initState();
+    currentCategoryName = widget.categoryName!; // 초기 상태 설정
+  }
 
   @override
   Widget build(BuildContext context) {

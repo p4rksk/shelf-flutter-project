@@ -27,6 +27,7 @@ class CategoryButtons extends StatelessWidget {
             itemBuilder: (context, index) {
               return ElevatedButton(
                 onPressed: () {
+                  // Implement category selection
                   Navigator.push(
                     context,
                     MaterialPageRoute(

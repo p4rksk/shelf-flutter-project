@@ -38,6 +38,7 @@ class StartViewPageBody extends ConsumerWidget {
                 subtitle: "함께 책을 탐험하세요",
                 isChangeColor: false,
                 showButtons: false,
+                isGifPage: true, // 첫 번째 페이지에 true 전달
               ),
               PageContent(
                 context,

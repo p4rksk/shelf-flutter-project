@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/ui/startview/widgets/show_custom_bottom_sheet.dart';
-
 import '../../../_core/constants/constants.dart';
 import 'gradient_text_button.dart';
 
@@ -10,6 +9,7 @@ Widget PageContent(
       required String subtitle,
       required bool isChangeColor,
       bool showButtons = false,
+      bool isGifPage = false, // Add a new parameter for GIF page
     }) {
   return Container(
     width: double.infinity,
@@ -17,14 +17,22 @@ Widget PageContent(
     decoration: BoxDecoration(
       gradient: isChangeColor
           ? LinearGradient(
-          colors: TColor.primaryG,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight)
+        colors: TColor.primaryG,
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      )
           : null,
       color: !isChangeColor ? Colors.white : null,
     ),
     child: Center(
-      child: Column(
+      child: isGifPage
+          ? Image.asset(
+        'assets/images/main.gif',
+        fit: BoxFit.cover, // Add this line to fit the image to the container
+        width: double.infinity,
+        height: double.infinity,
+      )
+          : Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
@@ -69,4 +77,3 @@ Widget PageContent(
     ),
   );
 }
-

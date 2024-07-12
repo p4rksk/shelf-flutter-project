@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.startViewPage,
+      initialRoute: Move.profileEditPage,
       routes: getRouters(),
     );
   }

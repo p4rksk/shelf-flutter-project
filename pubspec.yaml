@@ -49,6 +49,7 @@ dependencies:
   dio: ^5.4.3+1 # 서버와 통신하기 위해 필요한 라이브러리 입니다.
   flutter_secure_storage: ^9.2.2
   get: ^4.3.8
+  image_picker: ^1.1.2
 
 
 

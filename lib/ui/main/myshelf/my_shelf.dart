@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:untitled/_core/constants/constants.dart';
 import 'package:untitled/_core/constants/size.dart';
+import 'package:untitled/data/store/session_store.dart';
 import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
 
-import '../../../data/model/myshelf/my_shelf_data.dart';
 import '_components/book_list_tab.dart';
 import '_components/review_management_tab.dart';
 import '_components/wish_list_tab.dart';
 
-class MyShelf extends StatefulWidget {
+class MyShelf extends ConsumerWidget {
   @override
-  State<MyShelf> createState() => _MyShelfState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    // 현재 페이지 번호
+    final int _selectedIndex = 2;
 
-class _MyShelfState extends State<MyShelf> {
-  final int _selectedIndex = 2;
+    // 세션 데이터 가져오기
+    final session = ref.read(sessionProvider);
+    final nickName = session.user?.nickName ?? 'Unknown';
+    final createdAt = session.user?.createdAt ?? DateTime.now();
 
-  @override
-  Widget build(BuildContext context) {
+    // createdAt으로부터 현재까지의 일수 계산
+    final daysWithShelf = DateTime.now().difference(createdAt).inDays;
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -49,7 +54,7 @@ class _MyShelfState extends State<MyShelf> {
                           children: [
                             SizedBox(height: gap_xl),
                             Text(
-                              '${userData.userName}의 서재',
+                              '${nickName}의 서재',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 30,
@@ -82,8 +87,7 @@ class _MyShelfState extends State<MyShelf> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text:
-                                          ' 와 함께한지 ${userData.daysWithShelf}일 되셨어요!',
+                                      text: ' 와 함께한지 ${daysWithShelf}일 되셨어요!',
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.black,

@@ -106,7 +106,7 @@ class SignIn extends ConsumerWidget {
                       email: _email.text.trim(),
                       password: _password.text.trim());
                   // 기능구현 전 임시로 홈 화면으로 이동
-                  ref.read(sessionProvider).login(reqDTO);
+                  ref.read(sessionProvider.notifier).login(reqDTO);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => MainPage()),

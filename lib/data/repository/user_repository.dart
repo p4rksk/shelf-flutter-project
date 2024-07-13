@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:untitled/_core/constants/http.dart';
 import 'package:untitled/data/dto/response_dto.dart';
+import 'package:untitled/data/model/user/user.dart';
 import 'package:untitled/data/model/user/user_request.dart';
-
-import '../model/user/user_response.dart';
 
 class UserRepository {
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
@@ -13,9 +12,12 @@ class UserRepository {
           await dio.post("/user/join", data: requestDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      responseDTO.data = User.fromJson(responseDTO.data);
 
-      responseDTO.data = SessionUser.fromJson(responseDTO.data);
-      logger.d(responseDTO.data);
+      // 헤더에서 JWT 토큰 추출
+      if (response.headers['authorization'] != null) {
+        responseDTO.token = response.headers['authorization']?.first;
+      }
 
       return responseDTO;
     } catch (e) {
@@ -28,12 +30,13 @@ class UserRepository {
     try {
       Response<dynamic> response =
           await dio.post("/user/login", data: requestDTO.toJson());
-
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      responseDTO.data = User.fromJson(responseDTO.data);
 
-      responseDTO.data = SessionUser.fromJson(responseDTO.data);
-
-      logger.d(responseDTO.data);
+      // 헤더에서 JWT 토큰 추출
+      if (response.headers['authorization'] != null) {
+        responseDTO.token = response.headers['authorization']?.first;
+      }
       return responseDTO;
     } catch (e) {
       return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");

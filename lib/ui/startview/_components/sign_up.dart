@@ -195,7 +195,7 @@ class SignUp extends ConsumerWidget {
                         password: _passwordController.text.trim(),
                         isAgreed: false,
                       );
-                      ref.read(sessionProvider).join(joinReqDTO);
+                      ref.read(sessionProvider.notifier).join(joinReqDTO);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: kAccentColor3,

@@ -14,7 +14,7 @@ class MyShelf extends StatefulWidget {
 }
 
 class _MyShelfState extends State<MyShelf> {
-  final int _selectedIndex = 0;
+  final int _selectedIndex = 2;
 
   @override
   Widget build(BuildContext context) {

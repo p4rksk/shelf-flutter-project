@@ -13,7 +13,7 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  final int _selectedIndex = 0;
+  final int _selectedIndex = 3;
 
   @override
   Widget build(BuildContext context) {

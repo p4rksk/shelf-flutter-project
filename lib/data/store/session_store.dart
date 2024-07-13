@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:untitled/_core/constants/move.dart';
 import 'package:untitled/data/dto/response_dto.dart';
-import 'package:untitled/data/dto/user_request.dart';
-import 'package:untitled/data/model/user.dart';
+import 'package:untitled/data/model/user/user.dart';
+import 'package:untitled/data/model/user/user_request.dart';
 import 'package:untitled/data/repository/user_repository.dart';
 import 'package:untitled/main.dart';
 
@@ -23,9 +23,10 @@ class SessionStore extends SessionUser {
   Future<void> join(JoinReqDTO joinReqDTO) async {
     // 1. 통신 코드
     ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
-
+    // TODO : JWT 발급 받기
     // 2. 비지니스 로직
-    if (responseDTO.code == 1) {
+    if (responseDTO.code == 200) {
+      User.fromJson(responseDTO.data);
       Navigator.pushNamed(mContext!, Move.homePage);
     } else {
       ScaffoldMessenger.of(mContext!)
@@ -33,7 +34,10 @@ class SessionStore extends SessionUser {
     }
   }
 
-  // JWT는 로그아웃할 때 서버측으로 요청할 필요가 없음.
+  void login(LoginReqDTO reqDTO) async {
+    ResponseDTO responseDTO = await UserRepository().fetchLogin(reqDTO);
+  }
+  // 1. 화면 context에 접근하는 법
 }
 
 // 3. 창고 관리자

@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:untitled/data/model/user/user_request.dart';
+import 'package:untitled/data/store/session_store.dart';
+
 import '../../../_core/constants/constants.dart';
 import '../../../_core/constants/size.dart';
 import '../../../_core/constants/theme.dart';
-import '../../main/home/home_page.dart';
 import '../../main/main_page.dart';
 import '../widgets/show_custom_bottom_sheet.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends ConsumerWidget {
+  final _formKey = GlobalKey<FormState>();
+
+  final _email =
+      TextEditingController(text: "psk@naver.com"); // bunwuseok,junghein
+  final _password = TextEditingController(text: "1234");
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
@@ -18,15 +27,16 @@ class SignIn extends StatelessWidget {
             Text(
               '로그인',
               style: textTheme().titleLarge?.copyWith(
-                color: kAccentColor3,
-              ),
+                    color: kAccentColor3,
+                  ),
             ),
             const SizedBox(height: 40),
             TextFormField(
+              controller: _email,
               cursorColor: TColor.grey,
               decoration: InputDecoration(
-                label: const Text('이메일 주소',
-                    style: TextStyle(color: Colors.grey)),
+                label:
+                    const Text('이메일 주소', style: TextStyle(color: Colors.grey)),
                 hintText: 'Email을 입력하세요',
                 hintStyle: const TextStyle(color: Colors.black26),
                 border: OutlineInputBorder(
@@ -40,6 +50,7 @@ class SignIn extends StatelessWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
+              controller: _password,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
@@ -75,7 +86,8 @@ class SignIn extends StatelessWidget {
                 TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
-                    foregroundColor: TColor.primaryColor1, padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    foregroundColor: TColor.primaryColor1,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
                     textStyle: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: kAccentColor1,
@@ -90,7 +102,11 @@ class SignIn extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
+                  LoginReqDTO reqDTO = LoginReqDTO(
+                      email: _email.text.trim(),
+                      password: _password.text.trim());
                   // 기능구현 전 임시로 홈 화면으로 이동
+                  ref.read(sessionProvider).login(reqDTO);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => MainPage()),
@@ -119,8 +135,7 @@ class SignIn extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text('또는',
-                      style: TextStyle(color: Colors.black45)),
+                  child: Text('또는', style: TextStyle(color: Colors.black45)),
                 ),
                 Expanded(
                   child: Divider(
@@ -169,8 +184,7 @@ class SignIn extends StatelessWidget {
                   },
                   child: const Text('회원가입하기',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: kAccentColor3)),
+                          fontWeight: FontWeight.bold, color: kAccentColor3)),
                 ),
               ],
             ),

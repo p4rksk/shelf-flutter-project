@@ -6,10 +6,12 @@ import '../../../_core/constants/constants.dart';
 
 class ModifiedBottomNavigator extends StatelessWidget {
   final int selectedIndex;
+  // final ValueChanged<int> onTap; // onTap 콜백 추가
 
   const ModifiedBottomNavigator({
     Key? key,
     required this.selectedIndex,
+    // required this.onTap, // onTap 콜백을 필수로 추가
   }) : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class ModifiedBottomNavigator extends StatelessWidget {
           selectedItemColor: TColor.white,
           unselectedItemColor: Colors.white54,
           onTap: (index) {
+            // onTap(index); // 상태 업데이트 콜백 호출
             _onItemTapped(context, index);
           },
           showSelectedLabels: false, // 선택된 라벨 숨기기

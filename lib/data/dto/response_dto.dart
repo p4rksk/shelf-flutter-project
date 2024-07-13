@@ -4,10 +4,15 @@ class ResponseDTO {
   String? token; // 헤더로 던진 토큰 값을 담아두는 변수
   dynamic data; // 서버에서 응답한 데이터를 담아두는 변수
 
-  ResponseDTO(this.code, this.msg, this.data);
-
   ResponseDTO.fromJson(Map<String, dynamic> json)
       : code = json["status"],
         msg = json["msg"],
         data = json["data"];
+
+  ResponseDTO({
+    required this.code,
+    required this.msg,
+    this.token,
+    this.data,
+  });
 }

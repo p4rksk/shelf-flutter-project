@@ -12,7 +12,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String? _selectedOption;
-  final int _selectedIndex = 0;
+  final int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {

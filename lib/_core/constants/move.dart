@@ -9,6 +9,8 @@ import 'package:untitled/ui/main/search/pages/writer_result_page/writer_result_p
 import 'package:untitled/ui/main/search/search_page.dart';
 import 'package:untitled/ui/startview/start_view_page.dart';
 
+import '../../ui/main/mypage/pages/profile_edit_page.dart';
+
 class Move {
   static String startViewPage = "/start-view";
   static String loginPage = "/login";
@@ -23,6 +25,7 @@ class Move {
   static String myShelfPage = "/myshelf";
   static String myPage = "/my-page";
   static String myInfo = "/my-page/info";
+  static String profileEditPage = "/my-page/profile-edit";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -36,5 +39,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.myShelfPage: (context) => MyShelf(),
     Move.myPage: (context) => const MyPage(),
     Move.myInfo: (context) => const MyInfo(),
+    Move.profileEditPage: (context) => const ProfileEditPage(),
   };
 }

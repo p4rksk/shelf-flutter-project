@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/_core/constants/size.dart';
-
 import '../../../_core/constants/constants.dart';
 
 class GradientTextButton extends StatelessWidget {
@@ -23,6 +22,12 @@ class GradientTextButton extends StatelessWidget {
         color: Colors.white,
       ),
       child: TextButton(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
         onPressed: onPressed,
         child: ShaderMask(
           shaderCallback: (bounds) => LinearGradient(
@@ -34,7 +39,7 @@ class GradientTextButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),

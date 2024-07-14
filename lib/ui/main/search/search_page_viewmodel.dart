@@ -43,7 +43,6 @@ class SearchPageViewModel extends StateNotifier<SearchPageModel?> {
           await SearchRepo().fetchAuthors(sessionUser.jwt as String);
 
       List<AuthorResult> authors = responseDTO.data;
-      logger.e(authors.toString());
 
       state = SearchPageModel(authors: authors, isLoading: false);
     } catch (e) {

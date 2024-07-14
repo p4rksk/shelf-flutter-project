@@ -4,6 +4,7 @@ import 'package:untitled/data/store/session_store.dart';
 import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:untitled/ui/main/mypage/_components/logout_button.dart';
 import 'package:untitled/ui/main/mypage/_components/lower_component.dart';
+import 'package:untitled/ui/main/mypage/_components/upper_component_subscribed.dart';
 
 import '_components/upper_component.dart';
 
@@ -20,7 +21,10 @@ class MyPage extends ConsumerWidget {
         color: Colors.white,
         child: ListView(
           children: [
-            UpperComponent(name: session.user?.nickName ?? 'Unknown'),
+            session.user!.status
+                ? UpperComponentSubscribed(
+                    name: session.user?.nickName ?? 'Unknown')
+                : UpperComponent(name: session.user?.nickName ?? 'Unknown'),
             LowerComponent(),
             LogoutButton(),
           ],

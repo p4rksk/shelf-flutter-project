@@ -12,20 +12,20 @@ import 'package:untitled/ui/startview/start_view_page.dart';
 import '../../ui/main/mypage/pages/profile_edit_page.dart';
 
 class Move {
-  static String startViewPage = "/start-view";
+  static String startViewPage = "시작 영상 페이지";
   static String loginPage = "/login";
   static String joinPage = "/join";
-  static String homePage = "/home";
-  static String bookDetailPage = "/home/detail";
+  static String homePage = "메인 홈 페이지";
+  static String bookDetailPage = "책 상세보기 페이지";
   static String sellerDetailPage = "/home/seller-detail";
-  static String brandNewPage = "/home/brand-new";
-  static String searchPage = "/search";
-  static String categoryResultPage = "/search/category";
-  static String writerResultPage = "/search/writer";
+  static String brandNewPage = "신간 코너 페이지";
+  static String searchPage = "검색페이지";
+  static String categoryResultPage = "카테고리 검색결과 페이지";
+  static String writerResultPage = "작가검색 결과페이지";
   static String myShelfPage = "/myshelf";
-  static String myPage = "/my-page";
-  static String myInfo = "/my-page/info";
-  static String profileEditPage = "/my-page/profile-edit";
+  static String myPage = "나의 페이지";
+  static String myInfo = "내 정보 페이지";
+  static String profileEditPage = "내 정보 수정페이지";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {

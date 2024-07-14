@@ -65,68 +65,42 @@ class UpperComponentSubscribed extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            '전자책 월 정기구독',
-                            style: p3(),
-                          ),
-                          SizedBox(width: 5),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 5, vertical: 2),
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Color(0xffe6e6e6), width: 1),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Text("전차책 구독",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 10)),
-                          )
-                        ],
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              '전자책 월 정기구독',
+                              style: p3(),
+                            ),
+                            SizedBox(width: 5),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 2),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Color(0xffe6e6e6), width: 1),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Text("전차책 구독",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 10)),
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(height: 5),
-                      Row(
+                      Column(
                         children: [
-                          Column(
-                            children: [
-                              Text(
-                                '어려운 독서, 시작하면 습관이 됩니다.',
-                                style: plainText(),
-                              ),
-                            ],
-                          ),
+                          SubPeriod(),
+                          NextPurchase(),
                         ],
                       ),
                       SizedBox(height: 10),
-                      SizedBox(
-                        width: double.infinity,
-                        child: FilledButton(
-                          onPressed: () {
-                            // '구독 상품 살펴보기' 기능
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                kAccentColor1), // 버튼 배경 색상
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(5.0), // 원하는 반경 값 설정
-                              ),
-                            ),
-                          ),
-                          child: Text('구독 상품 살펴보기'),
-                        ),
-                      ),
-                      SizedBox(height: 5)
                     ],
                   ),
                 ),
@@ -135,6 +109,66 @@ class UpperComponentSubscribed extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class SubPeriod extends StatelessWidget {
+  const SubPeriod({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 90,
+          child: Text(
+            '구독기간',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: Color(0xffababab),
+            ),
+          ),
+        ),
+        Text("2024,06,21 ~ 2024.07.21",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+            ))
+      ],
+    );
+  }
+}
+
+class NextPurchase extends StatelessWidget {
+  const NextPurchase({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 90,
+          child: Text(
+            '다음 결제일',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: Color(0xffababab),
+            ),
+          ),
+        ),
+        Text("2024.07.21",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+            ))
+      ],
     );
   }
 }

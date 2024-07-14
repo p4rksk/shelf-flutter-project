@@ -14,7 +14,7 @@ class MyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final int _selectedIndex = 3;
-    final session = ref.watch(sessionProvider);
+    final session = ref.read(sessionProvider);
 
     return Scaffold(
       body: Container(

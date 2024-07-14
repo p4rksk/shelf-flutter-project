@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/ui/main/home/home_page.dart';
 import 'package:untitled/ui/main/home/pages/best_seller_detail_page.dart';
+import 'package:untitled/ui/main/home/pages/brand_new_page.dart';
 import 'package:untitled/ui/main/mypage/mypage.dart';
 import 'package:untitled/ui/main/mypage/pages/myinfo/my_info.dart';
 import 'package:untitled/ui/main/myshelf/my_shelf.dart';
@@ -35,6 +36,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.sellerDetailPage: (context) => BestSellerDetailPage(),
     Move.searchPage: (context) => SearchPage(),
     Move.categoryResultPage: (context) => CategoryResultPage(),
+    Move.brandNewPage: (context) => BrandNewPage(),
     Move.writerResultPage: (context) => WriterResultPage(),
     Move.myShelfPage: (context) => MyShelf(),
     Move.myPage: (context) => const MyPage(),

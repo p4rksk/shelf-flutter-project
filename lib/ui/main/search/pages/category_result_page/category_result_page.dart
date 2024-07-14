@@ -11,17 +11,17 @@ import 'package:untitled/ui/main/search/pages/category_result_page/_components/s
 import 'package:untitled/ui/main/search/pages/category_result_page/data/category_data.dart';
 
 class CategoryResultPage extends StatefulWidget {
-  String? categoryName;
+  late final String? categoryName;
+
+  CategoryResultPage({this.categoryName});
 
   @override
-  State<CategoryResultPage> createState() => _CategoryResultPageState();
-
-  CategoryResultPage({
-    this.categoryName,
-  });
+  _CategoryResultPageState createState() => _CategoryResultPageState();
 }
 
 class _CategoryResultPageState extends State<CategoryResultPage> {
+  late Future<CategoryResult> _categoryResult;
+
   late String currentCategoryName;
   int _selectedIndex = 0;
   int _curationIndex = 0;
@@ -32,7 +32,6 @@ class _CategoryResultPageState extends State<CategoryResultPage> {
   @override
   void initState() {
     super.initState();
-    currentCategoryName = widget.categoryName!;
   }
 
   @override

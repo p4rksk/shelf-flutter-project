@@ -201,7 +201,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                       Navigator.pushNamed(context, Move.myShelfPage);
                     }),
                     _buildMenuItem(Icons.person, "내 정보", () {
-                      Navigator.pushNamed(context, Move.myInfo);
+                      Navigator.pushNamed(context, Move.profileEditPage);
                     }),
                     Spacer(),
                     Padding(

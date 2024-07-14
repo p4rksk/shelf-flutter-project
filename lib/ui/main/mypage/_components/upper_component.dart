@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
+import '../pages/payment_management_page.dart';
 
 class UpperComponent extends StatelessWidget {
-  String? name;
+  final String? name;
 
   UpperComponent({required this.name});
 
@@ -46,18 +46,28 @@ class UpperComponent extends StatelessWidget {
                   width: double.infinity,
                   height: gap_xxl,
                   color: CupertinoColors.systemGrey5,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '나의 정기구독',
-                          style: h8(),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentManagementPage(),
                         ),
-                        Icon(Icons.arrow_forward_ios, color: TColor.grey),
-                      ],
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '나의 정기구독',
+                            style: h8(),
+                          ),
+                          Icon(Icons.arrow_forward_ios, color: TColor.grey),
+                        ],
+                      ),
                     ),
                   ),
                 ),

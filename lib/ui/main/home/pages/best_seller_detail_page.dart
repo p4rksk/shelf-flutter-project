@@ -14,6 +14,7 @@ class BestSellerDetailPage extends ConsumerWidget {
     final filteredBooks = ref.watch(filteredBooksProvider);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('전체 베스트셀러'),
         bottom: PreferredSize(

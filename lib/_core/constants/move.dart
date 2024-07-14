@@ -8,8 +8,10 @@ import 'package:untitled/ui/main/search/pages/category_result_page/category_resu
 import 'package:untitled/ui/main/search/pages/writer_result_page/writer_result_page.dart';
 import 'package:untitled/ui/main/search/search_page.dart';
 import 'package:untitled/ui/startview/start_view_page.dart';
+import 'package:untitled/ui/main/mypage/pages/profile_edit_page.dart';
+import 'package:untitled/ui/main/home/pages/brand_new_page.dart';
 
-import '../../ui/main/mypage/pages/profile_edit_page.dart';
+import '../../ui/main/mypage/pages/payment_management_page.dart';
 
 class Move {
   static String startViewPage = "/start-view";
@@ -26,6 +28,7 @@ class Move {
   static String myPage = "/my-page";
   static String myInfo = "/my-page/info";
   static String profileEditPage = "/my-page/profile-edit";
+  static String paymentManagementPage = "/my-page/payment_management";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -40,5 +43,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.myPage: (context) => const MyPage(),
     Move.myInfo: (context) => const MyInfo(),
     Move.profileEditPage: (context) => const ProfileEditPage(),
+    Move.brandNewPage: (context) => BrandNewPage(),
+    Move.paymentManagementPage: (context) => PaymentManagementPage(),
   };
 }

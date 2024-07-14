@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/ui/main/search/data/author_result.dart';
 import 'package:untitled/ui/main/search/pages/writer_result_page/writer_result_page.dart';
 
 class AuthorButtons extends StatelessWidget {
-  final List<Map<String, String>> authors = [
-    {'name': '이병훈'},
-    {'name': '김유림'},
-    {'name': '이서윤 '},
-    {'name': '김서형'},
-    {'name': '유발하라리'},
-    {'name': '강준혁'},
-    {'name': '박영선'},
-    {'name': '김성훈'},
-    {'name': '장하리'},
-    {'name': '강수정'},
-  ];
+  final List<AuthorResult> authorResults;
+
+  const AuthorButtons({
+    required this.authorResults,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +16,7 @@ class AuthorButtons extends StatelessWidget {
       children: [
         SizedBox(height: 20),
         Text(
-          '작가의 책 모아보기',
+          '작가별 책 모아보기',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 20),
@@ -36,15 +30,15 @@ class AuthorButtons extends StatelessWidget {
             childAspectRatio: 4,
             mainAxisExtent: 50,
           ),
-          itemCount: authors.length,
+          itemCount: authorResults.length,
           itemBuilder: (context, index) {
             return ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        WriterResultPage(authorName: authors[index]['name']!),
+                    builder: (context) => WriterResultPage(
+                        authorName: authorResults[index].authorName),
                   ),
                 );
               },
@@ -63,7 +57,7 @@ class AuthorButtons extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '#' + authors[index]['name']!,
+                  '#' + authorResults[index].authorName,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

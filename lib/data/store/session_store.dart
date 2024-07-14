@@ -6,7 +6,7 @@ import 'package:untitled/_core/constants/move.dart';
 import 'package:untitled/data/dto/response_dto.dart';
 import 'package:untitled/data/model/user/user.dart';
 import 'package:untitled/data/model/user/user_request.dart';
-import 'package:untitled/data/repository/user_repository.dart';
+import 'package:untitled/data/repository/user_repo.dart';
 import 'package:untitled/main.dart';
 
 class SessionUser {
@@ -25,7 +25,7 @@ var logger = Logger();
 
 // 2. 창고
 class SessionStore extends StateNotifier<SessionUser> {
-  final UserRepository userRepository;
+  final UserRepo userRepository;
   SessionStore(this.userRepository) : super(SessionUser());
 
   // 1. 화면 context에 접근하는 법
@@ -66,5 +66,5 @@ class SessionStore extends StateNotifier<SessionUser> {
 
 // 3. 창고 관리자
 final sessionProvider = StateNotifierProvider<SessionStore, SessionUser>((ref) {
-  return SessionStore(UserRepository());
+  return SessionStore(UserRepo());
 });

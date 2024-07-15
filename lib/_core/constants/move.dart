@@ -4,13 +4,14 @@ import 'package:untitled/ui/main/home/pages/best_seller_detail_page.dart';
 import 'package:untitled/ui/main/home/pages/brand_new_page.dart';
 import 'package:untitled/ui/main/mypage/mypage.dart';
 import 'package:untitled/ui/main/mypage/pages/myinfo/my_info.dart';
+import 'package:untitled/ui/main/mypage/pages/profile_edit_page.dart';
 import 'package:untitled/ui/main/myshelf/my_shelf.dart';
 import 'package:untitled/ui/main/search/pages/category_result_page/category_result_page.dart';
 import 'package:untitled/ui/main/search/pages/writer_result_page/writer_result_page.dart';
 import 'package:untitled/ui/main/search/search_page.dart';
 import 'package:untitled/ui/startview/start_view_page.dart';
 
-import '../../ui/main/mypage/pages/profile_edit_page.dart';
+import '../../ui/main/mypage/pages/payment_management_page.dart';
 
 class Move {
   static String startViewPage = "시작 영상 페이지";
@@ -27,6 +28,7 @@ class Move {
   static String myPage = "나의 페이지";
   static String myInfo = "내 정보 페이지";
   static String profileEditPage = "내 정보 수정페이지";
+  static String paymentManagementPage = "/my-page/payment_management";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -42,5 +44,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.myPage: (context) => const MyPage(),
     Move.myInfo: (context) => const MyInfo(),
     Move.profileEditPage: (context) => const ProfileEditPage(),
+    Move.paymentManagementPage: (context) => PaymentManagementPage(),
   };
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/move.dart';
 import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/model/home/book_detail_data.dart';
+
 import '../../../../_core/constants/constants.dart';
-import '../../../../data/model/home/home_page_data.dart';
 import '../widgets/book_card.dart';
 import '../widgets/top_pick_clipper.dart';
-import 'package:shelf/_core/constants/move.dart';
 
 class TopPicksSection extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 100), () {
         if (_scrollController.hasClients) {
-          _scrollController.jumpTo(_itemExtent * books.length);
+          _scrollController.jumpTo(_itemExtent * newBooks.length);
         }
       });
     });
@@ -40,7 +41,8 @@ class _TopPicksSectionState extends State<TopPicksSection> {
   void _onScroll() async {
     if (_isAutoScrolling) return;
 
-    if (_scrollController.position.pixels <= _scrollController.position.minScrollExtent) {
+    if (_scrollController.position.pixels <=
+        _scrollController.position.minScrollExtent) {
       _isAutoScrolling = true;
       await _scrollController.animateTo(
         _scrollController.position.maxScrollExtent - _itemExtent,
@@ -48,7 +50,8 @@ class _TopPicksSectionState extends State<TopPicksSection> {
         curve: Curves.easeOut,
       );
       _isAutoScrolling = false;
-    } else if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - _itemExtent) {
+    } else if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - _itemExtent) {
       _isAutoScrolling = true;
       await _scrollController.animateTo(
         _itemExtent,
@@ -99,7 +102,8 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 16, right: 16, bottom: 0),
+                  padding: const EdgeInsets.only(
+                      top: 30, left: 16, right: 16, bottom: 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -135,21 +139,30 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                           child: ListView.builder(
                             controller: _scrollController,
                             scrollDirection: Axis.horizontal,
-                            itemCount: books.length * 3,
+                            itemCount: newBooks.length * 3,
                             itemBuilder: (context, index) {
-                              final book = books[index % books.length];
+                              final book = newBooks[index % newBooks.length];
                               double scale = 1.0;
                               if (_scrollController.hasClients) {
                                 double itemOffset = index * _itemExtent;
-                                double viewportCenter = _scrollController.offset + MediaQuery.of(context).size.width / 2;
-                                double diff = (itemOffset - viewportCenter + _itemExtent / 2).abs();
+                                double viewportCenter =
+                                    _scrollController.offset +
+                                        MediaQuery.of(context).size.width / 2;
+                                double diff = (itemOffset -
+                                        viewportCenter +
+                                        _itemExtent / 2)
+                                    .abs();
                                 scale = (1 - (diff / 400)).clamp(0.8, 1.0);
                               }
                               return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: GestureDetector(
                                   onTap: () {
-                                    double targetOffset = index * _itemExtent - (MediaQuery.of(context).size.width / 2) + _itemExtent / 2;
+                                    double targetOffset = index * _itemExtent -
+                                        (MediaQuery.of(context).size.width /
+                                            2) +
+                                        _itemExtent / 2;
                                     _scrollController.animateTo(
                                       targetOffset,
                                       duration: Duration(seconds: 1),
@@ -158,7 +171,8 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                                   },
                                   child: Transform.scale(
                                     scale: scale,
-                                    child: BookCard(book: book, isFocused: scale > 0.9),
+                                    child: BookCard(
+                                        book: book, isFocused: scale > 0.9),
                                   ),
                                 ),
                               );

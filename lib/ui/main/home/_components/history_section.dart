@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../data/model/home/home_page_data.dart';
 import '../widgets/history_book_card.dart';
 
@@ -27,7 +28,7 @@ class HistorySection extends StatelessWidget {
               final book = historyBooks[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: HistoryBookCard(book: book),
+                child: HistoryBookCard(historyBook: book),
               );
             },
           ),

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../_core/constants/constants.dart';
-import '../../../../_core/constants/size.dart';
-import '../../../../data/model/home/book_detail_data.dart';
-import '../../../../data/store/wishlist_toggle.dart';
-import '../_components/book_introduction_tab.dart';
-import '../_components/review_tab.dart';
-import '../widgets/bottom_action_bar.dart';
-import '../widgets/pie_chart_widget.dart';
+
+import '../../../../../_core/constants/constants.dart';
+import '../../../../../_core/constants/size.dart';
+import '../../../../../data/model/home/book_detail_data.dart';
+import '../../../../../data/store/wishlist_toggle.dart';
+import '../../_components/book_introduction_tab.dart';
+import '../../_components/review_tab.dart';
+import '../../widgets/bottom_action_bar.dart';
+import '../../widgets/pie_chart_widget.dart';
 
 class BookDetailPage extends ConsumerWidget {
-  final Book book;
+  final int? bookId;
 
-  BookDetailPage({required this.book});
+  const BookDetailPage({Key? key, required this.bookId}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,7 +50,9 @@ class BookDetailPage extends ConsumerWidget {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          ref.read(wishlistProvider.notifier).toggleWishlist(book);
+                          ref
+                              .read(wishlistProvider.notifier)
+                              .toggleWishlist(book);
                         },
                       ),
                     ],
@@ -116,7 +119,8 @@ class BookDetailPage extends ConsumerWidget {
                             ),
                             SizedBox(height: 20),
                             Container(
-                              padding: EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
+                              padding: EdgeInsets.only(
+                                  top: 25, left: 25, right: 25, bottom: 25),
                               decoration: BoxDecoration(
                                 color: Colors.white54.withOpacity(0.8),
                                 borderRadius: BorderRadius.circular(10),
@@ -141,7 +145,8 @@ class BookDetailPage extends ConsumerWidget {
                                   ),
                                   SizedBox(width: 20),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         '${((book.completedViews ?? 0) / (book.totalViews ?? 1) * 100).toStringAsFixed(1)}%의 구독자가 완독했어요!',

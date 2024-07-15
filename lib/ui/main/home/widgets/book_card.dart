@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
-import '../../../../data/model/home/home_page_data.dart';
+import '../../../../data/model/home/book_detail_data.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -12,14 +13,24 @@ class BookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: 120,
-          height: 180,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: AssetImage(book.imagePath),
-              fit: BoxFit.cover,
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BookDetailPage(book: book),
+              ),
+            );
+          },
+          child: Container(
+            width: 120,
+            height: 180,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage(book.imagePath),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),

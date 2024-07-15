@@ -58,8 +58,9 @@ class SessionStore extends StateNotifier<SessionUser> {
     }
   }
 
-  void logout() {
+  void logout(BuildContext context) {
     state = SessionUser(); // 초기화하여 로그아웃 처리
+    Navigator.popAndPushNamed(context, Move.startViewPage);
   }
 // 1. 화면 context에 접근하는 법
 }

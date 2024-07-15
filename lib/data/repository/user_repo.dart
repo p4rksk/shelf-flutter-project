@@ -15,6 +15,7 @@ class UserRepo {
           await dio.post("/user/join", data: requestDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      responseDTO.data = User.fromJson(responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
       if (response.headers['authorization'] != null) {

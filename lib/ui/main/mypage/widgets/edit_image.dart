@@ -1,6 +1,7 @@
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../_core/constants/size.dart';
 
@@ -11,15 +12,15 @@ class EditImage extends StatefulWidget {
 
 class _EditImageState extends State<EditImage> {
   ImageProvider<Object>? _profileImage;
-  List<String> avatars = [
-    "assets/images/avatar1.png",
-    "assets/images/avatar2.png",
-    "assets/images/avatar3.png",
-    "assets/images/avatar4.png",
-    "assets/images/avatar5.png",
-    "assets/images/avatar6.png",
-    "assets/images/avatar7.png",
-    "assets/images/avatar8.png",
+  List<Map<String, String>> avatars = [
+    {"avatar01": "assets/images/avatar1.png"},
+    {"avatar02": "assets/images/avatar2.png"},
+    {"avatar03": "assets/images/avatar3.png"},
+    {"avatar04": "assets/images/avatar4.png"},
+    {"avatar05": "assets/images/avatar5.png"},
+    {"avatar06": "assets/images/avatar6.png"},
+    {"avatar07": "assets/images/avatar7.png"},
+    {"avatar08": "assets/images/avatar8.png"}
   ];
 
   Future<void> _pickImage(ImageSource source) async {
@@ -56,11 +57,12 @@ class _EditImageState extends State<EditImage> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            _profileImage = AssetImage(avatars[index]);
+                            _profileImage =
+                                AssetImage(avatars[index].values.first);
                           });
                           Navigator.of(context).pop();
                         },
-                        child: Image.asset(avatars[index]),
+                        child: Image.asset(avatars[index].values.first),
                       ),
                     ),
                   ),
@@ -98,7 +100,8 @@ class _EditImageState extends State<EditImage> {
           CircleAvatar(
             radius: 75,
             backgroundColor: Colors.grey[300],
-            backgroundImage: _profileImage ?? AssetImage("assets/images/avatar1.png"),
+            backgroundImage:
+                _profileImage ?? AssetImage("assets/images/avatar1.png"),
           ),
           Positioned(
             bottom: 10,

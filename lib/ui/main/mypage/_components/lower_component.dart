@@ -22,13 +22,12 @@ class LowerComponent extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey[200],
             ),
-
             child: Text(
               "서비스 설정",
               style: TextStyle(color: CupertinoColors.systemGrey, fontSize: 13),
             ),
           ),
-          GestureDetector(
+          InkWell(
             onTap: () {
               Navigator.pushNamed(context, Move.profileEditPage);
             },

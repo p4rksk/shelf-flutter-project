@@ -45,7 +45,7 @@ final List<Map<String, String>> categories = [
     'image': 'assets/images/categories/children.png',
   },
   {
-    'name': 'IT · 예제',
+    'name': 'IT',
     'description': 'IT 및 예제 관련 도서',
     'image': 'assets/images/categories/it.png',
   },

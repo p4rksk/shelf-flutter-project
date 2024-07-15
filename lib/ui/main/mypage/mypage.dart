@@ -22,9 +22,8 @@ class MyPage extends ConsumerWidget {
         child: ListView(
           children: [
             session.user!.status
-                ? UpperComponentSubscribed(
-                    name: session.user?.nickName ?? 'Unknown')
-                : UpperComponent(name: session.user?.nickName ?? 'Unknown'),
+                ? UpperComponentSubscribed(user: session.user!)
+                : UpperComponent(user: session.user!),
             LowerComponent(),
             LogoutButton(),
           ],

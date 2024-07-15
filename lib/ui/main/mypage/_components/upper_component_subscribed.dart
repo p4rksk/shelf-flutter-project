@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shelf/data/globals/avatar.dart';
+import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/ui/main/mypage/_components/next_purchase.dart';
+import 'package:shelf/ui/main/mypage/_components/sub_period.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
 
 class UpperComponentSubscribed extends StatelessWidget {
-  String? name;
+  User? user;
 
   UpperComponentSubscribed({
-    this.name,
+    this.user,
   });
 
   @override
@@ -25,12 +29,12 @@ class UpperComponentSubscribed extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 10),
                 child: CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage("assets/icon/02.png"),
+                  backgroundImage: AssetImage(getAvatarPath(user!.avatar)),
                 ),
               ),
               SizedBox(height: 20, width: 5),
               Text(
-                '${name} 님 구독상태',
+                '${user!.nickName} 님 구독상태',
                 style: h6(),
               ),
             ],
@@ -109,66 +113,6 @@ class UpperComponentSubscribed extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class SubPeriod extends StatelessWidget {
-  const SubPeriod({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 90,
-          child: Text(
-            '구독기간',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Color(0xffababab),
-            ),
-          ),
-        ),
-        Text("2024,06,21 ~ 2024.07.21",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
-            ))
-      ],
-    );
-  }
-}
-
-class NextPurchase extends StatelessWidget {
-  const NextPurchase({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 90,
-          child: Text(
-            '다음 결제일',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Color(0xffababab),
-            ),
-          ),
-        ),
-        Text("2024.07.21",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
-            ))
-      ],
     );
   }
 }

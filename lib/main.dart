@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.brandNewPage,
+      initialRoute: Move.startViewPage,
       routes: getRouters(),
     );
   }

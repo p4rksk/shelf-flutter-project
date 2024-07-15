@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:untitled/_core/constants/move.dart';
-import 'package:untitled/data/dto/response_dto.dart';
-import 'package:untitled/data/model/user/user.dart';
-import 'package:untitled/data/model/user/user_request.dart';
-import 'package:untitled/data/repository/user_repo.dart';
-import 'package:untitled/main.dart';
+import 'package:shelf/_core/constants/move.dart';
+import 'package:shelf/data/dto/response_dto.dart';
+import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/data/model/user/user_request.dart';
+import 'package:shelf/data/repository/user_repo.dart';
+import 'package:shelf/main.dart';
 
 class SessionUser {
   User? user;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/data/category_data.dart';
-import 'package:untitled/ui/main/search/pages/writer_result_page/_components/writer_appbar.dart';
-import 'package:untitled/ui/main/search/pages/writer_result_page/_components/writer_book_grid.dart';
-import 'package:untitled/ui/main/search/pages/writer_result_page/_components/writer_sort_section.dart';
+import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/data/category_data.dart';
+import 'package:shelf/ui/main/search/pages/writer_result_page/_components/writer_appbar.dart';
+import 'package:shelf/ui/main/search/pages/writer_result_page/_components/writer_book_grid.dart';
+import 'package:shelf/ui/main/search/pages/writer_result_page/_components/writer_sort_section.dart';
 
 import '../../../../../data/model/category_page/category_page_data.dart';
 

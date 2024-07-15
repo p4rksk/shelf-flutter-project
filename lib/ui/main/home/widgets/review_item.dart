@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../../data/model/myshelf/my_shelf_data.dart';
 
 class ReviewItem extends StatelessWidget {

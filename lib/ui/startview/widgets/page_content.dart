@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/startview/widgets/show_custom_bottom_sheet.dart';
+import 'package:shelf/ui/startview/widgets/show_custom_bottom_sheet.dart';
 import '../../../_core/constants/constants.dart';
 import 'gradient_text_button.dart';
 
@@ -10,6 +10,7 @@ Widget PageContent(
       required bool isChangeColor,
       bool showButtons = false,
       bool isGifPage = false, // Add a new parameter for GIF page
+      bool showLogo = false, // Add a new parameter for showing logo
     }) {
   return Container(
     width: double.infinity,
@@ -28,13 +29,21 @@ Widget PageContent(
       child: isGifPage
           ? Image.asset(
         'assets/images/main.gif',
-        fit: BoxFit.cover, // Add this line to fit the image to the container
+        fit: BoxFit.cover,
         width: double.infinity,
         height: double.infinity,
       )
           : Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          if (showLogo)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 100,
+              ),
+            ),
           Text(
             title,
             style: TextStyle(

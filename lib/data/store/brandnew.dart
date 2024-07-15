@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/data/model/home/book_detail_data.dart';
+import 'package:shelf/data/model/home/book_detail_data.dart';
 
 final selectedMonthProvider = StateProvider<DateTime>((ref) {
   return DateTime(2024, 10);

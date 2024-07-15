@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/style.dart';
+import 'package:shelf/_core/constants/style.dart';
 
 class UserIcon extends StatelessWidget {
   const UserIcon({

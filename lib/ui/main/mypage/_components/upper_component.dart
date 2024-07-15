@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
@@ -13,27 +13,27 @@ class UpperComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: gap_m, vertical: gap_m),
       color: Colors.white,
       child: Column(
         children: [
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: gap_s),
                 child: CircleAvatar(
                   radius: 20,
                   backgroundImage: AssetImage("assets/icon/02.png"),
                 ),
               ),
-              SizedBox(height: 20, width: 5),
+              SizedBox(height: gap_xxxl, width: gap_s),
               Text(
                 '${name} 님',
                 style: h6(),
               ),
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: gap_s),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
@@ -45,7 +45,7 @@ class UpperComponent extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: gap_xxl,
-                  color: CupertinoColors.systemGrey5,
+                  color: Colors.deepPurpleAccent[50],
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(

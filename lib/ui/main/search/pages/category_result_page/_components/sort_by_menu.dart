@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled/_core/constants/line.dart';
-import 'package:untitled/_core/constants/style.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/result_items.dart';
+import 'package:shelf/_core/constants/line.dart';
+import 'package:shelf/_core/constants/style.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/result_items.dart';
 
 class SortByMenu extends StatelessWidget {
   final String? categoryName;

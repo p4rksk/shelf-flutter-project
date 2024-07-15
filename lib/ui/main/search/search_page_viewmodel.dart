@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:untitled/data/dto/response_dto.dart';
-import 'package:untitled/data/repository/search_repo.dart';
-import 'package:untitled/data/store/session_store.dart';
-import 'package:untitled/ui/main/search/data/author_result.dart';
+import 'package:shelf/data/dto/response_dto.dart';
+import 'package:shelf/data/repository/search_repo.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/main/search/data/author_result.dart';
 
 import '../../../main.dart';
 

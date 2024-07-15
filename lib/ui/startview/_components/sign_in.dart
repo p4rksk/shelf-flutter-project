@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/data/model/user/user_request.dart';
-import 'package:untitled/data/store/session_store.dart';
+import 'package:shelf/data/model/user/user_request.dart';
+import 'package:shelf/data/store/session_store.dart';
 
 import '../../../_core/constants/constants.dart';
 import '../../../_core/constants/size.dart';

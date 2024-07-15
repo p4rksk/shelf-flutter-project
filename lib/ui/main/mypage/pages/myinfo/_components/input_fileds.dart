@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/main/mypage/pages/myinfo/_components/input.dart';
+import 'package:shelf/ui/main/mypage/pages/myinfo/_components/input.dart';
 
 class InputFields extends StatelessWidget {
   const InputFields({

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/line.dart';
-import 'package:untitled/data/model/category_page/category_list.dart';
-import 'package:untitled/data/model/home/book_detail_data.dart';
-import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/back_arrow_appbar.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/book_grid.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/result_title.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/sort_section.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/data/category_data.dart';
+import 'package:shelf/_core/constants/line.dart';
+import 'package:shelf/data/model/category_page/category_list.dart';
+import 'package:shelf/data/model/home/book_detail_data.dart';
+import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/back_arrow_appbar.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/book_grid.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/result_title.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/sort_section.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/data/category_data.dart';
 
 class CategoryResultPage extends StatefulWidget {
   late final String? categoryName;

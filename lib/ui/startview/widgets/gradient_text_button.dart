@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../_core/constants/constants.dart';
 
 class GradientTextButton extends StatelessWidget {

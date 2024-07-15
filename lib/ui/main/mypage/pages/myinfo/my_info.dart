@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/main/mypage/pages/myinfo/_components/input_fileds.dart';
-import 'package:untitled/ui/main/mypage/pages/myinfo/_components/save_button.dart';
-import 'package:untitled/ui/main/mypage/pages/myinfo/_components/user_icon.dart';
+import 'package:shelf/ui/main/mypage/pages/myinfo/_components/input_fileds.dart';
+import 'package:shelf/ui/main/mypage/pages/myinfo/_components/save_button.dart';
+import 'package:shelf/ui/main/mypage/pages/myinfo/_components/user_icon.dart';
 
 class MyInfo extends StatelessWidget {
   const MyInfo();

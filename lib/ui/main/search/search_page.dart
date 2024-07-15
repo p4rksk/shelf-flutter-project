@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
-import 'package:untitled/ui/main/search/_components/author_buttons.dart';
-import 'package:untitled/ui/main/search/_components/category_buttons.dart';
-import 'package:untitled/ui/main/search/_components/custom_drawer.dart';
-import 'package:untitled/ui/main/search/_components/search_bar.dart';
-import 'package:untitled/ui/main/search/search_page_viewmodel.dart';
+import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
+import 'package:shelf/ui/main/search/_components/author_buttons.dart';
+import 'package:shelf/ui/main/search/_components/category_buttons.dart';
+import 'package:shelf/ui/main/search/_components/custom_drawer.dart';
+import 'package:shelf/ui/main/search/_components/search_bar.dart';
+import 'package:shelf/ui/main/search/search_page_viewmodel.dart';
 
 class SearchPage extends ConsumerWidget {
   String? _selectedOption;

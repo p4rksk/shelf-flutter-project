@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
-import 'package:untitled/_core/constants/http.dart';
-import 'package:untitled/data/dto/response_dto.dart';
-import 'package:untitled/data/model/user/user.dart';
-import 'package:untitled/data/model/user/user_request.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/dto/response_dto.dart';
+import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/data/model/user/user_request.dart';
 
 class UserRepo {
   var logger = Logger();

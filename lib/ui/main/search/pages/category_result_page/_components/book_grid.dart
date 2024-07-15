@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/main/home/pages/book_detail_page.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page.dart';
 
 import '../../../../../../data/model/home/book_detail_data.dart';
 

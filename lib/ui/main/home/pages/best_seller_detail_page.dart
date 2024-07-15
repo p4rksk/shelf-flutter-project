@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../../data/model/home/home_page_data.dart';
 import '../../../../data/store/bestseller_provider.dart';
 

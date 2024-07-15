@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../../_core/constants/constants.dart';
 import '../../../../data/model/mypage/payment.dart';
 import '../../../../data/store/payment_result.dart';

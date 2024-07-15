@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/main/mypage/_components/menu.dart';
+import 'package:shelf/ui/main/mypage/_components/menu.dart';
 
 import '../../../../_core/constants/move.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../../data/model/home/home_page_data.dart';
 import '../pages/best_seller_detail_page.dart';
 import '../widgets/best_seller_book_card.dart';

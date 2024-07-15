@@ -3,6 +3,7 @@ class User {
   String email;
   String nickName;
   bool status;
+  String avatar;
   DateTime? createdAt;
 
   User({
@@ -10,17 +11,19 @@ class User {
     required this.email,
     required this.nickName,
     required this.status,
+    required this.avatar,
     this.createdAt,
   });
+
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json["id"],
       email: json["email"],
       nickName: json["nickName"],
-      status: json["status"] ?? false,
-      createdAt:
-          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      status: json["status"],
+      avatar: json["avatar"],
+      createdAt: DateTime.parse(json["createdAt"]),
     );
   }
 
@@ -38,4 +41,5 @@ class User {
   String toString() {
     return 'User{id: $id, email: $email, nickName: $nickName,  status: $status, createdAt: $createdAt}';
   }
+
 }

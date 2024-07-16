@@ -3,8 +3,15 @@ class BestSellerDTO {
   final String bookImagePath;
   final String bookTitle;
   final String author;
+  final String rank;
 
-  BestSellerDTO({required this.id, required this.bookImagePath, required this.bookTitle, required this.author});
+  BestSellerDTO({
+    required this.id,
+    required this.bookImagePath,
+    required this.bookTitle,
+    required this.author,
+    required this.rank,
+  });
 
   factory BestSellerDTO.fromJson(Map<String, dynamic> json) {
     return BestSellerDTO(
@@ -12,6 +19,7 @@ class BestSellerDTO {
       bookImagePath: json['bookImagePath'],
       bookTitle: json['bookTitle'],
       author: json['author'],
+      rank: json['rank'].toString(),
     );
   }
 }
@@ -21,8 +29,15 @@ class DayBestSellerDTO {
   final String bookTitle;
   final String author;
   final String bookIntro;
+  final String bookImagePath;
 
-  DayBestSellerDTO({required this.id, required this.bookTitle, required this.author, required this.bookIntro});
+  DayBestSellerDTO({
+    required this.id,
+    required this.bookTitle,
+    required this.author,
+    required this.bookIntro,
+    required this.bookImagePath,
+  });
 
   factory DayBestSellerDTO.fromJson(Map<String, dynamic> json) {
     return DayBestSellerDTO(
@@ -30,6 +45,7 @@ class DayBestSellerDTO {
       bookTitle: json['bookTitle'],
       author: json['author'],
       bookIntro: json['bookIntro'],
+      bookImagePath: json['bookImagePath'],
     );
   }
 }
@@ -38,18 +54,27 @@ class BookHistoryDTO {
   final int userId;
   final int bookId;
   final String bookTitle;
-  final String pageCount;
-  final String lastReadPage;
+  final int pageCount;
+  final int lastReadPage;
+  final String bookImagePath;
 
-  BookHistoryDTO({required this.userId, required this.bookId, required this.bookTitle, required this.pageCount, required this.lastReadPage});
+  BookHistoryDTO({
+    required this.userId,
+    required this.bookId,
+    required this.bookTitle,
+    required this.pageCount,
+    required this.lastReadPage,
+    required this.bookImagePath,
+  });
 
   factory BookHistoryDTO.fromJson(Map<String, dynamic> json) {
     return BookHistoryDTO(
       userId: json['userId'],
       bookId: json['bookId'],
       bookTitle: json['bookTitle'],
-      pageCount: json['pageCount'],
-      lastReadPage: json['lastReadPage'],
+      pageCount: int.parse(json['pageCount']),
+      lastReadPage: int.parse(json['lastReadPage']),
+      bookImagePath: json['bookImagePath'],
     );
   }
 }
@@ -60,7 +85,12 @@ class HomeData {
   final DayBestSellerDTO dayBestSeller;
   final List<BookHistoryDTO> bookHistory;
 
-  HomeData({required this.bestSellers, required this.weekBestSellers, required this.dayBestSeller, required this.bookHistory});
+  HomeData({
+    required this.bestSellers,
+    required this.weekBestSellers,
+    required this.dayBestSeller,
+    required this.bookHistory,
+  });
 
   factory HomeData.fromJson(Map<String, dynamic> json) {
     var bestSellersList = json['bestSellerDTOS'] as List;

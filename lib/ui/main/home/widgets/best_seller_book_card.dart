@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 import '../../../../data/model/home/home_page_data.dart';
 
 class BestsellerBookCard extends StatelessWidget {
-  final BestsellerBook book;
+  final BestSellerDTO book;
   final bool isFirst;
 
   BestsellerBookCard({required this.book, this.isFirst = false});
@@ -23,7 +24,7 @@ class BestsellerBookCard extends StatelessWidget {
                 height: isFirst ? 384 : 160,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(book.imagePath),
+                    image: AssetImage(book.bookImagePath),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -52,7 +53,7 @@ class BestsellerBookCard extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            book.title,
+            book.bookTitle,
             style: TextStyle(
               fontSize: isFirst ? 25 : 14,
               fontWeight: FontWeight.bold,

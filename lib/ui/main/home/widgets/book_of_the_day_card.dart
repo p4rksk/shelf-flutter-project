@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 import '../../../../data/model/home/home_page_data.dart';
 
 class BookOfTheDayCard extends StatelessWidget {
+  final DayBestSellerDTO book;
+
+  BookOfTheDayCard({required this.book});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +49,7 @@ class BookOfTheDayCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(bookOfTheDay.imagePath),
+                    image: AssetImage(book.bookImagePath),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -66,7 +71,7 @@ class BookOfTheDayCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        bookOfTheDay.title,
+                        book.bookTitle,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -81,7 +86,7 @@ class BookOfTheDayCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    bookOfTheDay.author,
+                    book.author,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -89,7 +94,7 @@ class BookOfTheDayCard extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    bookOfTheDay.description,
+                    book.bookIntro,
                     style: TextStyle(
                       fontSize: 14,
                     ),

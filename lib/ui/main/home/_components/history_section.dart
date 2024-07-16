@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 
 import '../../../../data/model/home/home_page_data.dart';
 import '../widgets/history_book_card.dart';
 
 class HistorySection extends StatelessWidget {
+  final List<BookHistoryDTO> historyBooks;
+
+  HistorySection({required this.historyBooks});
+
   @override
   Widget build(BuildContext context) {
     return Column(

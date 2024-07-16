@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
-import '../../../../data/model/home/home_page_data.dart';
 
 class HistoryBookCard extends StatelessWidget {
-  final HistoryBook historyBook;
+  final BookHistoryDTO historyBook;
 
   const HistoryBookCard({
     required this.historyBook,
@@ -43,7 +43,7 @@ class HistoryBookCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        historyBook.book.title,
+                        historyBook.bookTitle,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class HistoryBookCard extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       LinearProgressIndicator(
-                        value: historyBook.readingProgress,
+                        value: historyBook.lastReadPage / historyBook.pageCount,
                         backgroundColor: Colors.grey[300],
                         color: TColor.primaryColor1,
                       ),
@@ -79,7 +79,7 @@ class HistoryBookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(historyBook.book.imagePath),
+                image: AssetImage(historyBook.bookImagePath),
                 fit: BoxFit.cover,
               ),
               boxShadow: [
@@ -96,4 +96,6 @@ class HistoryBookCard extends StatelessWidget {
       ],
     );
   }
+
+
 }

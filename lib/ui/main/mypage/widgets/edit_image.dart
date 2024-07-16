@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shelf/data/globals/avatar.dart';
 
 import '../../../../_core/constants/size.dart';
 
@@ -12,16 +13,7 @@ class EditImage extends StatefulWidget {
 
 class _EditImageState extends State<EditImage> {
   ImageProvider<Object>? _profileImage;
-  List<Map<String, String>> avatars = [
-    {"AVATAR01": "assets/images/avatar1.png"},
-    {"AVATAR02": "assets/images/avatar2.png"},
-    {"AVATAR03": "assets/images/avatar3.png"},
-    {"AVATAR04": "assets/images/avatar4.png"},
-    {"AVATAR05": "assets/images/avatar5.png"},
-    {"AVATAR06": "assets/images/avatar6.png"},
-    {"AVATAR07": "assets/images/avatar7.png"},
-    {"AVATAR08": "assets/images/avatar8.png"}
-  ];
+  List<Map<String, String>> avatars = avatarlist;
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);

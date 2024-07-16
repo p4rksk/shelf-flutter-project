@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/main/search/data/author_result.dart';
-import 'package:untitled/ui/main/search/pages/writer_result_page/writer_result_page.dart';
+import 'package:shelf/ui/main/search/data/author_result.dart';
+import 'package:shelf/ui/main/search/pages/writer_result_page/writer_result_page.dart';
 
 class AuthorButtons extends StatelessWidget {
   final List<AuthorResult> authorResults;

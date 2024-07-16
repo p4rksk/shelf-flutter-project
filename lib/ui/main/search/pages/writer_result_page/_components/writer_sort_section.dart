@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled/_core/constants/style.dart';
+import 'package:shelf/_core/constants/style.dart';
 
 class WriterSortSection extends StatelessWidget {
   final int bookCount;

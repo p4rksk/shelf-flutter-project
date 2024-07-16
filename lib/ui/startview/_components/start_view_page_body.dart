@@ -26,9 +26,7 @@ class StartViewPageBody extends ConsumerWidget {
             onPageChanged: (int page) {
               ref.read(pageIndexProvider.notifier).setPage(page);
               if (page == 1) {
-                ref
-                    .read(isChangeColorProvider.notifier)
-                    .state = true;
+                ref.read(isChangeColorProvider.notifier).state = true;
               }
             },
             children: [
@@ -38,7 +36,7 @@ class StartViewPageBody extends ConsumerWidget {
                 subtitle: "함께 책을 탐험하세요",
                 isChangeColor: false,
                 showButtons: false,
-                isGifPage: true, // 첫 번째 페이지에 true 전달
+                isGifPage: true,
               ),
               PageContent(
                 context,
@@ -46,6 +44,7 @@ class StartViewPageBody extends ConsumerWidget {
                 subtitle: "모든 책을 하나의 공간에,",
                 isChangeColor: isChangeColor,
                 showButtons: true,
+                showLogo: true,
               ),
             ],
           ),
@@ -61,8 +60,7 @@ class StartViewPageBody extends ConsumerWidget {
                   width: currentPage == index ? 12.0 : 8.0,
                   height: currentPage == index ? 12.0 : 8.0,
                   decoration: BoxDecoration(
-                    color: currentPage == index ? TColor.primaryColor1 : TColor
-                        .grey,
+                    color: currentPage == index ? TColor.primaryColor1 : TColor.grey,
                     shape: BoxShape.circle,
                   ),
                 );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../../_core/constants/constants.dart';
 import '../../../../data/model/home/home_page_data.dart';
 import '../widgets/book_card.dart';
 import '../widgets/top_pick_clipper.dart';
-import 'package:untitled/_core/constants/move.dart';
+import 'package:shelf/_core/constants/move.dart';
 
 class TopPicksSection extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/curation_bottm_sheet.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/curation_bottm_sheet.dart';
 import '../../../../../../_core/constants/style.dart';
 
 class ResultTitle extends StatefulWidget {

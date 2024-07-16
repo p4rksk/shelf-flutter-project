@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/data/store/session_store.dart';
+import 'package:shelf/data/store/session_store.dart';
 
 class LogoutButton extends ConsumerWidget {
   @override

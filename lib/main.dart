@@ -2,7 +2,7 @@ import 'package:cosmos_epub/Model/book_progress_model.dart';
 import 'package:cosmos_epub/cosmos_epub.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/_core/constants/move.dart';
+import 'package:shelf/_core/constants/move.dart';
 
 import '_core/constants/theme.dart';
 
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: Move.startViewPage,
       routes: getRouters(),
+      // theme: theme(),
     );
   }
 }

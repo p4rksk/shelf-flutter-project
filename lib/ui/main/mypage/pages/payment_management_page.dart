@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/size.dart';
+
 import '../../../../_core/constants/constants.dart';
 import '../../../../data/model/mypage/payment.dart';
 import '../../../../data/store/payment_result.dart';
@@ -14,7 +15,8 @@ class PaymentManagementPage extends ConsumerWidget {
     final paymentStateNotifier = ref.read(paymentStateProvider.notifier);
 
     final isSubscribed = ref.watch(subscriptionStateProvider);
-    final subscriptionStateNotifier = ref.read(subscriptionStateProvider.notifier);
+    final subscriptionStateNotifier =
+        ref.read(subscriptionStateProvider.notifier);
 
     final defaultCardIndex = ref.watch(defaultCardProvider);
     final defaultCardNotifier = ref.read(defaultCardProvider.notifier);
@@ -35,7 +37,8 @@ class PaymentManagementPage extends ConsumerWidget {
                   Navigator.of(context).pop();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(isSubscribed ? '구독이 해지되었습니다.' : '구독이 시작되었습니다.'),
+                      content:
+                          Text(isSubscribed ? '구독이 해지되었습니다.' : '구독이 시작되었습니다.'),
                       duration: Duration(seconds: 2),
                     ),
                   );
@@ -65,13 +68,13 @@ class PaymentManagementPage extends ConsumerWidget {
       } else if (defaultCardIndex == index) {
         defaultCardNotifier.state = null; // 기본 카드가 삭제되면 초기화시킴
       } else if (defaultCardIndex != null && defaultCardIndex! > index) {
-        defaultCardNotifier.state = defaultCardIndex! - 1; // 삭제된 카드가 기본 카드 이전에 있으면 조정
+        defaultCardNotifier.state =
+            defaultCardIndex! - 1; // 삭제된 카드가 기본 카드 이전에 있으면 조정
       }
       ref.refresh(paymentStateProvider); // 강제로 UI 업데이트
     }
 
-    void _addCard() {
-    }
+    void _addCard() {}
 
     return Scaffold(
       backgroundColor: TColor.white,
@@ -223,7 +226,8 @@ class PaymentManagementPage extends ConsumerWidget {
                     activeColor: kAccentColor1,
                     inactiveThumbColor: Colors.grey,
                     inactiveTrackColor: Colors.grey[300],
-                    onChanged: (value) => _showSubscriptionAlert(isSubscribed, paymentInfo),
+                    onChanged: (value) =>
+                        _showSubscriptionAlert(isSubscribed, paymentInfo),
                   ),
                 ],
               ),

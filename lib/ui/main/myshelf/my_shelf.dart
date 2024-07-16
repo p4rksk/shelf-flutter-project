@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import 'package:untitled/_core/constants/size.dart';
-import 'package:untitled/data/store/session_store.dart';
-import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 
 import '_components/book_list_tab.dart';
 import '_components/review_management_tab.dart';
@@ -36,6 +36,7 @@ class MyShelf extends ConsumerWidget {
                 collapsedHeight: 20,
                 toolbarHeight: 20,
                 leading: null,
+                automaticallyImplyLeading: false,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
                     children: [

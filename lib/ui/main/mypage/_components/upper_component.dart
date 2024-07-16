@@ -1,14 +1,16 @@
-
 import 'package:flutter/material.dart';
+import 'package:shelf/data/globals/avatar.dart';
+import 'package:shelf/data/model/user/user.dart';
+
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
 import '../pages/payment_management_page.dart';
 
 class UpperComponent extends StatelessWidget {
-  final String? name;
+  final User? user;
 
-  UpperComponent({required this.name});
+  UpperComponent({required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,12 @@ class UpperComponent extends StatelessWidget {
                 padding: const EdgeInsets.only(right: gap_s),
                 child: CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage("assets/icon/02.png"),
+                  backgroundImage: AssetImage(getAvatarPath(user!.avatar)),
                 ),
               ),
               SizedBox(height: gap_xxxl, width: gap_s),
               Text(
-                '${name} 님',
+                '${user!.nickName} 님',
                 style: h6(),
               ),
             ],
@@ -98,12 +100,12 @@ class UpperComponent extends StatelessWidget {
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 TColor.primaryColor1), // 버튼 배경 색상
                             foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                                MaterialStateProperty.all<Color>(Colors.white),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius:
-                                BorderRadius.circular(5.0), // 원하는 반경 값 설정
+                                    BorderRadius.circular(5.0), // 원하는 반경 값 설정
                               ),
                             ),
                           ),

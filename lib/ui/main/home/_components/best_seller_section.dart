@@ -9,7 +9,7 @@ class BestSellerSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(gap_l),
+      padding: const EdgeInsets.all(gap_s),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -46,7 +46,7 @@ class BestSellerSection extends StatelessWidget {
             ),
           ),
           Container(
-            height: 550,
+            height: 500,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [

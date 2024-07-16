@@ -143,14 +143,14 @@ class PaymentManagementPage extends ConsumerWidget {
                         Text(
                           method.cardNumber,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             color: Colors.black87,
                           ),
                         ),
                         Text(
                           '등록일: ${method.registrationDate}',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             color: Colors.black54,
                           ),
                         ),
@@ -172,7 +172,7 @@ class PaymentManagementPage extends ConsumerWidget {
                           onPressed: () => _removeCard(index),
                           child: Text(
                             '카드 삭제하기',
-                            style: TextStyle(color: Colors.black54),
+                            style: TextStyle(color: Colors.black54, fontSize: 10),
                           ),
                         ),
                         if (defaultCardIndex != index)
@@ -180,7 +180,7 @@ class PaymentManagementPage extends ConsumerWidget {
                             onPressed: () => defaultCardNotifier.state = index,
                             child: Text(
                               '기본 카드로 설정',
-                              style: TextStyle(color: Colors.black54),
+                              style: TextStyle(color: Colors.black54, fontSize: 10),
                             ),
                           ),
                       ],

@@ -145,7 +145,7 @@ class BookDetailPage extends ConsumerWidget {
                                     children: [
                                       Text(
                                         '${((book.completedViews ?? 0) / (book.totalViews ?? 1) * 100).toStringAsFixed(1)}%의 구독자가 완독했어요!',
-                                        style: TextStyle(fontSize: 16),
+                                        style: TextStyle(fontSize: 14),
                                       ),
                                       Text(
                                         '총 완독자 수 ${book.completedViews ?? 0}명',

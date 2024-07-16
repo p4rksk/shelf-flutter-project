@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 
 class ResultItem extends StatelessWidget {
+  final String categoryName;
+
   const ResultItem({
-    super.key,
+    required this.categoryName,
   });
 
   @override

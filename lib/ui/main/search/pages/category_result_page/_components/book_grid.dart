@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/model/book/book_detail_dto.dart';
 import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
-import '../../../../../../data/model/home/book_detail_data.dart';
 
 class BookGrid extends StatelessWidget {
-  final List<Book> books;
+  final List<BookDetailDTO> books;
 
   const BookGrid({
     Key? key,
@@ -29,7 +29,7 @@ class BookGrid extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BookDetailPage(book: book),
+                  builder: (context) => BookDetailPage(bookId: book.id),
                 ),
               );
             },
@@ -43,7 +43,7 @@ class BookGrid extends StatelessWidget {
                       height: 160,
                       width: double.infinity,
                       child: Image.asset(
-                        book.imagePath,
+                        book.path,
                         fit: BoxFit.fitWidth,
                       ),
                     ),
@@ -61,7 +61,7 @@ class BookGrid extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 0),
                     child: Text(
-                      '${book.author}',
+                      '${book.author.name}',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(

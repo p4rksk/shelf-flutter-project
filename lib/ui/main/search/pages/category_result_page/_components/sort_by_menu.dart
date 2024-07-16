@@ -76,7 +76,7 @@ class SortByMenu extends StatelessWidget {
               ],
             ),
           ),
-          ResultItem(),
+          ResultItem(categoryName),
         ],
       ),
     );

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/model/book/book_detail_dto.dart';
 import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
 import '../../../../data/model/home/book_detail_data.dart';
 
 class BookCard extends StatelessWidget {
-  final Book book;
+  final BookDetailDTO book;
   final bool isFocused;
 
   BookCard({required this.book, required this.isFocused});
@@ -18,7 +19,7 @@ class BookCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => BookDetailPage(book: book),
+                builder: (context) => BookDetailPage(bookId: book.id),
               ),
             );
           },
@@ -28,7 +29,7 @@ class BookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(book.imagePath),
+                image: AssetImage(book.path),
                 fit: BoxFit.cover,
               ),
             ),
@@ -44,7 +45,7 @@ class BookCard extends StatelessWidget {
           ),
         ),
         Text(
-          book.author,
+          book.author.name,
           style: TextStyle(
             color: isFocused ? Colors.black54 : Colors.grey,
             fontSize: 16,

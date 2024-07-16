@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/line.dart';
-import 'package:shelf/data/model/category_page/category_list.dart';
+import 'package:shelf/data/model/category/category_list.dart';
 import 'package:shelf/data/model/home/book_detail_data.dart';
 import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:shelf/ui/main/search/pages/category_result_page/_components/back_arrow_appbar.dart';

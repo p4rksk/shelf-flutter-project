@@ -1,4 +1,4 @@
-import 'package:shelf/data/model/book_detail/author_detail.dart';
+import 'package:shelf/data/model/book/author_detail.dart';
 
 class BookDetailDTO {
   final int id;
@@ -11,6 +11,9 @@ class BookDetailDTO {
   final String bookIntro;
   final String contentIntro;
   final String isWish;
+  final DateTime registrationDate;
+  final int totalViews;
+  final int completedViews;
 
   const BookDetailDTO({
     required this.id,
@@ -23,6 +26,9 @@ class BookDetailDTO {
     required this.bookIntro,
     required this.contentIntro,
     required this.isWish,
+    required this.registrationDate,
+    required this.totalViews,
+    required this.completedViews,
   });
 
   factory BookDetailDTO.fromJson(Map<String, dynamic> json) {
@@ -37,6 +43,9 @@ class BookDetailDTO {
       bookIntro: json["bookIntro"],
       contentIntro: json["contentIntro"],
       isWish: json["isWish"],
+      registrationDate: DateTime.parse(json["registrationDate"]),
+      totalViews: int.parse(json["totalViews"]),
+      completedViews: int.parse(json["completedViews"]),
     );
   }
 //

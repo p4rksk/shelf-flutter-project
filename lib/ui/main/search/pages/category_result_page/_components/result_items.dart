@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../data/model/category_page/category_page_data.dart';
 
 class ResultItem extends StatelessWidget {
   const ResultItem({

@@ -10,15 +10,13 @@ final homeDataProvider = FutureProvider<HomeData>((ref) async {
   ResponseDTO responseDTO = await HomeRepo().fetchHomeData(sessionUser.jwt!);
 
   if (responseDTO.code == 200) {
-    return responseDTO.data.first as HomeData;
+    return responseDTO.data as HomeData;
   } else {
     throw Exception('Failed to load book details: ${responseDTO.msg}');
   }
 });
 
-
 class HomeRepo {
-
   Future<ResponseDTO> fetchHomeData(String token) async {
     try {
       final response = await dio.get(

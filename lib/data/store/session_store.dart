@@ -48,9 +48,11 @@ class SessionStore extends StateNotifier<SessionUser> {
 
   Future<void> login(LoginReqDTO reqDTO) async {
     ResponseDTO responseDTO = await userRepository.fetchLogin(reqDTO);
+
     if (responseDTO.code == 200) {
       state = SessionUser(
           user: responseDTO.data, isLogin: true, jwt: responseDTO.token);
+
       Navigator.pushNamed(mContext!, Move.homePage);
     } else {
       ScaffoldMessenger.of(mContext!)

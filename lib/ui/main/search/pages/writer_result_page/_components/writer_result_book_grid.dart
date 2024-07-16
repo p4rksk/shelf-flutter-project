@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/ui/main/search/pages/writer_result_page/data/writer_result_model.dart';
 
+class WriterResultBookGrid extends StatelessWidget {
+  final List<WriterResultBook> books;
 
-class WriterBookGrid extends StatelessWidget {
-  final List<Book> books;
-
-  const WriterBookGrid({
-    Key? key,
+  const WriterResultBookGrid({
     required this.books,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class WriterBookGrid extends StatelessWidget {
                     height: 160,
                     width: double.infinity,
                     child: Image.asset(
-                      book.path,
+                      book.bookPath,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -40,7 +39,7 @@ class WriterBookGrid extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Text(
-                    book.title,
+                    book.bookTitle,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
@@ -49,7 +48,7 @@ class WriterBookGrid extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 0),
                   child: Text(
-                    '${book.author}',
+                    '${book.author.authorName}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(

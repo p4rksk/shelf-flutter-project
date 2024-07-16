@@ -9,21 +9,22 @@ Widget PageContent(
       required String subtitle,
       required bool isChangeColor,
       bool showButtons = false,
-      bool isGifPage = false, // Add a new parameter for GIF page
-      bool showLogo = false, // Add a new parameter for showing logo
+      bool isGifPage = false,
+      bool showLogo = false,
     }) {
   return Container(
     width: double.infinity,
     height: double.infinity,
     decoration: BoxDecoration(
-      gradient: isChangeColor
-          ? LinearGradient(
-        colors: TColor.primaryG,
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      )
-          : null,
-      color: !isChangeColor ? Colors.white : null,
+      color: kAccentColor5
+      // gradient: isChangeColor
+      //     ? LinearGradient(
+      //   colors: TColor.primaryG,
+      //   begin: Alignment.topLeft,
+      //   end: Alignment.bottomRight,
+      // )
+      //     : null,
+      // color: !isChangeColor ? Colors.white : null,
     ),
     child: Center(
       child: isGifPage
@@ -40,8 +41,8 @@ Widget PageContent(
             Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
               child: Image.asset(
-                'assets/images/logo.png',
-                width: 100,
+                'assets/images/logo2.png',
+                width: 300,
               ),
             ),
           Text(

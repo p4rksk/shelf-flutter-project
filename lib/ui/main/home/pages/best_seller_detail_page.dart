@@ -63,9 +63,8 @@ class BestSellerDetailPage extends ConsumerWidget {
             padding: const EdgeInsets.all(12.0),
             child: Row(
               children: [
-                Image.asset(book.imagePath, width: 120, height: 120),
                 Container(
-                  width: 100,
+                  width: 60,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -95,7 +94,7 @@ class BestSellerDetailPage extends ConsumerWidget {
                       Text(
                         book.title,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -117,6 +116,8 @@ class BestSellerDetailPage extends ConsumerWidget {
                     ],
                   ),
                 ),
+                SizedBox(width: 20),
+                Image.asset(book.imagePath, width: 120, height: 120),
               ],
             ),
           );

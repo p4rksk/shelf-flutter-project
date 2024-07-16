@@ -1,16 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelf/data/globals/avatar.dart';
 import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/ui/main/mypage/_components/logout_button.dart';
 import 'package:shelf/ui/main/mypage/_components/next_purchase.dart';
 import 'package:shelf/ui/main/mypage/_components/sub_period.dart';
 
 import '../../../../_core/constants/constants.dart';
+import '../../../../_core/constants/move.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
+import 'package:shelf/ui/main/mypage/pages/payment_management_page.dart';
 
 class UpperComponentSubscribed extends StatelessWidget {
-  User? user;
+  final User? user;
 
   UpperComponentSubscribed({
     this.user,
@@ -32,11 +34,13 @@ class UpperComponentSubscribed extends StatelessWidget {
                   backgroundImage: AssetImage(getAvatarPath(user!.avatar)),
                 ),
               ),
-              SizedBox(height: 20, width: 5),
+              SizedBox(height: 50, width: 5),
               Text(
-                '${user!.nickName} 님 구독상태',
+                '${user!.nickName} 님',
                 style: h6(),
               ),
+              Spacer(), // 남은 공간을 채워서 로그아웃 버튼을 오른쪽 끝으로 밀기
+              LogoutButton(),
             ],
           ),
           SizedBox(height: 10),
@@ -48,22 +52,33 @@ class UpperComponentSubscribed extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: gap_xxl,
-                  color: CupertinoColors.systemGrey5,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Move.paymentManagementPage);
+                  },
                   child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '나의 정기구독',
-                          style: h8(),
-                        ),
-                        Icon(Icons.arrow_forward_ios, color: TColor.grey),
-                      ],
+                    width: double.infinity,
+                    height: gap_xxl,
+                    decoration: BoxDecoration(
+                      color: kAccentColor7,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                    ),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '나의 정기구독',
+                            style: h8(),
+                          ),
+                          Icon(Icons.arrow_forward_ios, color: Colors.white),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -90,7 +105,7 @@ class UpperComponentSubscribed extends StatelessWidget {
                                   border: Border.all(
                                       color: Color(0xffe6e6e6), width: 1),
                                   borderRadius: BorderRadius.circular(5)),
-                              child: Text("전차책 구독",
+                              child: Text("전자책 구독",
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 10)),
                             )

@@ -30,7 +30,7 @@ class SearchPage extends ConsumerWidget {
         child: ListView(
           children: [
             Container(
-              color: Colors.white, // Set the background color here
+              color: Colors.white,
               padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -6,7 +6,7 @@ import '../../../../data/model/home/home_page_data.dart';
 import '../../../../data/store/bestseller_provider.dart';
 
 class BestSellerDetailPage extends ConsumerWidget {
-  final List<String> categories = ['종합', '소설', '경제/경영', '자기계발', '시/에세이', '인문/교양'];
+  final List<String> categories = ['종합', '소설', '자기계발', '역사', '인문', '사회', '과학', '철학', '종교', 'IT'];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/store/session_store.dart';
 
 import 'writer_result_model.dart';
@@ -14,11 +15,9 @@ final writerSearchProvider =
 });
 
 class WriterResultRepo {
-  final Dio _dio = Dio();
-
   Future<WriterResultDTO> fetchBooksByAuthor(
       String token, String authorName) async {
-    final response = await _dio.get(
+    final response = await dio.get(
       '/app/book/search?author=$authorName',
       options: Options(
         headers: {'Authorization': 'Bearer $token'},

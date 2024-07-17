@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
@@ -7,6 +8,7 @@ import 'package:shelf/data/store/session_store.dart';
 
 final homeDataProvider = FutureProvider<HomeData>((ref) async {
   SessionUser sessionUser = ref.read(sessionProvider);
+  Logger().d("👉👉👉👉 ${sessionUser.jwt}");
   ResponseDTO responseDTO = await HomeRepo().fetchHomeData(sessionUser.jwt!);
 
   if (responseDTO.code == 200) {
@@ -26,14 +28,18 @@ class HomeRepo {
         ),
       );
 
-      if (response.statusCode == 200) {
-        ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-        responseDTO.data = (responseDTO.data as List<dynamic>)
-            .map((homeData) =>
-                HomeData.fromJson(homeData as Map<String, dynamic>))
-            .toList();
+      Logger().d(response.data);
 
-        return responseDTO;
+      if (response.statusCode == 200) {
+        // 여기에 data 파싱을 위한 코드 추가
+        final data = response.data['data'] as Map<String, dynamic>;
+        final homeData = HomeData.fromJson(data);
+
+        return ResponseDTO(
+          code: response.data['code'],
+          msg: response.data['msg'],
+          data: homeData,
+        );
       } else {
         throw Exception('Failed to load authors');
       }

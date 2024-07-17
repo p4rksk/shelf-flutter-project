@@ -1,3 +1,5 @@
+import 'package:logger/logger.dart';
+
 class User {
   int id;
   String email;
@@ -15,10 +17,10 @@ class User {
     this.createdAt,
   });
 
-
   factory User.fromJson(Map<String, dynamic> json) {
+    Logger().d(" json 테스트 👉👉👉👉👉 $json");
     return User(
-      id: json["id"],
+      id: int.parse(json["id"]),
       email: json["email"],
       nickName: json["nickName"],
       status: json["status"],
@@ -41,5 +43,4 @@ class User {
   String toString() {
     return 'User{id: $id, email: $email, nickName: $nickName,  status: $status, createdAt: $createdAt}';
   }
-
 }

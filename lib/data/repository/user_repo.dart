@@ -33,8 +33,11 @@ class UserRepo {
     try {
       Response<dynamic> response =
           await dio.post("/user/login", data: requestDTO.toJson());
+      Logger().d("fetch 원본 제이슨  👉👉👉 " + response.data);
+
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
+      Logger().d("fetch Login  👉👉👉 " + responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
       if (response.headers['authorization'] != null) {

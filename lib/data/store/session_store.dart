@@ -64,8 +64,9 @@ class SessionStore extends StateNotifier<SessionUser> {
     state = SessionUser(); // 초기화하여 로그아웃 처리
     Navigator.popAndPushNamed(context, Move.startViewPage);
   }
-// 1. 화면 context에 접근하는 법
 }
+
+final userRepoProvider = Provider((ref) => UserRepo());
 
 // 3. 창고 관리자
 final sessionProvider = StateNotifierProvider<SessionStore, SessionUser>((ref) {

@@ -3,14 +3,14 @@ class BestSellerDTO {
   final String bookImagePath;
   final String bookTitle;
   final String author;
-  final String rank;
+  final String rankNum;
 
   BestSellerDTO({
     required this.id,
     required this.bookImagePath,
     required this.bookTitle,
     required this.author,
-    required this.rank,
+    required this.rankNum,
   });
 
   factory BestSellerDTO.fromJson(Map<String, dynamic> json) {
@@ -19,7 +19,7 @@ class BestSellerDTO {
       bookImagePath: json['bookImagePath'],
       bookTitle: json['bookTitle'],
       author: json['author'],
-      rank: json['rank'].toString(),
+      rankNum: json['rankNum'].toString(),
     );
   }
 }
@@ -97,9 +97,12 @@ class HomeData {
     var weekBestSellersList = json['weekBestSellerDTOS'] as List;
     var bookHistoryList = json['bookHistoryDTOS'] as List;
 
-    List<BestSellerDTO> bestSellers = bestSellersList.map((i) => BestSellerDTO.fromJson(i)).toList();
-    List<BestSellerDTO> weekBestSellers = weekBestSellersList.map((i) => BestSellerDTO.fromJson(i)).toList();
-    List<BookHistoryDTO> bookHistory = bookHistoryList.map((i) => BookHistoryDTO.fromJson(i)).toList();
+    List<BestSellerDTO> bestSellers =
+        bestSellersList.map((i) => BestSellerDTO.fromJson(i)).toList();
+    List<BestSellerDTO> weekBestSellers =
+        weekBestSellersList.map((i) => BestSellerDTO.fromJson(i)).toList();
+    List<BookHistoryDTO> bookHistory =
+        bookHistoryList.map((i) => BookHistoryDTO.fromJson(i)).toList();
 
     return HomeData(
       bestSellers: bestSellers,

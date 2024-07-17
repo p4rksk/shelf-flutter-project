@@ -9,13 +9,19 @@ import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
 
-class UpperComponentSubscribed extends StatelessWidget {
+class UpperComponentSubscribed extends StatefulWidget {
   User? user;
 
   UpperComponentSubscribed({
     this.user,
   });
 
+  @override
+  State<UpperComponentSubscribed> createState() =>
+      _UpperComponentSubscribedState();
+}
+
+class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,12 +35,13 @@ class UpperComponentSubscribed extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 10),
                 child: CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage(getAvatarPath(user!.avatar)),
+                  backgroundImage:
+                      AssetImage(getAvatarPath(widget.user!.avatar)),
                 ),
               ),
               SizedBox(height: 20, width: 5),
               Text(
-                '${user!.nickName} 님 구독상태',
+                '${widget.user!.nickName} 님',
                 style: h6(),
               ),
             ],

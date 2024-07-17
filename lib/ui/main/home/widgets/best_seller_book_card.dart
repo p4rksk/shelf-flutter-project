@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
-import '../../../../data/model/home/home_page_data.dart';
 
 class BestsellerBookCard extends StatelessWidget {
   final BestSellerDTO book;
@@ -34,7 +33,7 @@ class BestsellerBookCard extends StatelessWidget {
                 bottom: isFirst ? -35 : -10,
                 left: isFirst ? -40 : -15,
                 child: Text(
-                  book.rank,
+                  book.rankNum,
                   style: TextStyle(
                     fontSize: isFirst ? 120 : 50,
                     fontWeight: FontWeight.bold,

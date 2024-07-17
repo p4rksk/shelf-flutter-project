@@ -51,6 +51,7 @@ dependencies:
   get: ^4.3.8
   image_picker: ^1.1.2
   video_player: ^2.9.1
+  flutter_naver_login: ^1.8.0
 
 
 

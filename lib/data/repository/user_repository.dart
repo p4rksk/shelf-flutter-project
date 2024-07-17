@@ -5,6 +5,7 @@ import 'package:untitled/data/model/user/user.dart';
 import 'package:untitled/data/model/user/user_request.dart';
 
 class UserRepository {
+
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
     try {
       // dynamic -> http body
@@ -26,20 +27,18 @@ class UserRepository {
     }
   }
 
-  Future<ResponseDTO> fetchLogin(LoginReqDTO requestDTO) async {
+  Future<(ResponseDTO, String?)> fetchLogin(LoginReqDTO requestDTO) async {
     try {
-      Response<dynamic> response =
-          await dio.post("/user/login", data: requestDTO.toJson());
+      Response<dynamic> response = await dio.post("/user/login", data: requestDTO.toJson());
+
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
-      if (response.headers['authorization'] != null) {
-        responseDTO.token = response.headers['authorization']?.first;
-      }
-      return responseDTO;
+      var accessToken = response.headers['authorization']?.first;
+
+      return (responseDTO, accessToken);
     } catch (e) {
-      return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");
-    }
+      return (ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다"), null);    }
   }
 }

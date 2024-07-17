@@ -23,7 +23,9 @@ class BookListTab extends StatelessWidget {
           child: Divider(),
         ),
         SliverToBoxAdapter(
-          child: ReadBooksSection(),
+          child: ReadBooksSection(
+            allBook: bookList[0].allBook,
+          ),
         ),
       ],
     );

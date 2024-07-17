@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/_core/constants/size.dart';
-import '../../../../data/model/myshelf/my_shelf_data.dart'; // UserData 클래스 가져오기
+import 'package:shelf/data/model/myshelf/my_shelf_dto.dart';
 
 class ReadBooksSection extends StatelessWidget {
+  final List<AllBook> allBook;
+
+  const ReadBooksSection({
+    required this.allBook,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +30,7 @@ class ReadBooksSection extends StatelessWidget {
           child: Wrap(
             spacing: 8.0,
             runSpacing: 16.0,
-            children: userData.readBooks.map((book) {
+            children: allBook.map((book) {
               return Container(
                 width: 120,
                 child: Column(
@@ -34,7 +41,7 @@ class ReadBooksSection extends StatelessWidget {
                       width: 100,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(book.imagePath),
+                          image: NetworkImage(baseURL + book.bookImagePath),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
@@ -42,7 +49,7 @@ class ReadBooksSection extends StatelessWidget {
                     ),
                     SizedBox(height: 8.0),
                     Text(
-                      book.title,
+                      book.bookTitle,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

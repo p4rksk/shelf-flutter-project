@@ -1,20 +1,13 @@
-class Book {
-  final String imagePath;
-  final String title;
-  final String author;
+import 'book_detail_data.dart';
 
-  Book({required this.imagePath, required this.title, required this.author});
-}
-
-class HistoryBook extends Book {
+class HistoryBook {
+  final Book book;
   final double readingProgress;
 
-  HistoryBook({
-    required String imagePath,
-    required String title,
-    required String author,
+  const HistoryBook({
+    required this.book,
     required this.readingProgress,
-  }) : super(imagePath: imagePath, title: title, author: author);
+  });
 }
 
 class BookOfTheDay {
@@ -45,18 +38,9 @@ class BestsellerBook {
   });
 }
 
-final List<Book> books = [
-  Book(imagePath: 'assets/images/book1.png', title: '책제목 1', author: '작가 1'),
-  Book(imagePath: 'assets/images/book2.png', title: '책제목 2', author: '작가 2'),
-  Book(imagePath: 'assets/images/book3.png', title: '책제목 3', author: '작가 3'),
-  Book(imagePath: 'assets/images/book4.png', title: '책제목 4', author: '작가 4'),
-  Book(imagePath: 'assets/images/book5.png', title: '책제목 5', author: '작가 5'),
-  Book(imagePath: 'assets/images/book6.png', title: '책제목 6', author: '작가 6'),
-];
-
 final List<HistoryBook> historyBooks = [
-  HistoryBook(imagePath: 'assets/images/book1.png', title: '책 제목 1', author: '작가 1', readingProgress: 0.7),
-  HistoryBook(imagePath: 'assets/images/book2.png', title: '책 제목 2', author: '작가 2', readingProgress: 0.8),
+  HistoryBook(book: newBooks[0], readingProgress: 0.7),
+  HistoryBook(book: newBooks[1], readingProgress: 0.8),
 ];
 
 final bookOfTheDay = BookOfTheDay(
@@ -158,6 +142,7 @@ final List<BestsellerBook> bestsellerBooks = [
     rank: '15',
   ),
 ];
+
 class RankBook {
   final String title;
   final String author;
@@ -171,22 +156,24 @@ class RankBook {
 List<RankBook> dummyBooks = [
   RankBook('인생을 바꾸는 정리 기술', '윤정훈', '자기계발', 1, 'assets/images/book1.png'),
   RankBook('앨저넌에게 꽃을', '대니얼 키스', '소설', 2, 'assets/images/book2.png'),
-  RankBook('부의 추월차선', '엠제이 드마코', '사회', 3, 'assets/images/book3.png'),
+  RankBook('부의 추월차선', '엠제이 드마코', '경제/경영', 3, 'assets/images/book3.png'),
   RankBook('말그릇', '김윤나', '자기계발', 4, 'assets/images/book4.png'),
-  RankBook('죽음의 수용소에서', '빅터 프랭클', '사회', 5, 'assets/images/book5.png'),
+  RankBook('죽음의 수용소에서', '빅터 프랭클', '인문/교양', 5, 'assets/images/book5.png'),
   RankBook('미움받을 용기', '기시미 이치로', '자기계발', 6, 'assets/images/book6.png'),
-  RankBook('어떻게 살 것인가', '유시민', '인문', 7, 'assets/images/book7.png'),
+  RankBook('어떻게 살 것인가', '유시민', '인문/교양', 7, 'assets/images/book7.png'),
   RankBook('설민석의 한국사 대모험', '설민석', '소설', 8, 'assets/images/book8.png'),
   RankBook('아몬드', '손원평', '소설', 9, 'assets/images/book9.png'),
-  RankBook('돈의 속성', '김승호', '철학', 10, 'assets/images/book10.png'),
+  RankBook('돈의 속성', '김승호', '경제/경영', 10, 'assets/images/book10.png'),
   RankBook('하버드 상위 1퍼센트의 비밀', '정주영', '자기계발', 11, 'assets/images/book11.png'),
   RankBook('역사의 쓸모', '최태성', '인문/교양', 12, 'assets/images/book12.png'),
   RankBook('나는 나로 살기로 했다', '김수현', '자기계발', 13, 'assets/images/book13.png'),
-  RankBook('지적 대화를 위한 넓고 얕은 지식', '채사장', 'IT', 14, 'assets/images/book14.png'),
+  RankBook(
+      '지적 대화를 위한 넓고 얕은 지식', '채사장', '인문/교양', 14, 'assets/images/book14.png'),
   RankBook('82년생 김지영', '조남주', '소설', 15, 'assets/images/book15.png'),
-  RankBook('트렌드 코리아 2022', '김난도', '과학', 16, 'assets/images/book16.png'),
-  RankBook('역사란 무엇인가', '에드워드 카', '인문', 17, 'assets/images/book17.png'),
-  RankBook('자존감 수업', '윤홍균', '철학', 18, 'assets/images/book18.png'),
-  RankBook('무례한 사람에게 웃으며 대처하는 법', '정문정', '종교', 19, 'assets/images/book19.png'),
+  RankBook('트렌드 코리아 2022', '김난도', '경제/경영', 16, 'assets/images/book16.png'),
+  RankBook('역사란 무엇인가', '에드워드 카', '인문/교양', 17, 'assets/images/book17.png'),
+  RankBook('자존감 수업', '윤홍균', '자기계발', 18, 'assets/images/book18.png'),
+  RankBook(
+      '무례한 사람에게 웃으며 대처하는 법', '정문정', '자기계발', 19, 'assets/images/book19.png'),
   RankBook('공부머리 독서법', '최승필', '자기계발', 20, 'assets/images/book20.png'),
 ];

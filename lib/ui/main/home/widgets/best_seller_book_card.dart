@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../../../data/model/home/home_page_data.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 
 class BestsellerBookCard extends StatelessWidget {
-  final BestsellerBook book;
+  final BestSellerDTO book;
   final bool isFirst;
 
   BestsellerBookCard({required this.book, this.isFirst = false});
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = '$baseURL${book.bookImagePath}';
+
     return Container(
       padding: EdgeInsets.only(left: 35),
       width: isFirst ? 240 : 200,
@@ -24,7 +27,7 @@ class BestsellerBookCard extends StatelessWidget {
                 height: isFirst ? 374 : 150,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(book.imagePath),
+                    image: NetworkImage(imageUrl),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -34,7 +37,7 @@ class BestsellerBookCard extends StatelessWidget {
                 bottom: isFirst ? -35 : -10,
                 left: isFirst ? -40 : -15,
                 child: Text(
-                  book.rank,
+                  book.rankNum,
                   style: TextStyle(
                     fontSize: isFirst ? 120 : 50,
                     fontWeight: FontWeight.bold,
@@ -53,7 +56,7 @@ class BestsellerBookCard extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            book.title,
+            book.bookTitle,
             style: TextStyle(
               fontSize: isFirst ? 25 : 14,
               fontWeight: FontWeight.bold,

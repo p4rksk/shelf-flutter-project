@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/repository/myshelf_repo.dart';
 import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 
@@ -22,6 +23,9 @@ class MyShelf extends ConsumerWidget {
 
     // createdAt으로부터 현재까지의 일수 계산
     final daysWithShelf = DateTime.now().difference(createdAt).inDays;
+
+    // MyShelfData 상태 구독
+    final myShelfDataAsyncValue = ref.watch(myShelfDataProvider);
 
     return DefaultTabController(
       length: 3,
@@ -124,12 +128,18 @@ class MyShelf extends ConsumerWidget {
               ),
             ];
           },
-          body: TabBarView(
-            children: [
-              BookListTab(),
-              WishlistTab(),
-              ReviewManagementTab(),
-            ],
+          body: myShelfDataAsyncValue.when(
+            data: (myShelfData) {
+              return TabBarView(
+                children: [
+                  BookListTab(bookList: myShelfData.bookList),
+                  WishlistTab(wishList: myShelfData.wishList),
+                  ReviewManagementTab(),
+                ],
+              );
+            },
+            loading: () => Center(child: CircularProgressIndicator()),
+            error: (err, stack) => Center(child: Text('Error: $err')),
           ),
         ),
         bottomNavigationBar: ModifiedBottomNavigator(

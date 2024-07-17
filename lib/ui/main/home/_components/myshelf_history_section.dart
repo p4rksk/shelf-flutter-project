@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
-import 'package:shelf/ui/main/home/widgets/history_book_card.dart';
+import 'package:shelf/ui/main/home/widgets/myshelf_history_book_card.dart';
 
-class HistorySection extends StatelessWidget {
-  final List<BookHistoryDTO> historyBooks;
+import '../../../../data/model/myshelf/my_shelf_dto.dart';
 
-  HistorySection({required this.historyBooks});
+class MyshelfHistorySection extends StatelessWidget {
+  final List<HistoryBook> historyBooks;
+
+  const MyshelfHistorySection({
+    required this.historyBooks,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class HistorySection extends StatelessWidget {
               final book = historyBooks[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: HistoryBookCard(historyBook: book),
+                child: MyShelfHistoryBookCard(historyBook: book),
               );
             },
           ),

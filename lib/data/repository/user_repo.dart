@@ -17,6 +17,8 @@ class UserRepo {
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
 
+
+
       // 헤더에서 JWT 토큰 추출
       if (response.headers['authorization'] != null) {
         responseDTO.token = response.headers['authorization']?.first;
@@ -33,11 +35,12 @@ class UserRepo {
     try {
       Response<dynamic> response =
           await dio.post("/user/login", data: requestDTO.toJson());
+
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
-      if (response.headers['authorization'] != null) {
+      if (response.headers['authorization']?.first != null) {
         responseDTO.token = response.headers['authorization']?.first;
       }
       return responseDTO;

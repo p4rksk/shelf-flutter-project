@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shelf/data/model/book/book_detail_dto.dart';
 import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/data/category_result_viewmodel.dart';
 
+class CategoryResultBookGrid extends StatelessWidget {
+  final List<CategoryResultBook> books;
 
-class BookGrid extends StatelessWidget {
-  final List<BookDetailDTO> books;
-
-  const BookGrid({
-    Key? key,
+  const CategoryResultBookGrid({
     required this.books,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class BookGrid extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BookDetailPage(bookId: book.id),
+                  builder: (context) => BookDetailPage(bookId: book.bookId),
                 ),
               );
             },
@@ -43,7 +41,7 @@ class BookGrid extends StatelessWidget {
                       height: 160,
                       width: double.infinity,
                       child: Image.asset(
-                        book.path,
+                        book.bookPath,
                         fit: BoxFit.fitWidth,
                       ),
                     ),
@@ -51,7 +49,7 @@ class BookGrid extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: Text(
-                      book.title,
+                      book.bookTitle,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style:
@@ -61,7 +59,7 @@ class BookGrid extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 0),
                     child: Text(
-                      '${book.author.name}',
+                      '${book.author.authorName}',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(

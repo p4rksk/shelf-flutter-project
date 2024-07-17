@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:shelf/_core/constants/http.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
+import '../../../../data/model/myshelf/my_shelf_dto.dart';
 
-class HistoryBookCard extends StatelessWidget {
-  final BookHistoryDTO historyBook;
+class MyShelfHistoryBookCard extends StatelessWidget {
+  final HistoryBook historyBook;
 
-  const HistoryBookCard({
+  const MyShelfHistoryBookCard({
     required this.historyBook,
   });
 
   @override
   Widget build(BuildContext context) {
-
-    final imageUrl = '$baseURL${historyBook.bookImagePath}';
-
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -83,7 +79,7 @@ class HistoryBookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: NetworkImage(imageUrl),
+                image: AssetImage(historyBook.imagePath),
                 fit: BoxFit.cover,
               ),
               boxShadow: [

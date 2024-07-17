@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/model/book/book_detail_dto.dart';
 import '../../../../data/model/home/book_detail_data.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/_core/constants/size.dart';
 
 class BookIntroductionTab extends StatelessWidget {
-  final Book book;
+  final BookDetailDTO book;
 
   BookIntroductionTab({required this.book});
 
@@ -17,7 +18,7 @@ class BookIntroductionTab extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              book.oneLineSummary,
+              book.bookIntro,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 10),
@@ -26,14 +27,14 @@ class BookIntroductionTab extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            _buildCollapsibleSection(book.introduction),
+            _buildCollapsibleSection(book.contentIntro),
             SizedBox(height: 20),
             Text(
               '작가 소개',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            _buildCollapsibleSection(book.authorIntroduction),
+            _buildCollapsibleSection(book.author.authorIntro),
           ],
         ),
       ),

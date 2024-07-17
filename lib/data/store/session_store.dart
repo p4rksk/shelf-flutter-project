@@ -6,6 +6,7 @@ import 'package:shelf/_core/constants/move.dart';
 import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/data/model/user/user.dart';
 import 'package:shelf/data/model/user/user_request.dart';
+import 'package:shelf/data/repository/home_repo.dart';
 import 'package:shelf/data/repository/user_repo.dart';
 import 'package:shelf/main.dart';
 
@@ -22,6 +23,12 @@ class SessionUser {
 }
 
 var logger = Logger();
+
+// User Repository Provider
+final userRepoProvider = Provider((ref) => UserRepo());
+
+// Home Repository Provider
+final homeRepoProvider = Provider((ref) => HomeRepo());
 
 // 2. 창고
 class SessionStore extends StateNotifier<SessionUser> {
@@ -48,9 +55,12 @@ class SessionStore extends StateNotifier<SessionUser> {
 
   Future<void> login(LoginReqDTO reqDTO) async {
     ResponseDTO responseDTO = await userRepository.fetchLogin(reqDTO);
+
+
     if (responseDTO.code == 200) {
       state = SessionUser(
           user: responseDTO.data, isLogin: true, jwt: responseDTO.token);
+
       Navigator.pushNamed(mContext!, Move.homePage);
     } else {
       ScaffoldMessenger.of(mContext!)
@@ -62,10 +72,11 @@ class SessionStore extends StateNotifier<SessionUser> {
     state = SessionUser(); // 초기화하여 로그아웃 처리
     Navigator.popAndPushNamed(context, Move.startViewPage);
   }
-// 1. 화면 context에 접근하는 법
 }
+
 
 // 3. 창고 관리자
 final sessionProvider = StateNotifierProvider<SessionStore, SessionUser>((ref) {
+
   return SessionStore(UserRepo());
 });

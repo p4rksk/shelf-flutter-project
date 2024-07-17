@@ -8,8 +8,6 @@ import 'package:shelf/ui/main/mypage/mypage.dart';
 import 'package:shelf/ui/main/mypage/pages/myinfo/my_info.dart';
 import 'package:shelf/ui/main/mypage/pages/profile_edit_page.dart';
 import 'package:shelf/ui/main/myshelf/my_shelf.dart';
-import 'package:shelf/ui/main/search/pages/category_result_page/category_result_page.dart';
-import 'package:shelf/ui/main/search/pages/writer_result_page/writer_result_page.dart';
 import 'package:shelf/ui/main/search/search_page.dart';
 import 'package:shelf/ui/startview/start_view_page.dart';
 
@@ -39,9 +37,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.homePage: (context) => HomePage(),
     Move.sellerDetailPage: (context) => BestSellerDetailPage(),
     Move.searchPage: (context) => SearchPage(),
-    Move.categoryResultPage: (context) => CategoryResultPage(),
     Move.brandNewPage: (context) => BrandNewPage(),
-    Move.writerResultPage: (context) => WriterResultPage(),
     Move.myShelfPage: (context) => MyShelf(),
     Move.myPage: (context) => const MyPage(),
     Move.myInfo: (context) => const MyInfo(),

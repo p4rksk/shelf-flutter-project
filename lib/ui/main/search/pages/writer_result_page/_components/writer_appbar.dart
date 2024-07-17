@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/style.dart';
+import 'package:shelf/data/store/session_store.dart';
 
 class WriterAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? writerName;
@@ -13,6 +14,8 @@ class WriterAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    logger.d(writerName);
+
     return PreferredSize(
       preferredSize: Size.fromHeight(40),
       child: AppBar(
@@ -26,7 +29,7 @@ class WriterAppBar extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: true,
         title: Text(
           "#" + writerName!,
-          style: h8(),
+          style: h6(),
         ),
       ),
     );

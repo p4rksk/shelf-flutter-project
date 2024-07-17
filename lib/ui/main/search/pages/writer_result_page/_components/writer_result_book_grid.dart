@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 import 'package:shelf/ui/main/search/pages/writer_result_page/data/writer_result_model.dart';
 
 class WriterResultBookGrid extends StatelessWidget {
@@ -28,12 +29,23 @@ class WriterResultBookGrid extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: Container(
-                    height: 160,
-                    width: double.infinity,
-                    child: Image.network(
-                      baseURL + book.bookPath,
-                      fit: BoxFit.fitWidth,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              BookDetailPage(bookId: book.bookId),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 160,
+                      width: double.infinity,
+                      child: Image.network(
+                        baseURL + book.bookPath,
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
                 ),

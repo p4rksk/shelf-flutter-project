@@ -40,6 +40,7 @@ class MyShelf extends ConsumerWidget {
                 collapsedHeight: 20,
                 toolbarHeight: 20,
                 leading: null,
+                automaticallyImplyLeading: false,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
                     children: [

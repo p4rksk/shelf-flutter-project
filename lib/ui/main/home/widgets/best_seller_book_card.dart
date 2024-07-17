@@ -13,7 +13,8 @@ class BestsellerBookCard extends StatelessWidget {
     final imageUrl = '$baseURL${book.bookImagePath}';
 
     return Container(
-      width: isFirst ? 280 : 200, // 1등 책의 너비를 더 늘림
+      padding: EdgeInsets.only(left: 35),
+      width: isFirst ? 240 : 200,
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,8 +23,8 @@ class BestsellerBookCard extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                width: isFirst ? 250 : 100, // 1등 책의 너비를 더 늘림
-                height: isFirst ? 384 : 160,
+                width: isFirst ? 250 : 100,
+                height: isFirst ? 374 : 150,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(imageUrl),

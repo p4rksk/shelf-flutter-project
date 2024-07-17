@@ -18,13 +18,13 @@ class LowerComponent extends StatelessWidget {
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 15),
             width: double.infinity,
-            height: 30,
+            height: 50,
             decoration: BoxDecoration(
               color: Colors.grey[200],
             ),
             child: Text(
               "서비스 설정",
-              style: TextStyle(color: CupertinoColors.systemGrey, fontSize: 13),
+              style: TextStyle(color: CupertinoColors.systemGrey, fontSize: 18),
             ),
           ),
           InkWell(

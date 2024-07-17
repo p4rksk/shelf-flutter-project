@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; // For Riverpod state management
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/size.dart';
 import 'package:shelf/data/model/user/user_request.dart';
 import 'package:shelf/data/store/session_store.dart';
@@ -9,18 +9,22 @@ import '../../../_core/constants/theme.dart';
 import '../../../data/store/checkbox.dart';
 import '../widgets/show_custom_bottom_sheet.dart';
 
+final passwordProvider = StateProvider<String>((ref) => '');
+final confirmPasswordProvider = StateProvider<String>((ref) => '');
+
 class SignUp extends ConsumerWidget {
   final TextEditingController _emailController =
-      TextEditingController(text: "kim@nate.com");
+  TextEditingController(text: "kim@nate.com");
   final TextEditingController _nickNameController =
-      TextEditingController(text: "kim1");
-  final TextEditingController _passwordController =
-      TextEditingController(text: "1234");
-  final TextEditingController _confirmPasswordController =
-      TextEditingController(text: "1234");
+  TextEditingController(text: "kim1");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final password = ref.watch(passwordProvider);
+    final confirmPassword = ref.watch(confirmPasswordProvider);
+    final passwordsMatch = password == confirmPassword && password.isNotEmpty;
+    final passwordsDoNotMatch = password != confirmPassword && confirmPassword.isNotEmpty;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
@@ -30,8 +34,8 @@ class SignUp extends ConsumerWidget {
             Text(
               '회원가입',
               style: textTheme().titleLarge?.copyWith(
-                    color: kAccentColor3,
-                  ),
+                color: kAccentColor3,
+              ),
             ),
             const SizedBox(height: 40.0),
             Row(
@@ -117,7 +121,7 @@ class SignUp extends ConsumerWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
-              controller: _passwordController,
+              onChanged: (value) => ref.read(passwordProvider.notifier).state = value,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
@@ -136,12 +140,11 @@ class SignUp extends ConsumerWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
-              controller: _confirmPasswordController,
+              onChanged: (value) => ref.read(confirmPasswordProvider.notifier).state = value,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
-                label:
-                    const Text('비밀번호 확인', style: TextStyle(color: Colors.grey)),
+                label: const Text('비밀번호 확인', style: TextStyle(color: Colors.grey)),
                 hintText: '비밀번호를 다시 입력하세요',
                 hintStyle: const TextStyle(color: Colors.black26),
                 border: OutlineInputBorder(
@@ -152,6 +155,11 @@ class SignUp extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(color: Colors.grey),
                 ),
+                suffixIcon: passwordsMatch
+                    ? const Icon(Icons.check, color: Colors.green)
+                    : passwordsDoNotMatch
+                    ? const Icon(Icons.close, color: Colors.red)
+                    : null,
               ),
             ),
             const SizedBox(height: 25.0),
@@ -192,7 +200,7 @@ class SignUp extends ConsumerWidget {
                       JoinReqDTO joinReqDTO = JoinReqDTO(
                         email: _emailController.text.trim(),
                         nickName: _nickNameController.text.trim(),
-                        password: _passwordController.text.trim(),
+                        password: ref.read(passwordProvider).trim(),
                         isAgreed: false,
                       );
                       ref.read(sessionProvider.notifier).join(joinReqDTO);

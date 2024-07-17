@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:logger/logger.dart';
 
 // http 통신
 // android 에뮬레이터에서 루트백주소는 10.0.2.2:8080
@@ -15,7 +14,6 @@ final dio = Dio(
 
 // 휴대폰 로컬에 파일로 저장
 const secureStorage = FlutterSecureStorage();
-var logger = Logger();
 
 String? globalAccessToken = null;
 
@@ -28,7 +26,6 @@ var interceptor = InterceptorsWrapper(
       print("나 토큰이 없습니다.");
     }
 
-    logger.d("리퀘스트 헤더: ${options.headers}"); // 이 위치로 변경
     return handler.next(options);
   },
   onResponse: (response, handler) async {

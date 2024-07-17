@@ -35,7 +35,6 @@ class MyPage extends ConsumerWidget {
             SizedBox(height: gap_m),
             CompanyInfo(),
             ContactIcons(),
-            LogoutButton(),
           ],
         ),
       ),

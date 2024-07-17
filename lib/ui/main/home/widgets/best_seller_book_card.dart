@@ -23,8 +23,8 @@ class BestsellerBookCard extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                width: isFirst ? 250 : 100,
-                height: isFirst ? 374 : 150,
+                width: isFirst ? 210 : 80,
+                height: isFirst ? 334 : 130,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(imageUrl),
@@ -58,7 +58,7 @@ class BestsellerBookCard extends StatelessWidget {
           Text(
             book.bookTitle,
             style: TextStyle(
-              fontSize: isFirst ? 25 : 14,
+              fontSize: isFirst ? 20 : 14,
               fontWeight: FontWeight.bold,
             ),
             maxLines: 1,

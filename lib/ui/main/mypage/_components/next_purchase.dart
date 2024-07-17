@@ -22,7 +22,7 @@ class NextPurchase extends StatelessWidget {
         ),
         Text("2024.07.21",
             style: TextStyle(
-              color: Colors.black,
+              color: Color(0xffababab),
               fontSize: 15,
             ))
       ],

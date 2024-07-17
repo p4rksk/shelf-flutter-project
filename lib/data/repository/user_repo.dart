@@ -17,6 +17,8 @@ class UserRepo {
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
 
+
+
       // 헤더에서 JWT 토큰 추출
       if (response.headers['authorization'] != null) {
         responseDTO.token = response.headers['authorization']?.first;
@@ -33,16 +35,19 @@ class UserRepo {
     try {
       Response<dynamic> response =
           await dio.post("/user/login", data: requestDTO.toJson());
-      Logger().d("fetch 원본 제이슨  👉👉👉 " + response.data);
 
+      logger.d(response.headers['authorization']?.first);
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      logger.d(responseDTO.data);
       responseDTO.data = User.fromJson(responseDTO.data);
-      Logger().d("fetch Login  👉👉👉 " + responseDTO.data);
+      logger.d("👉👉👉🔹🔹👉👉 ${responseDTO.data}");
+
 
       // 헤더에서 JWT 토큰 추출
-      if (response.headers['authorization'] != null) {
+      if (response.headers['authorization']?.first != null) {
         responseDTO.token = response.headers['authorization']?.first;
       }
+      logger.d(responseDTO.token);
       return responseDTO;
     } catch (e) {
       return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");

@@ -2,6 +2,7 @@ import 'package:cosmos_epub/Model/book_progress_model.dart';
 import 'package:cosmos_epub/cosmos_epub.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/_core/constants/move.dart';
 
 import '_core/constants/theme.dart';
@@ -9,6 +10,7 @@ import '_core/constants/theme.dart';
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
+  // dio.interceptors.add(interceptor);
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initializer and methods return a bool

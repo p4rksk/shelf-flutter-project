@@ -6,20 +6,23 @@ import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
 import 'package:shelf/data/store/session_store.dart';
 
-final homeDataProvider = FutureProvider<HomeData>((ref) async {
-  SessionUser sessionUser = ref.read(sessionProvider);
-  Logger().d("👉👉👉👉 ${sessionUser.jwt}");
-  ResponseDTO responseDTO = await HomeRepo().fetchHomeData(sessionUser.jwt!);
+final homeDataProvider = FutureProvider.autoDispose<HomeData>((ref) async {
+  final sessionUser = await ref.watch(sessionProvider);
 
-  if (responseDTO.code == 200) {
-    return responseDTO.data as HomeData;
-  } else {
-    throw Exception('Failed to load book details: ${responseDTO.msg}');
+
+  if (sessionUser.jwt == null) {
+    throw Exception('JWT is null');
   }
-});
+
+  final homeRepo = ref.watch(homeRepoProvider);
+  return await homeRepo.fetchHomeData(sessionUser.jwt!);
+  }
+
+
+);
 
 class HomeRepo {
-  Future<ResponseDTO> fetchHomeData(String token) async {
+  Future<HomeData> fetchHomeData(String token) async {
     try {
       final response = await dio.get(
         '/app/main',
@@ -28,18 +31,14 @@ class HomeRepo {
         ),
       );
 
-      Logger().d(response.data);
 
       if (response.statusCode == 200) {
         // 여기에 data 파싱을 위한 코드 추가
         final data = response.data['data'] as Map<String, dynamic>;
         final homeData = HomeData.fromJson(data);
+        Logger().d(homeData);
 
-        return ResponseDTO(
-          code: response.data['code'],
-          msg: response.data['msg'],
-          data: homeData,
-        );
+        return homeData;
       } else {
         throw Exception('Failed to load authors');
       }

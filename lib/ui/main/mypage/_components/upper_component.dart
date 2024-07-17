@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/data/globals/avatar.dart';
 import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/ui/main/mypage/_components/logout_button.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
@@ -33,6 +34,8 @@ class UpperComponent extends StatelessWidget {
                 '${user!.nickName} 님',
                 style: h6(),
               ),
+              Spacer(),
+              LogoutButton(),
             ],
           ),
           SizedBox(height: gap_s),
@@ -47,7 +50,13 @@ class UpperComponent extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: gap_xxl,
-                  color: Colors.deepPurpleAccent[50],
+                  decoration: BoxDecoration(
+                    color: Color(0xFFB48EEE),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                    ),
+                  ),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -67,7 +76,7 @@ class UpperComponent extends StatelessWidget {
                             '나의 정기구독',
                             style: h8(),
                           ),
-                          Icon(Icons.arrow_forward_ios, color: TColor.grey),
+                          Icon(Icons.arrow_forward_ios, color: TColor.white),
                         ],
                       ),
                     ),

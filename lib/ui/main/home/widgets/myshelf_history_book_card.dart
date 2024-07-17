@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
@@ -79,7 +80,7 @@ class MyShelfHistoryBookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(historyBook.imagePath),
+                image: NetworkImage(baseURL + historyBook.imagePath),
                 fit: BoxFit.cover,
               ),
               boxShadow: [

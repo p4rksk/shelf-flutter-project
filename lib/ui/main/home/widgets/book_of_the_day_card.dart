@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
-import '../../../../data/model/home/home_page_data.dart';
 
 class BookOfTheDayCard extends StatelessWidget {
   final DayBestSellerDTO book;
@@ -12,7 +11,6 @@ class BookOfTheDayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageUrl = '$baseURL${book.bookImagePath}';
-
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
@@ -74,11 +72,14 @@ class BookOfTheDayCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        book.bookTitle,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Text(
+                          book.bookTitle,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       IconButton(

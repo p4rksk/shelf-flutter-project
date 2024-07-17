@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/style.dart';
-import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/_core/constants/http.dart';
 
 class WriterAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? writerName;

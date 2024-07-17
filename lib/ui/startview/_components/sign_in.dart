@@ -161,7 +161,7 @@ class SignIn extends ConsumerWidget {
                 SizedBox(width: gap_xl),
                 GestureDetector(
                   onTap: () {
-                    // 네이버 로그인 구현 필요함
+                    ref.read(sessionProvider.notifier).naverLogin();
                   },
                   child: CircleAvatar(
                     radius: 25,

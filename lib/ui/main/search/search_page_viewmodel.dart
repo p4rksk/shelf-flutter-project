@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/data/repository/search_repo.dart';
 import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/ui/main/search/data/author_result.dart';
-
-import '../../../main.dart';
+import 'package:shelf/main.dart';
 
 // 창고관리자
 final searchPageProvider =

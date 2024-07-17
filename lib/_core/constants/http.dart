@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:logger/logger.dart';
 
 // http 통신
 // android 에뮬레이터에서 루트백주소는 10.0.2.2:8080
-final baseURL = "http://10.0.2.2:8080";
+final baseURL = "http://192.168.219.111:8080";
 
 final dio = Dio(
   BaseOptions(
@@ -16,6 +17,8 @@ final dio = Dio(
 const secureStorage = FlutterSecureStorage();
 
 String? globalAccessToken = null;
+var logger = Logger();
+
 
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(

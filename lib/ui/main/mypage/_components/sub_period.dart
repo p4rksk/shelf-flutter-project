@@ -20,9 +20,9 @@ class SubPeriod extends StatelessWidget {
             ),
           ),
         ),
-        Text("2024,06,21 ~ 2024.07.21",
+        Text("2024,06.21 ~ 2024.07.21",
             style: TextStyle(
-              color: Colors.black,
+              color: Color(0xffababab),
               fontSize: 15,
             ))
       ],

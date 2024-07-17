@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelf/ui/main/mypage/_components/menu.dart';
-
+import '../pages/dark_mode_settings_page.dart';
 import '../../../../_core/constants/move.dart';
 
 class LowerComponent extends StatelessWidget {
@@ -24,7 +24,7 @@ class LowerComponent extends StatelessWidget {
             ),
             child: Text(
               "서비스 설정",
-              style: TextStyle(color: CupertinoColors.systemGrey, fontSize: 18),
+              style: TextStyle(color: Colors.grey, fontSize: 18),
             ),
           ),
           InkWell(
@@ -35,7 +35,17 @@ class LowerComponent extends StatelessWidget {
           ),
           Menu("내 기기 관리"),
           Menu("알림 설정"),
-          Menu("다크 모드 설정"),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DarkModeSettingsPage(),
+                ),
+              );
+            },
+            child: Menu("다크 모드 설정"),
+          ),
         ],
       ),
     );

@@ -22,7 +22,7 @@ class Menu extends StatelessWidget {
               children: [
                 Text(
                   '${title}',
-                  style: subtitle2(),
+                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
                 Icon(
                   Icons.arrow_forward_ios,

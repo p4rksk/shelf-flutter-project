@@ -21,7 +21,7 @@ class LogoutButton extends ConsumerWidget {
           border: Border.all(color: Colors.grey[300]!),
           borderRadius: BorderRadius.all(Radius.circular(gap_s)),
         ),
-        child: Text("로그아웃", style: subtitle2()),
+        child: Text("로그아웃", style: TextStyle(fontWeight: FontWeight.bold),),
       ),
     );
   }

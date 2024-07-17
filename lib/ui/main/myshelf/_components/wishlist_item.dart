@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/myshelf/my_shelf_dto.dart';
 
 class WishlistItem extends StatelessWidget {
@@ -22,7 +23,7 @@ class WishlistItem extends StatelessWidget {
                 width: 130,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(book.bookImagePath),
+                    image: NetworkImage(baseURL + book.bookImagePath),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(8.0),

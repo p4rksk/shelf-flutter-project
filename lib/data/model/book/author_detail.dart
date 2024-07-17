@@ -15,7 +15,7 @@ class AuthorDetail {
 
   factory AuthorDetail.fromJson(Map<String, dynamic> json) {
     return AuthorDetail(
-      id: int.parse(json["id"]),
+      id: json["id"],
       name: json["name"],
       authorIntro: json["authorIntro"],
       createdAt: DateTime.parse(json["createdAt"]),

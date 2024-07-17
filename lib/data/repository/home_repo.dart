@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
 import 'package:shelf/data/store/session_store.dart';
@@ -26,7 +25,6 @@ class HomeRepo {
         // 여기에 data 파싱을 위한 코드 추가
         final data = response.data['data'] as Map<String, dynamic>;
         final homeData = HomeData.fromJson(data);
-        Logger().d(homeData);
 
         return homeData;
       } else {

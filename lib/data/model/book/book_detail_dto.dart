@@ -10,7 +10,7 @@ class BookDetailDTO {
   final DateTime createdAt;
   final String bookIntro;
   final String contentIntro;
-  final String isWish;
+  final bool isWish;
   final DateTime registrationDate;
   final int totalViews;
   final int completedViews;
@@ -33,7 +33,7 @@ class BookDetailDTO {
 
   factory BookDetailDTO.fromJson(Map<String, dynamic> json) {
     return BookDetailDTO(
-      id: int.parse(json["id"]),
+      id: json["id"],
       path: json["path"],
       title: json["title"],
       author: AuthorDetail.fromJson(json["author"]),
@@ -44,8 +44,8 @@ class BookDetailDTO {
       contentIntro: json["contentIntro"],
       isWish: json["isWish"],
       registrationDate: DateTime.parse(json["registrationDate"]),
-      totalViews: int.parse(json["totalViews"]),
-      completedViews: int.parse(json["completedViews"]),
+      totalViews: json["totalViews"],
+      completedViews: json["completedViews"],
     );
   }
 //

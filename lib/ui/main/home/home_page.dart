@@ -27,7 +27,7 @@ class HomePage extends ConsumerWidget {
           ),
         ),
         loading: () => Center(child: CircularProgressIndicator()),
-        error: (error, stack) => Center(child: Text('hello: $error')),
+        error: (error, stack) => SizedBox(),
       ),
       bottomNavigationBar: ModifiedBottomNavigator(
         selectedIndex: 0,

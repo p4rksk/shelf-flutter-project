@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
+
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
-import '../../../../data/model/home/home_page_data.dart';
 
 class HistoryBookCard extends StatelessWidget {
-  final HistoryBook book;
+  final BookHistoryDTO historyBook;
 
-  HistoryBookCard({required this.book});
+  const HistoryBookCard({
+    required this.historyBook,
+  });
 
   @override
   Widget build(BuildContext context) {
+
+    final imageUrl = '$baseURL${historyBook.bookImagePath}';
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -40,7 +47,7 @@ class HistoryBookCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        book.title,
+                        historyBook.bookTitle,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -56,7 +63,7 @@ class HistoryBookCard extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       LinearProgressIndicator(
-                        value: book.readingProgress,
+                        value: historyBook.lastReadPage / historyBook.pageCount,
                         backgroundColor: Colors.grey[300],
                         color: TColor.primaryColor1,
                       ),
@@ -76,7 +83,7 @@ class HistoryBookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(book.imagePath),
+                image: NetworkImage(imageUrl),
                 fit: BoxFit.cover,
               ),
               boxShadow: [

@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shelf/_core/constants/move.dart';
+import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/data/repository/home_repo.dart';
+
 import '../../../../_core/constants/constants.dart';
-import '../../../../data/model/home/home_page_data.dart';
 import '../widgets/book_card.dart';
 import '../widgets/top_pick_clipper.dart';
-import 'package:untitled/_core/constants/move.dart';
 
-class TopPicksSection extends StatefulWidget {
+
+class TopPicksSection extends StatelessWidget {
+  final List<BestSellerDTO> books;
+
+  TopPicksSection({required this.books});
+
   @override
-  _TopPicksSectionState createState() => _TopPicksSectionState();
+  Widget build(BuildContext context) {
+    return _TopPicksSectionContent(books: books);
+  }
 }
 
-class _TopPicksSectionState extends State<TopPicksSection> {
+class _TopPicksSectionContent extends StatefulWidget {
+  final List<BestSellerDTO> books;
+
+  _TopPicksSectionContent({required this.books});
+
+  @override
+  __TopPicksSectionContentState createState() => __TopPicksSectionContentState();
+}
+
+class __TopPicksSectionContentState extends State<_TopPicksSectionContent> {
   final ScrollController _scrollController = ScrollController();
   final double _itemExtent = 140.0;
   bool _isAutoScrolling = false;
@@ -23,7 +42,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 100), () {
         if (_scrollController.hasClients) {
-          _scrollController.jumpTo(_itemExtent * books.length);
+          _scrollController.jumpTo(_itemExtent * widget.books.length);
         }
       });
     });
@@ -135,9 +154,9 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                           child: ListView.builder(
                             controller: _scrollController,
                             scrollDirection: Axis.horizontal,
-                            itemCount: books.length * 3,
+                            itemCount: widget.books.length * 3,
                             itemBuilder: (context, index) {
-                              final book = books[index % books.length];
+                              final book = widget.books[index % widget.books.length];
                               double scale = 1.0;
                               if (_scrollController.hasClients) {
                                 double itemOffset = index * _itemExtent;
@@ -201,7 +220,7 @@ class _TopPicksSectionState extends State<TopPicksSection> {
                       Navigator.pushNamed(context, Move.myShelfPage);
                     }),
                     _buildMenuItem(Icons.person, "내 정보", () {
-                      Navigator.pushNamed(context, Move.myInfo);
+                      Navigator.pushNamed(context, Move.profileEditPage);
                     }),
                     Spacer(),
                     Padding(

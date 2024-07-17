@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/_components/curation_bottm_sheet.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/_components/curation_bottm_sheet.dart';
+import '../../../../../../_core/constants/http.dart';
 import '../../../../../../_core/constants/style.dart';
 
 class ResultTitle extends StatefulWidget {
   final String categoryName;
   final List<Map<String, String>> categories;
   final int curationIndex;
-  final Function applySelection;
+  final Function(String) applySelection;
 
   const ResultTitle({
     Key? key,
@@ -21,6 +23,7 @@ class ResultTitle extends StatefulWidget {
   _ResultTitleState createState() => _ResultTitleState();
 }
 
+
 class _ResultTitleState extends State<ResultTitle> {
   late int _curationIndex;
 
@@ -32,6 +35,7 @@ class _ResultTitleState extends State<ResultTitle> {
 
   @override
   Widget build(BuildContext context) {
+    logger.d("👉👉👉👉👉👉👉👉");
     return InkWell(
       child: Row(
         children: [
@@ -66,6 +70,7 @@ class _ResultTitleState extends State<ResultTitle> {
           onCategorySelected: (index) {
             setState(() {
               _curationIndex = index;
+              logger.d("Selected curation index updated to $_curationIndex");
             });
           },
           onApply: () {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/data/model/category_page/category_list.dart';
-import 'package:untitled/ui/main/search/pages/category_result_page/category_result_page.dart';
+import 'package:shelf/data/model/category/category_list.dart';
+import 'package:shelf/ui/main/search/pages/category_result_page/category_result_page.dart';
 
 class CategoryButtons extends StatelessWidget {
   @override

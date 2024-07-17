@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/data/store/session_store.dart';
-import 'package:untitled/ui/common/components/modified_bottom_navigation_bar.dart';
-import 'package:untitled/ui/main/mypage/_components/logout_button.dart';
-import 'package:untitled/ui/main/mypage/_components/lower_component.dart';
+import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
+import 'package:shelf/ui/main/mypage/_components/logout_button.dart';
+import 'package:shelf/ui/main/mypage/_components/lower_component.dart';
+import 'package:shelf/ui/main/mypage/_components/upper_component_subscribed.dart';
+import 'package:shelf/ui/main/mypage/widgets/company_info.dart';
+import 'package:shelf/ui/main/mypage/widgets/contact_icons.dart';
 
 import '_components/upper_component.dart';
 
@@ -13,16 +17,23 @@ class MyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final int _selectedIndex = 3;
-    final session = ref.watch(sessionProvider);
+    final session = ref.read(sessionProvider);
 
     return Scaffold(
       body: Container(
-        color: Colors.white,
         child: ListView(
           children: [
-            UpperComponent(name: session.user?.nickName ?? 'Unknown'),
+            Padding(
+              padding: const EdgeInsets.only(top: gap_l),
+              child: session.user!.status
+                  ? UpperComponentSubscribed(user: session.user!)
+                  : UpperComponent(user: session.user!),
+            ),
+            SizedBox(height: gap_m),
             LowerComponent(),
-            LogoutButton(),
+            SizedBox(height: gap_m),
+            CompanyInfo(),
+            ContactIcons(),
           ],
         ),
       ),

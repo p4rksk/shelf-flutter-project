@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/ui/main/search/_components/widget_options.dart';
+
+import 'search/_components/widget_options.dart';
 
 class MainPage extends StatefulWidget {
   @override

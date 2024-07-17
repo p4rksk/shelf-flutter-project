@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../../../data/model/home/home_page_data.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 
 class BestsellerBookCard extends StatelessWidget {
-  final BestsellerBook book;
+  final BestSellerDTO book;
   final bool isFirst;
 
   BestsellerBookCard({required this.book, this.isFirst = false});
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = '$baseURL${book.bookImagePath}';
+
     return Container(
-      width: isFirst ? 280 : 200, // 1등 책의 너비를 더 늘림
+      padding: EdgeInsets.only(left: 35),
+      width: isFirst ? 240 : 200,
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,11 +23,11 @@ class BestsellerBookCard extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                width: isFirst ? 250 : 100, // 1등 책의 너비를 더 늘림
-                height: isFirst ? 384 : 160,
+                width: isFirst ? 210 : 80,
+                height: isFirst ? 334 : 130,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(book.imagePath),
+                    image: NetworkImage(imageUrl),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -33,7 +37,7 @@ class BestsellerBookCard extends StatelessWidget {
                 bottom: isFirst ? -35 : -10,
                 left: isFirst ? -40 : -15,
                 child: Text(
-                  book.rank,
+                  book.rankNum,
                   style: TextStyle(
                     fontSize: isFirst ? 120 : 50,
                     fontWeight: FontWeight.bold,
@@ -52,9 +56,9 @@ class BestsellerBookCard extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            book.title,
+            book.bookTitle,
             style: TextStyle(
-              fontSize: isFirst ? 25 : 14,
+              fontSize: isFirst ? 20 : 14,
               fontWeight: FontWeight.bold,
             ),
             maxLines: 1,

@@ -56,6 +56,9 @@ class _EditProfileFormState extends State<EditProfileForm> {
                 label: Text('비밀번호'),
                 hintText: '비밀번호를 입력하세요',
               ),
+              onChanged: (value) {
+                setState(() {});
+              },
             ),
           ),
           Padding(
@@ -66,7 +69,17 @@ class _EditProfileFormState extends State<EditProfileForm> {
               decoration: InputDecoration(
                 label: Text('비밀번호 확인'),
                 hintText: '비밀번호를 다시 입력하세요',
+                suffixIcon: _passwordController.text.isNotEmpty &&
+                    _confirmPasswordController.text.isNotEmpty
+                    ? (_passwordController.text ==
+                    _confirmPasswordController.text
+                    ? Icon(Icons.check, color: Colors.green)
+                    : Icon(Icons.close, color: Colors.red))
+                    : null,
               ),
+              onChanged: (value) {
+                setState(() {});
+              },
             ),
           ),
           Padding(
@@ -92,7 +105,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: SizedBox(
-              width: double.infinity,  // Set the button width to full width of the container
+              width: double.infinity, // Set the button width to full width of the container
               child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {

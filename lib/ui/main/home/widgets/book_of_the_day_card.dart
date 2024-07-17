@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import '../../../../data/model/home/home_page_data.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 
 class BookOfTheDayCard extends StatelessWidget {
+  final DayBestSellerDTO book;
+
+  BookOfTheDayCard({required this.book});
+
   @override
   Widget build(BuildContext context) {
+    final imageUrl = '$baseURL${book.bookImagePath}';
+
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       height: 250,
@@ -44,7 +51,7 @@ class BookOfTheDayCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(bookOfTheDay.imagePath),
+                    image: NetworkImage(imageUrl),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -65,11 +72,14 @@ class BookOfTheDayCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        bookOfTheDay.title,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Text(
+                          book.bookTitle,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       IconButton(
@@ -81,7 +91,7 @@ class BookOfTheDayCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    bookOfTheDay.author,
+                    book.author,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -89,7 +99,7 @@ class BookOfTheDayCard extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    bookOfTheDay.description,
+                    book.bookIntro,
                     style: TextStyle(
                       fontSize: 14,
                     ),

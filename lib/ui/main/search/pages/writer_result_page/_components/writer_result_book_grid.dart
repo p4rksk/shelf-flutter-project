@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
+import 'package:shelf/ui/main/search/pages/writer_result_page/data/writer_result_model.dart';
 
-import '../../../../../../data/model/category_page/category_page_data.dart';
+class WriterResultBookGrid extends StatelessWidget {
+  final List<WriterResultBook> books;
 
-class WriterBookGrid extends StatelessWidget {
-  final List<Book> books;
-
-  const WriterBookGrid({
-    Key? key,
+  const WriterResultBookGrid({
     required this.books,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +29,30 @@ class WriterBookGrid extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: Container(
-                    height: 160,
-                    width: double.infinity,
-                    child: Image.asset(
-                      book.path,
-                      fit: BoxFit.fitWidth,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              BookDetailPage(bookId: book.bookId),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 160,
+                      width: double.infinity,
+                      child: Image.network(
+                        baseURL + book.bookPath,
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Text(
-                    book.title,
+                    book.bookTitle,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
@@ -50,7 +61,7 @@ class WriterBookGrid extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 0),
                   child: Text(
-                    '${book.author}',
+                    '${book.author.authorName}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(

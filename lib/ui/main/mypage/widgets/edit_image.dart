@@ -1,6 +1,8 @@
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shelf/data/globals/avatar.dart';
 
 import '../../../../_core/constants/size.dart';
 
@@ -11,16 +13,7 @@ class EditImage extends StatefulWidget {
 
 class _EditImageState extends State<EditImage> {
   ImageProvider<Object>? _profileImage;
-  List<String> avatars = [
-    "assets/images/avatar1.png",
-    "assets/images/avatar2.png",
-    "assets/images/avatar3.png",
-    "assets/images/avatar4.png",
-    "assets/images/avatar5.png",
-    "assets/images/avatar6.png",
-    "assets/images/avatar7.png",
-    "assets/images/avatar8.png",
-  ];
+  List<Map<String, String>> avatars = avatarlist;
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);
@@ -56,11 +49,12 @@ class _EditImageState extends State<EditImage> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            _profileImage = AssetImage(avatars[index]);
+                            _profileImage =
+                                AssetImage(avatars[index].values.first);
                           });
                           Navigator.of(context).pop();
                         },
-                        child: Image.asset(avatars[index]),
+                        child: Image.asset(avatars[index].values.first),
                       ),
                     ),
                   ),
@@ -98,7 +92,8 @@ class _EditImageState extends State<EditImage> {
           CircleAvatar(
             radius: 75,
             backgroundColor: Colors.grey[300],
-            backgroundImage: _profileImage ?? AssetImage("assets/images/avatar1.png"),
+            backgroundImage:
+                _profileImage ?? AssetImage("assets/images/avatar1.png"),
           ),
           Positioned(
             bottom: 10,

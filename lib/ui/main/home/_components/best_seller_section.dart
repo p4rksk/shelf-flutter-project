@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import 'package:untitled/_core/constants/size.dart';
-import '../../../../data/model/home/home_page_data.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/model/home/home_page_dto.dart';
 import '../pages/best_seller_detail_page.dart';
 import '../widgets/best_seller_book_card.dart';
 
 class BestSellerSection extends StatelessWidget {
+  final List<BestSellerDTO> books;
+
+  const BestSellerSection({
+    required this.books,
+  });
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(gap_l),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -46,31 +53,31 @@ class BestSellerSection extends StatelessWidget {
             ),
           ),
           Container(
-            height: 550,
+            height: 500,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
                 BestsellerBookCard(
-                  book: bestsellerBooks[0],
+                  book: books[0],
                   isFirst: true,
                 ),
                 Row(
                   children: List.generate(
-                    (bestsellerBooks.length - 1) ~/ 2,
+                    (books.length - 1) ~/ 2,
                         (index) => Column(
                       children: [
                         Container(
                           width: 120,
                           child: BestsellerBookCard(
-                            book: bestsellerBooks[2 * index + 1],
+                            book: books[2 * index + 1],
                           ),
                         ),
                         SizedBox(height: 10),
-                        if (2 * index + 2 < bestsellerBooks.length)
+                        if (2 * index + 2 < books.length)
                           Container(
                             width: 120,
                             child: BestsellerBookCard(
-                              book: bestsellerBooks[2 * index + 2],
+                              book: books[2 * index + 2],
                             ),
                           ),
                       ],
@@ -84,4 +91,6 @@ class BestSellerSection extends StatelessWidget {
       ),
     );
   }
+
+
 }

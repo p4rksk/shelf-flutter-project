@@ -15,9 +15,10 @@ final dio = Dio(
 
 // 휴대폰 로컬에 파일로 저장
 const secureStorage = FlutterSecureStorage();
-var logger = Logger();
 
 String? globalAccessToken = null;
+var logger = Logger();
+
 
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(
@@ -28,7 +29,6 @@ var interceptor = InterceptorsWrapper(
       print("나 토큰이 없습니다.");
     }
 
-    logger.d("리퀘스트 헤더: ${options.headers}"); // 이 위치로 변경
     return handler.next(options);
   },
   onResponse: (response, handler) async {

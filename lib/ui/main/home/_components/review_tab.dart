@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/size.dart';
+import 'package:shelf/data/model/book/book_detail_dto.dart';
 import '../../../../data/model/home/book_detail_data.dart';
 
 class ReviewTab extends StatelessWidget {
-  final Book book;
+  final BookDetailDTO book;
 
   ReviewTab({required this.book});
 

@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:untitled/_core/constants/http.dart';
-import 'package:untitled/data/dto/response_dto.dart';
-import 'package:untitled/data/model/user/user.dart';
-import 'package:untitled/data/model/user/user_request.dart';
+import 'package:logger/logger.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/dto/response_dto.dart';
+import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/data/model/user/user_request.dart';
 
-class UserRepository {
+class UserRepo {
+  var logger = Logger();
 
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
     try {
@@ -14,6 +16,8 @@ class UserRepository {
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
+
+
 
       // 헤더에서 JWT 토큰 추출
       if (response.headers['authorization'] != null) {
@@ -29,7 +33,8 @@ class UserRepository {
 
   Future<(ResponseDTO, String?)> fetchLogin(LoginReqDTO requestDTO) async {
     try {
-      Response<dynamic> response = await dio.post("/user/login", data: requestDTO.toJson());
+      Response<dynamic> response =
+          await dio.post("/user/login", data: requestDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);

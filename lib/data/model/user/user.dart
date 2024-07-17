@@ -1,8 +1,12 @@
+import 'package:logger/logger.dart';
+import 'package:shelf/_core/constants/http.dart';
+
 class User {
   int id;
   String email;
   String nickName;
   bool status;
+  String avatar;
   DateTime? createdAt;
 
   User({
@@ -10,6 +14,7 @@ class User {
     required this.email,
     required this.nickName,
     required this.status,
+    required this.avatar,
     this.createdAt,
   });
 
@@ -18,9 +23,9 @@ class User {
       id: json["id"],
       email: json["email"],
       nickName: json["nickName"],
-      status: json["status"] ?? false,
-      createdAt:
-          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      status: json["status"],
+      avatar: json["avatar"],
+      createdAt: json["createdAt"] != null ? DateTime.parse(json["createdAt"]) : null,
     );
   }
 

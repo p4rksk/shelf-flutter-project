@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:untitled/_core/constants/constants.dart';
-import 'package:untitled/_core/constants/size.dart';
+import 'package:shelf/_core/constants/constants.dart';
+import 'package:shelf/_core/constants/size.dart';
 import '../../../../data/model/home/home_page_data.dart';
 import '../../../../data/store/bestseller_provider.dart';
 
 class BestSellerDetailPage extends ConsumerWidget {
-  final List<String> categories = ['종합', '소설', '경제/경영', '자기계발', '시/에세이', '인문/교양'];
+  final List<String> categories = ['종합', '소설', '자기계발', '역사', '인문', '사회', '과학', '철학', '종교', 'IT'];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,6 +14,7 @@ class BestSellerDetailPage extends ConsumerWidget {
     final filteredBooks = ref.watch(filteredBooksProvider);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('전체 베스트셀러'),
         bottom: PreferredSize(
@@ -62,9 +63,8 @@ class BestSellerDetailPage extends ConsumerWidget {
             padding: const EdgeInsets.all(12.0),
             child: Row(
               children: [
-                Image.asset(book.imagePath, width: 120, height: 120),
                 Container(
-                  width: 100,
+                  width: 60,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -94,7 +94,7 @@ class BestSellerDetailPage extends ConsumerWidget {
                       Text(
                         book.title,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -116,6 +116,8 @@ class BestSellerDetailPage extends ConsumerWidget {
                     ],
                   ),
                 ),
+                SizedBox(width: 20),
+                Image.asset(book.imagePath, width: 120, height: 120),
               ],
             ),
           );

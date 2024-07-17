@@ -1,39 +1,44 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shelf/data/globals/avatar.dart';
+import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/ui/main/mypage/_components/logout_button.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
+import '../pages/payment_management_page.dart';
 
 class UpperComponent extends StatelessWidget {
-  String? name;
+  final User? user;
 
-  UpperComponent({required this.name});
+  UpperComponent({required this.user});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: gap_m, vertical: gap_m),
       color: Colors.white,
       child: Column(
         children: [
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: gap_s),
                 child: CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage("assets/icon/02.png"),
+                  backgroundImage: AssetImage(getAvatarPath(user!.avatar)),
                 ),
               ),
-              SizedBox(height: 20, width: 5),
+              SizedBox(height: gap_xxxl, width: gap_s),
               Text(
-                '${name} 님',
+                '${user!.nickName} 님',
                 style: h6(),
               ),
+              Spacer(),
+              LogoutButton(),
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: gap_s),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
@@ -45,19 +50,35 @@ class UpperComponent extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: gap_xxl,
-                  color: CupertinoColors.systemGrey5,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '나의 정기구독',
-                          style: h8(),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFB48EEE),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                    ),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentManagementPage(),
                         ),
-                        Icon(Icons.arrow_forward_ios, color: TColor.grey),
-                      ],
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '나의 정기구독',
+                            style: h8(),
+                          ),
+                          Icon(Icons.arrow_forward_ios, color: TColor.white),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -88,12 +109,12 @@ class UpperComponent extends StatelessWidget {
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 TColor.primaryColor1), // 버튼 배경 색상
                             foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                                MaterialStateProperty.all<Color>(Colors.white),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius:
-                                BorderRadius.circular(5.0), // 원하는 반경 값 설정
+                                    BorderRadius.circular(5.0), // 원하는 반경 값 설정
                               ),
                             ),
                           ),

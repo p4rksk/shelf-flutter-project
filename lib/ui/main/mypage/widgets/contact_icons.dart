@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/utils/communication_util.dart';
+import '../_components/contact_modal.dart';
 
 class ContactIcons extends StatelessWidget {
   const ContactIcons({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class ContactIcons extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.question_answer, color: kAccentColor2),
             onPressed: () {
+              ContactModal.show(context);
             },
           ),
         ],

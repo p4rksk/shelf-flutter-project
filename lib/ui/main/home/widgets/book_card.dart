@@ -42,15 +42,17 @@ class BookCard extends StatelessWidget {
           book.bookTitle,
           style: TextStyle(
             color: isFocused ? Colors.black87 : Colors.grey,
-            fontSize: 20,
+            fontSize: 13,
             fontWeight: FontWeight.bold,
           ),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
         ),
         Text(
           book.author,
           style: TextStyle(
             color: isFocused ? Colors.black54 : Colors.grey,
-            fontSize: 16,
+            fontSize: 12,
           ),
         ),
       ],

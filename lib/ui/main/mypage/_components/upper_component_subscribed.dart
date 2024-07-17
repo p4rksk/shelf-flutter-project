@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelf/data/globals/avatar.dart';
 import 'package:shelf/data/model/user/user.dart';
+import 'package:shelf/ui/main/mypage/_components/logout_button.dart';
 import 'package:shelf/ui/main/mypage/_components/next_purchase.dart';
 import 'package:shelf/ui/main/mypage/_components/sub_period.dart';
 
@@ -26,7 +27,6 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      color: Colors.white,
       child: Column(
         children: [
           Row(
@@ -42,8 +42,10 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
               SizedBox(height: 20, width: 5),
               Text(
                 '${widget.user!.nickName} 님',
-                style: h6(),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+              Spacer(),
+              LogoutButton(),
             ],
           ),
           SizedBox(height: 10),
@@ -58,7 +60,13 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                 Container(
                   width: double.infinity,
                   height: gap_xxl,
-                  color: CupertinoColors.systemGrey5,
+                  decoration: BoxDecoration(
+                    color: Color(0xffa179da),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
+                  ),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.symmetric(horizontal: 10),
@@ -69,7 +77,7 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                           '나의 정기구독',
                           style: h8(),
                         ),
-                        Icon(Icons.arrow_forward_ios, color: TColor.grey),
+                        Icon(Icons.arrow_forward_ios, color: TColor.white),
                       ],
                     ),
                   ),
@@ -87,7 +95,6 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                           children: [
                             Text(
                               '전자책 월 정기구독',
-                              style: p3(),
                             ),
                             SizedBox(width: 5),
                             Container(
@@ -99,7 +106,7 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                                   borderRadius: BorderRadius.circular(5)),
                               child: Text("전차책 구독",
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 10)),
+                                      color: Color(0xffababab), fontSize: 10)),
                             )
                           ],
                         ),

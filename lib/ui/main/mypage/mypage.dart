@@ -21,7 +21,6 @@ class MyPage extends ConsumerWidget {
 
     return Scaffold(
       body: Container(
-        color: Colors.white,
         child: ListView(
           children: [
             Padding(

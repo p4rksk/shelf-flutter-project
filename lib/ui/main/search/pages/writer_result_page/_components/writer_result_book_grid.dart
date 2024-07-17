@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/ui/main/search/pages/writer_result_page/data/writer_result_model.dart';
 
 class WriterResultBookGrid extends StatelessWidget {
@@ -30,8 +31,8 @@ class WriterResultBookGrid extends StatelessWidget {
                   child: Container(
                     height: 160,
                     width: double.infinity,
-                    child: Image.asset(
-                      book.bookPath,
+                    child: Image.network(
+                      baseURL + book.bookPath,
                       fit: BoxFit.fitWidth,
                     ),
                   ),

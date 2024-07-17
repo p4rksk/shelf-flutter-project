@@ -20,11 +20,6 @@ final List<Map<String, String>> categories = [
     'image': 'assets/images/categories/history.png',
   },
   {
-    'name': '만화',
-    'description': '만화책',
-    'image': 'assets/images/categories/cartoon.png',
-  },
-  {
     'name': '소설',
     'description': '소설책',
     'image': 'assets/images/categories/novel.png',

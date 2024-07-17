@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/line.dart';
 import 'package:shelf/data/model/category/category_list.dart';
 import 'package:shelf/data/repository/category_result_repo.dart';
+import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:shelf/ui/main/search/pages/category_result_page/_components/back_arrow_appbar.dart';
 import 'package:shelf/ui/main/search/pages/category_result_page/_components/category_result_book_grid.dart';
@@ -20,11 +21,11 @@ class CategoryResultPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final categoryResultAsyncValue =
-        ref.watch(categorySearchProvider(categoryName));
-    int _selectedIndex = 0;
+    final categoryResultAsyncValue = ref.watch(categorySearchProvider(categoryName));
+    int _selectedIndex = 1;
     int _curationIndex = 0;
     String selectedSort = "완독할 확률 높은 순";
+
 
     return Scaffold(
       appBar: BackArrowAppBar(),
@@ -32,7 +33,7 @@ class CategoryResultPage extends ConsumerWidget {
         padding: EdgeInsets.symmetric(horizontal: 15),
         color: Colors.white,
         child: categoryResultAsyncValue.when(
-          data: (categoryResultDTO) {
+          data: (categoryResultDTO) =>
             Column(
               children: [
                 ResultTitle(
@@ -59,8 +60,7 @@ class CategoryResultPage extends ConsumerWidget {
                   books: categoryResultDTO.books,
                 ),
               ],
-            );
-          },
+            ),
           loading: () => Center(child: CircularProgressIndicator()),
           error: (error, stack) => Center(child: Text('Error: $error')),
         ),

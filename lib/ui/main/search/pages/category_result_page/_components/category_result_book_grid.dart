@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 import 'package:shelf/ui/main/search/pages/category_result_page/data/category_result_viewmodel.dart';
+
+import '../../../../../../_core/constants/http.dart';
 
 class CategoryResultBookGrid extends StatelessWidget {
   final List<CategoryResultBook> books;
@@ -11,6 +14,7 @@ class CategoryResultBookGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Expanded(
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -22,6 +26,7 @@ class CategoryResultBookGrid extends StatelessWidget {
         itemCount: books.length,
         itemBuilder: (context, index) {
           var book = books[index];
+          // logger.d(book);
           return InkWell(
             onTap: () {
               Navigator.push(
@@ -36,12 +41,13 @@ class CategoryResultBookGrid extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   Center(
                     child: Container(
                       height: 160,
                       width: double.infinity,
-                      child: Image.asset(
-                        book.bookPath,
+                      child: Image.network(
+                        baseURL+book.bookPath, // 이 부분은 유효한 이미지 URL로 변경되어야 합니다.
                         fit: BoxFit.fitWidth,
                       ),
                     ),

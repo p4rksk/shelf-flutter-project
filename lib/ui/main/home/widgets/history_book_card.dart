@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
 
 import '../../../../_core/constants/constants.dart';
@@ -13,6 +14,9 @@ class HistoryBookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final imageUrl = '$baseURL${historyBook.bookImagePath}';
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -79,7 +83,7 @@ class HistoryBookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(historyBook.bookImagePath),
+                image: NetworkImage(imageUrl),
                 fit: BoxFit.cover,
               ),
               boxShadow: [

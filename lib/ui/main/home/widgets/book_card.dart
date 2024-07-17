@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
 import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
@@ -11,6 +12,8 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = '$baseURL${book.bookImagePath}';
+
     return Column(
       children: [
         InkWell(
@@ -28,7 +31,7 @@ class BookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(book.bookImagePath),
+                image: NetworkImage(imageUrl),
                 fit: BoxFit.cover,
               ),
             ),

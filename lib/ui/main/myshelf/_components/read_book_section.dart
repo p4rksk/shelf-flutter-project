@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/_core/constants/size.dart';
 import 'package:shelf/data/model/myshelf/my_shelf_dto.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
 class ReadBooksSection extends StatelessWidget {
   final List<AllBook> allBook;
@@ -42,15 +43,25 @@ class ReadBooksSection extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 150,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(baseURL + book.bookImagePath),
-                        fit: BoxFit.cover,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookDetailPage(bookId: book.id),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 150,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(baseURL + book.bookImagePath),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                   SizedBox(height: 8.0),

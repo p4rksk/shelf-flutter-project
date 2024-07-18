@@ -18,8 +18,8 @@ class HistoryBook {
       id: json['id'],
       imagePath: json['imagePath'],
       bookTitle: json['bookTitle'],
-      pageCount: int.parse(json['pageCount']),
-      lastReadPage: int.parse(json['lastReadPage']),
+      pageCount: json['pageCount'],
+      lastReadPage: json['lastReadPage'],
     );
   }
 }
@@ -55,24 +55,22 @@ class WishBook {
   final String author;
   final String createdAt;
 
-  WishBook({
-    required this.id,
-    required this.bookId,
-    required this.bookImagePath,
-    required this.bookTitle,
-    required this.author,
-    required this.createdAt
-  });
+  WishBook(
+      {required this.id,
+      required this.bookId,
+      required this.bookImagePath,
+      required this.bookTitle,
+      required this.author,
+      required this.createdAt});
 
   factory WishBook.fromJson(Map<String, dynamic> json) {
     return WishBook(
-      id: json['id'],
-      bookId: json['bookId'],
-      bookImagePath: json['bookImagePath'],
-      bookTitle: json['bookTitle'],
-      author: json['author'],
-      createdAt: json['createdAt']
-    );
+        id: json['id'],
+        bookId: json['bookId'],
+        bookImagePath: json['bookImagePath'],
+        bookTitle: json['bookTitle'],
+        author: json['author'],
+        createdAt: json['createdAt']);
   }
 }
 

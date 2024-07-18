@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
 class BestsellerBookCard extends StatelessWidget {
   final BestSellerDTO book;
@@ -22,15 +23,25 @@ class BestsellerBookCard extends StatelessWidget {
           Stack(
             clipBehavior: Clip.none,
             children: [
-              Container(
-                width: isFirst ? 210 : 80,
-                height: isFirst ? 334 : 130,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(imageUrl),
-                    fit: BoxFit.cover,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookDetailPage(bookId: book.id),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: isFirst ? 210 : 80,
+                  height: isFirst ? 334 : 130,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
               Positioned(

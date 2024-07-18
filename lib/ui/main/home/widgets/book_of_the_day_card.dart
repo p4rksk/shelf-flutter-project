@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
 class BookOfTheDayCard extends StatelessWidget {
   final DayBestSellerDTO book;
@@ -45,14 +46,24 @@ class BookOfTheDayCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Container(
-                width: 100,
-                height: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(imageUrl),
-                    fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookDetailPage(bookId: book.id),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: 100,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

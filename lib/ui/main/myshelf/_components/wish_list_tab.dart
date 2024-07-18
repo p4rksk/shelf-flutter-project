@@ -17,7 +17,7 @@ class WishlistTab extends StatelessWidget {
       padding: const EdgeInsets.all(gap_m),
       child: Wrap(
         spacing: 8.0,
-        runSpacing: 16.0,
+        runSpacing: gap_xs,
         children: wishList.map((book) {
           return WishlistItem(book: book);
         }).toList(),

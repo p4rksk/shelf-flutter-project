@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:shelf/data/dto/response_dto.dart';
-import 'package:shelf/ui/main/search/data/author_result.dart';
+import 'package:shelf/ui/pages/search/data/author_result.dart';
 
 import '../../_core/constants/http.dart';
 

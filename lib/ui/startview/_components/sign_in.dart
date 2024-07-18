@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/data/model/user/user_request.dart';
 import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/pages/main_page.dart';
 
 import '../../../_core/constants/constants.dart';
 import '../../../_core/constants/size.dart';
 import '../../../_core/constants/theme.dart';
-import '../../main/main_page.dart';
 import '../widgets/show_custom_bottom_sheet.dart';
 
 class SignIn extends ConsumerWidget {

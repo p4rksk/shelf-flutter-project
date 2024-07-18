@@ -26,48 +26,53 @@ class ReadBooksSection extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Wrap(
-            spacing: 8.0,
-            runSpacing: 16.0,
-            children: allBook.map((book) {
-              return Container(
-                width: 120,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(baseURL + book.bookImagePath),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
+          padding: const EdgeInsets.only(left: 20, bottom: 20),
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 150,
+              crossAxisSpacing: 13,
+              mainAxisSpacing: gap_m,
+              childAspectRatio: 0.6,
+            ),
+            itemCount: allBook.length,
+            itemBuilder: (context, index) {
+              final book = allBook[index];
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(baseURL + book.bookImagePath),
+                        fit: BoxFit.cover,
                       ),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    SizedBox(height: 8.0),
-                    Text(
-                      book.bookTitle,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8.0),
+                  Text(
+                    book.bookTitle,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      book.author,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    book.author,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
                     ),
-                  ],
-                ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               );
-            }).toList(),
+            },
           ),
         ),
       ],

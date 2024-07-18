@@ -17,8 +17,6 @@ class UserRepo {
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
 
-
-
       // 헤더에서 JWT 토큰 추출
       if (response.headers['authorization'] != null) {
         responseDTO.token = response.headers['authorization']?.first;
@@ -44,6 +42,7 @@ class UserRepo {
 
       return (responseDTO, accessToken);
     } catch (e) {
-      return (ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다"), null);    }
+      return (ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다"), null);
+    }
   }
 }

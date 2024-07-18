@@ -53,6 +53,7 @@ class WishBook {
   final String bookImagePath;
   final String bookTitle;
   final String author;
+  final String createdAt;
 
   WishBook({
     required this.id,
@@ -60,6 +61,7 @@ class WishBook {
     required this.bookImagePath,
     required this.bookTitle,
     required this.author,
+    required this.createdAt
   });
 
   factory WishBook.fromJson(Map<String, dynamic> json) {
@@ -69,6 +71,7 @@ class WishBook {
       bookImagePath: json['bookImagePath'],
       bookTitle: json['bookTitle'],
       author: json['author'],
+      createdAt: json['createdAt']
     );
   }
 }

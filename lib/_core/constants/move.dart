@@ -1,17 +1,14 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:shelf/ui/main/home/home_page.dart';
-import 'package:shelf/ui/main/home/pages/best_seller_detail_page.dart';
-import 'package:shelf/ui/main/home/pages/brand_new_page.dart';
-import 'package:shelf/ui/main/mypage/mypage.dart';
-import 'package:shelf/ui/main/mypage/pages/myinfo/my_info.dart';
-import 'package:shelf/ui/main/mypage/pages/profile_edit_page.dart';
-import 'package:shelf/ui/main/myshelf/my_shelf.dart';
-import 'package:shelf/ui/main/search/search_page.dart';
+import 'package:shelf/ui/pages/home/home_page.dart';
+import 'package:shelf/ui/pages/home/pages/best_seller_detail_page.dart';
+import 'package:shelf/ui/pages/home/pages/brand_new_page.dart';
+import 'package:shelf/ui/pages/mypage/mypage.dart';
+import 'package:shelf/ui/pages/mypage/pages/myinfo/my_info.dart';
+import 'package:shelf/ui/pages/mypage/pages/payment_management_page.dart';
+import 'package:shelf/ui/pages/mypage/pages/profile_edit_page.dart';
+import 'package:shelf/ui/pages/myshelf/my_shelf.dart';
+import 'package:shelf/ui/pages/search/search_page.dart';
 import 'package:shelf/ui/startview/start_view_page.dart';
-
-import '../../ui/main/mypage/pages/payment_management_page.dart';
 
 class Move {
   static String startViewPage = "시작 영상 페이지";

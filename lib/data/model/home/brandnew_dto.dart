@@ -16,6 +16,13 @@ class BrandNewRespDTO {
       brandNewList: brandNewList,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'brandNewWeekly': brandNewWeekly,
+      'brandNewList': brandNewList.map((book) => book.toJson()).toList(),
+    };
+  }
 }
 
 class BrandNewList {
@@ -38,5 +45,14 @@ class BrandNewList {
       author: json['author'],
       path: json['path'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'bookId': bookId,
+      'title': title,
+      'author': author,
+      'path': path,
+    };
   }
 }

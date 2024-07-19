@@ -33,7 +33,7 @@ class ReadBooksSection extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 150,
-              crossAxisSpacing: 13,
+              crossAxisSpacing: gap_xxs,
               mainAxisSpacing: gap_m,
               childAspectRatio: 0.6,
             ),

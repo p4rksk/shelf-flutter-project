@@ -10,6 +10,10 @@ import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
 import '../../../../_core/constants/style.dart';
 
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 class UpperComponentSubscribed extends StatefulWidget {
   User? user;
 
@@ -23,6 +27,50 @@ class UpperComponentSubscribed extends StatefulWidget {
 }
 
 class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
+
+  Future<void> handleUnschedulePayment() async {
+    if (widget.user?.id == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('User ID가 null입니다. 유효한 ID를 제공해주세요.')),
+      );
+      return;
+    }
+
+    try {
+      // 요청할 URL
+      final url = Uri.parse('http://10.0.2.2:8080/unschedule');
+
+      // 요청 본문 데이터
+      final body = jsonEncode({
+        'user_id': widget.user!.id
+      });
+
+      // POST 요청 보내기
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        // 성공 처리
+        print('결제 해지 성공');
+      } else {
+        // 실패 처리
+        print('결제 해지 실패: ${response.body}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('결제 해지에 실패했습니다. 서버 응답: ${response.body}')),
+        );
+      }
+    } catch (e) {
+      // 예외 처리
+      print('결제 해지 요청 중 오류 발생: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('결제 해지 요청 중 오류가 발생했습니다.')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -116,9 +164,30 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                         children: [
                           SubPeriod(),
                           NextPurchase(),
+
                         ],
                       ),
                       SizedBox(height: 10),
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton(
+                          onPressed: handleUnschedulePayment,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                TColor.primaryColor1), // 버튼 배경 색상
+                            foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.circular(5.0), // 원하는 반경 값 설정
+                              ),
+                            ),
+                          ),
+                          child: Text('구독 해지'),
+                        ),
+                      ),
                     ],
                   ),
                 ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/ui/pages/home/widgets/myshelf_history_book_card.dart';
-
-import '../../../../data/model/myshelf/my_shelf_dto.dart';
+import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 
 class MyshelfHistorySection extends StatelessWidget {
   final List<HistoryBook> historyBooks;

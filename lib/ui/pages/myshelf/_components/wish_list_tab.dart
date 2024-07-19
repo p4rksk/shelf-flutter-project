@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shelf/data/model/myshelf/my_shelf_dto.dart';
 import 'package:shelf/ui/pages/myshelf/_components/wishlist_item.dart';
+import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 
 import '../../../../_core/constants/size.dart';
 

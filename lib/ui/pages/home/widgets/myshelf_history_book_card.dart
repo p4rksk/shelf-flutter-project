@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/book_detail_page.dart';
+import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../../../../_core/constants/size.dart';
-import '../../../../data/model/myshelf/my_shelf_dto.dart';
 
 class MyShelfHistoryBookCard extends StatelessWidget {
   final HistoryBook historyBook;

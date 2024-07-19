@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/_core/constants/size.dart';
-import 'package:shelf/data/model/myshelf/my_shelf_dto.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/book_detail_page.dart';
+import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 
 class WishlistItem extends StatelessWidget {
   final WishBook book;

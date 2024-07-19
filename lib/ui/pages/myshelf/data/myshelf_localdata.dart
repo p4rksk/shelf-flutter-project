@@ -1,6 +1,6 @@
 import 'package:shelf/data/model/home/book_detail_data.dart';
 
-import '../home/home_page_data.dart';
+import '../../../../data/model/home/home_page_data.dart';
 
 class MyReview {
   final String bookImagePath;

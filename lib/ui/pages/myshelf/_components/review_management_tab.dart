@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/size.dart';
-import '../../../../data/model/myshelf/my_shelf_data.dart';
+
 import '../../home/widgets/review_item.dart';
+import '../data/myshelf_localdata.dart';
 
 class ReviewManagementTab extends StatelessWidget {
   @override
@@ -21,4 +22,3 @@ class ReviewManagementTab extends StatelessWidget {
     );
   }
 }
-

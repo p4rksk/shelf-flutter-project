@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/size.dart';
-import '../../../../data/model/myshelf/my_shelf_data.dart';
+
+import '../../myshelf/data/myshelf_localdata.dart';
 
 class ReviewItem extends StatelessWidget {
   final MyReview review;
@@ -43,7 +44,10 @@ class ReviewItem extends StatelessWidget {
                   children: [
                     Text(
                       review.bookTitle,
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black54),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54),
                     ),
                     Text(
                       review.bookAuthor,

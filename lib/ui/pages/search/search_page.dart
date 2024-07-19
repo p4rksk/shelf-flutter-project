@@ -5,7 +5,7 @@ import 'package:shelf/ui/pages/search/_components/author_buttons.dart';
 import 'package:shelf/ui/pages/search/_components/category_buttons.dart';
 import 'package:shelf/ui/pages/search/_components/custom_drawer.dart';
 import 'package:shelf/ui/pages/search/_components/search_bar.dart';
-import 'package:shelf/ui/pages/search/search_page_viewmodel.dart';
+import 'package:shelf/ui/pages/search/data/search_page_viewmodel.dart';
 
 class SearchPage extends ConsumerWidget {
   String? _selectedOption;

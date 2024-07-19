@@ -7,13 +7,13 @@ import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/main.dart';
 import 'package:shelf/ui/pages/search/data/author_result.dart';
 
-// 창고관리자
+// 데이터 관리자
 final searchPageProvider =
     StateNotifierProvider<SearchPageViewModel, SearchPageModel?>((ref) {
   return SearchPageViewModel(ref);
 });
 
-// 창고데이터
+// 데이터를 담을 그릇
 class SearchPageModel {
   List<AuthorResult> authors;
   bool isLoading;
@@ -24,7 +24,7 @@ class SearchPageModel {
   });
 }
 
-// 창고
+// 통신 데이터
 class SearchPageViewModel extends StateNotifier<SearchPageModel?> {
   final mContext = navigatorKey.currentContext;
   final Ref ref;

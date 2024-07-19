@@ -37,14 +37,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {
-            debugPrint('WebView is loading (progress : $progress%)');
-          },
-          onPageStarted: (String url) {
-            debugPrint('Page started loading: $url');
-          },
-          onPageFinished: (String url) {
-            debugPrint('Page finished loading: $url');
+          onPageFinished: () {
             _controller.runJavaScript('''
                 const IMP = window.IMP;
                 IMP.init('imp86167246');

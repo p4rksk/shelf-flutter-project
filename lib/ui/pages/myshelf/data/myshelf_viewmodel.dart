@@ -1,38 +1,49 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/_core/constants/http.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_repo.dart';
 
+// 창고관리자
 final myShelfDataProvider =
     StateNotifierProvider<MyShelfViewModel, MyShelfModel?>((ref) {
-  final repository = MyShelfRepo(dio: dio); // Dio 인스턴스를 직접 전달
-  final session = ref.read(sessionProvider); // sessionProvider에서 session 읽기
-  return MyShelfViewModel(
-    state: null,
-    myshelfRepo: repository,
-    token: session.jwt!,
-  );
+  return MyShelfViewModel(ref: ref)..loadMyShelfData();
 });
 
-// MyShelfData의 상태를 관리하는 ViewModel
+// 창고 데이터
+class MyShelfModel {
+  MyShelfData myShelfData;
+  bool isLoading;
+
+  MyShelfModel({
+    required this.myShelfData,
+    required this.isLoading,
+  });
+}
+
+// 창고
 class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
-  final MyShelfRepo myshelfRepo;
+  final Ref ref;
+  final refreshCtrl = RefreshController();
 
-  MyShelfViewModel({
-    MyShelfModel? state,
-    required this.myshelfRepo,
-    required String token,
-  }) : super(state) {
-    _loadMyShelfData(token);
-  }
+  MyShelfViewModel({required this.ref})
+      : super(MyShelfModel(
+            myShelfData: MyShelfData(
+              bookList: [],
+              wishList: [],
+            ),
+            isLoading: true));
 
-  Future<void> _loadMyShelfData(String token) async {
+  Future<void> loadMyShelfData() async {
+    state = MyShelfModel(myShelfData: state!.myShelfData, isLoading: true);
+    SessionUser sessionUser = ref.read(sessionProvider);
+
     try {
-      MyShelfModel data = await myshelfRepo.fetchMyShelfData(token);
-      state = data;
+      MyShelfData myShelfData =
+          await MyShelfRepo().fetchMyShelfData(sessionUser.jwt!);
+      state = MyShelfModel(myShelfData: myShelfData, isLoading: false);
     } catch (e) {
-      print("Error loading MyShelfData: $e");
+      state = MyShelfModel(myShelfData: state!.myShelfData, isLoading: false);
     }
   }
 }

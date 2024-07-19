@@ -94,20 +94,20 @@ class BookList {
   }
 }
 
-class MyShelfModel {
+class MyShelfData {
   final List<BookList> bookList;
   final List<WishBook> wishList;
 
-  MyShelfModel({
+  MyShelfData({
     required this.bookList,
     required this.wishList,
   });
 
-  factory MyShelfModel.fromJson(Map<String, dynamic> json) {
+  factory MyShelfData.fromJson(Map<String, dynamic> json) {
     var bookList = json['bookList'] as List;
     var wishList = json['wishList'] as List;
 
-    return MyShelfModel(
+    return MyShelfData(
       bookList: bookList.map((i) => BookList.fromJson(i)).toList(),
       wishList: wishList.map((i) => WishBook.fromJson(i)).toList(),
     );

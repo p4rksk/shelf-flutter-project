@@ -25,7 +25,7 @@ class MyShelf extends ConsumerWidget {
     final daysWithShelf = DateTime.now().difference(createdAt).inDays;
 
     // MyShelfData 상태 구독
-    final myShelfDataAsyncValue = ref.watch(myShelfDataProvider);
+    final model = ref.watch(myShelfDataProvider);
 
     return DefaultTabController(
       length: 3,
@@ -128,19 +128,15 @@ class MyShelf extends ConsumerWidget {
               ),
             ];
           },
-          body: myShelfDataAsyncValue.when(
-            data: (myShelfData) {
-              return TabBarView(
-                children: [
-                  BookListTab(bookList: myShelfData.bookList),
-                  WishlistTab(wishList: myShelfData.wishList),
-                  ReviewManagementTab(),
-                ],
-              );
-            },
-            loading: () => Center(child: CircularProgressIndicator()),
-            error: (err, stack) => Center(child: Text('Error: $err')),
-          ),
+          body: model == null || model.isLoading
+              ? Center(child: CircularProgressIndicator())
+              : TabBarView(
+                  children: [
+                    BookListTab(bookList: model.myShelfData.bookList),
+                    WishlistTab(wishList: model.myShelfData.wishList),
+                    ReviewManagementTab(),
+                  ],
+                ),
         ),
         bottomNavigationBar: ModifiedBottomNavigator(
           selectedIndex: _selectedIndex,

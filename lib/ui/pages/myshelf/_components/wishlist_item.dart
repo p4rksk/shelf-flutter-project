@@ -28,19 +28,19 @@ class WishlistItem extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BookDetailPage(bookId: book.id),
-                ),
-              );
-            },
-            child: Container(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BookDetailPage(bookId: book.id),
+            ),
+          );
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
               height: 90,
               width: 60,
               decoration: BoxDecoration(
@@ -51,49 +51,49 @@ class WishlistItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),
-          ),
-          SizedBox(width: 16.0),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        book.bookTitle,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+            SizedBox(width: 16.0),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          book.bookTitle,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
+                      Icon(Icons.favorite, color: Colors.red),
+                    ],
+                  ),
+                  SizedBox(height: 4.0),
+                  Text(
+                    book.author,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black45,
                     ),
-                    Icon(Icons.favorite, color: Colors.red),
-                  ],
-                ),
-                SizedBox(height: 4.0),
-                Text(
-                  book.author,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black45,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: gap_m),
-                Text(
-                  '${book.createdAt}에 담김',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.black26,
-                    fontWeight: FontWeight.bold,
+                  SizedBox(height: gap_m),
+                  Text(
+                    '${book.createdAt}에 담김',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black26,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,14 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 
 class MyShelfRepo {
-  final Dio dio;
+  MyShelfRepo();
 
-  const MyShelfRepo({
-    required this.dio,
-  });
-
-  Future<MyShelfModel> fetchMyShelfData(String token) async {
+  Future<MyShelfData> fetchMyShelfData(String token) async {
     final response = await dio.get(
       '/app/user/my-library',
       options: Options(
@@ -17,7 +14,7 @@ class MyShelfRepo {
     );
 
     if (response.statusCode == 200) {
-      return MyShelfModel.fromJson(response.data['data']);
+      return MyShelfData.fromJson(response.data['data']);
     } else {
       throw Exception('Failed to load home data');
     }

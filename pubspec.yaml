@@ -56,7 +56,6 @@ dependencies:
   flutter_launcher_icons: ^0.11.0
   shared_preferences: ^2.2.3
   url_launcher: 6.2.5
-
   flutter_naver_login: ^1.8.0
 
 

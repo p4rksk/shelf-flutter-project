@@ -1,5 +1,3 @@
-import 'package:shelf/_core/constants/http.dart';
-
 class BestSellerDTO {
   final int id;
   final String bookImagePath;
@@ -105,7 +103,6 @@ class HomeData {
         weekBestSellersList.map((i) => BestSellerDTO.fromJson(i)).toList();
     List<BookHistoryDTO> bookHistory =
         bookHistoryList.map((i) => BookHistoryDTO.fromJson(i)).toList();
-    logger.d("👉👉👉👉");
 
     return HomeData(
       bestSellers: bestSellers,

@@ -37,7 +37,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
-          onPageFinished: () {
+          onPageFinished: (String url) {
             _controller.runJavaScript('''
                 const IMP = window.IMP;
                 IMP.init('imp86167246');

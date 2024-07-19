@@ -58,6 +58,11 @@ dependencies:
   url_launcher: 6.2.5
 
   flutter_naver_login: ^1.8.0
+  http: ^1.2.2 # 포트원 사용에 필요한 http 패키지
+  webview_flutter: ^4.8.0 # 웹 뷰
+  webview_flutter_android: ^3.16.3
+  webview_flutter_wkwebview: ^3.13.1
+  flutter_dotenv: ^5.1.0 # 환경변수를 .env 파일로 분리해서 관리하기 위해 필요
 
 
 
@@ -93,6 +98,7 @@ flutter:
     - assets/images/categories/
     - assets/epub/
     - assets/
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

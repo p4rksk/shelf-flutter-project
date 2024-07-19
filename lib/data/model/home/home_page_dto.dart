@@ -1,3 +1,5 @@
+import 'package:shelf/_core/constants/http.dart';
+
 class BestSellerDTO {
   final int id;
   final String bookImagePath;
@@ -72,8 +74,8 @@ class BookHistoryDTO {
       userId: json['userId'],
       bookId: json['bookId'],
       bookTitle: json['bookTitle'],
-      pageCount: int.parse(json['pageCount']),
-      lastReadPage: int.parse(json['lastReadPage']),
+      pageCount: json['pageCount'],
+      lastReadPage: json['lastReadPage'],
       bookImagePath: json['bookImagePath'],
     );
   }
@@ -103,6 +105,7 @@ class HomeData {
         weekBestSellersList.map((i) => BestSellerDTO.fromJson(i)).toList();
     List<BookHistoryDTO> bookHistory =
         bookHistoryList.map((i) => BookHistoryDTO.fromJson(i)).toList();
+    logger.d("👉👉👉👉");
 
     return HomeData(
       bestSellers: bestSellers,

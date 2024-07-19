@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/_core/constants/size.dart';
 import 'package:shelf/data/model/myshelf/my_shelf_dto.dart';
+import 'package:shelf/ui/main/home/pages/book_detail_page/book_detail_page.dart';
 
 class WishlistItem extends StatelessWidget {
   final WishBook book;
@@ -12,46 +14,84 @@ class WishlistItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
-      child: Column(
+      margin: const EdgeInsets.only(bottom: 16.0),
+      padding: const EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              Container(
-                height: 180,
-                width: 130,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(baseURL + book.bookImagePath),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookDetailPage(bookId: book.id),
                 ),
+              );
+            },
+            child: Container(
+              height: 90,
+              width: 60,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(baseURL + book.bookImagePath),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
               ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Icon(Icons.favorite, color: Colors.red),
-              ),
-            ],
-          ),
-          SizedBox(height: 8.0),
-          Text(
-            book.bookTitle,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
             ),
-            overflow: TextOverflow.ellipsis,
           ),
-          Text(
-            book.author,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey,
+          SizedBox(width: 16.0),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        book.bookTitle,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Icon(Icons.favorite, color: Colors.red),
+                  ],
+                ),
+                SizedBox(height: 4.0),
+                Text(
+                  book.author,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black45,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: gap_m),
+                Text(
+                  '${book.createdAt}에 담김',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

@@ -61,7 +61,7 @@ class _SortBottmSheetState extends State<SortBottmSheet> {
                   ),
                   itemCount: widget.sortBy.length,
                   itemBuilder: (context, index) {
-                    final String? category = widget.sortBy[index]['name'];
+                    final String? category = widget.sortBy[index].values.first;
                     return InkWell(
                       onTap: () {
                         setState(() {

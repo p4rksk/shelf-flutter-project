@@ -1,33 +1,39 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/pages/search/pages/writer_result_page/data/writer_result_repo.dart';
 
+import '../../../../../../main.dart';
 import 'writer_result_model.dart';
 
-final writerResultProvider = Provider((ref) => WriterResultRepo());
-
-final writerSearchProvider =
-    FutureProvider.family<WriterResultDTO, String>((ref, authorName) async {
-  final repository = ref.read(writerResultProvider);
-  final session = ref.read(sessionProvider);
-  return repository.fetchBooksByAuthor(session.jwt!, authorName);
+// 창고 관리자
+final writerResultProvider = StateNotifierProvider.family<WriterResultViewmodel,
+    WriterResultModel?, String>((ref, authorName) {
+  return WriterResultViewmodel(ref, authorName)..loadWriterResultData();
 });
 
-class WriterResultRepo {
-  Future<WriterResultDTO> fetchBooksByAuthor(
-      String token, String authorName) async {
-    final response = await dio.get(
-      '/app/book/search?author=$authorName',
-      options: Options(
-        headers: {'Authorization': 'Bearer $token'},
-      ),
-    );
+// 창고
+class WriterResultModel {
+  final WriterResultDTO writerResultDTO;
 
-    if (response.statusCode == 200) {
-      return WriterResultDTO.fromJson(response.data['data']);
-    } else {
-      throw Exception('Failed to load books');
-    }
+  const WriterResultModel({
+    required this.writerResultDTO,
+  });
+}
+
+// 창고 데이터
+class WriterResultViewmodel extends StateNotifier<WriterResultModel?> {
+  final mContext = navigatorKey.currentContext;
+  final Ref ref;
+  final String authorName;
+
+  WriterResultViewmodel(this.ref, this.authorName) : super(null);
+
+  Future<void> loadWriterResultData() async {
+    SessionUser sessionUser = ref.read(sessionProvider);
+
+    WriterResultDTO writerResultDTO = await WriterResultRepo()
+        .fetchBooksByAuthor(sessionUser.jwt!, authorName);
+
+    state = WriterResultModel(writerResultDTO: writerResultDTO);
   }
 }

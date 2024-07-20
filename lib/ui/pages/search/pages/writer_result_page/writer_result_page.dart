@@ -17,7 +17,7 @@ class WriterResultPage extends ConsumerWidget {
 
   @override
   build(BuildContext context, WidgetRef ref) {
-    final writerResultAsyncValue = ref.watch(writerSearchProvider(authorName!));
+    final writerResultData = ref.watch(writerResultProvider(authorName!));
     int _selectedIndex = 0;
     String selectedSort = "완독할 확률 높은 순";
 
@@ -26,26 +26,24 @@ class WriterResultPage extends ConsumerWidget {
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
         color: Colors.white,
-        child: writerResultAsyncValue.when(
-          data: (writerResult) => Column(
-            children: [
-              WriterSortSection(
-                // 총 몇권 -- 정렬순 섹션
-                bookCount: writerResult.books.length,
-                selectedSort: selectedSort,
-                onSortTap: () {
-                  _showResultSort(context, ref);
-                },
+        child: writerResultData == null
+            ? Center(child: CircularProgressIndicator())
+            : Column(
+                children: [
+                  WriterSortSection(
+                    // 총 몇권 -- 정렬순 섹션
+                    bookCount: writerResultData.writerResultDTO.books.length,
+                    selectedSort: selectedSort,
+                    onSortTap: () {
+                      _showResultSort(context, ref);
+                    },
+                  ),
+                  WriterResultBookGrid(
+                    // 검색된 아이템 그리드 뷰
+                    books: writerResultData.writerResultDTO.books,
+                  )
+                ],
               ),
-              WriterResultBookGrid(
-                // 검색된 아이템 그리드 뷰
-                books: writerResult.books,
-              )
-            ],
-          ),
-          loading: () => Center(child: CircularProgressIndicator()),
-          error: (error, stack) => Center(child: Text('Error: $error')),
-        ),
       ),
       bottomNavigationBar: ModifiedBottomNavigator(
         selectedIndex: _selectedIndex,

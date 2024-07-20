@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/pages/home/data/home_page_model.dart';
+
 import '../widgets/book_of_the_day_card.dart';
 
 class BookOfTheDaySection extends StatelessWidget {
   final DayBestSellerDTO book;
 
   BookOfTheDaySection({required this.book});
-
 
   @override
   Widget build(BuildContext context) {

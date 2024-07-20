@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_repo.dart';
@@ -37,6 +38,7 @@ class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
   Future<void> loadMyShelfData() async {
     state = MyShelfModel(myShelfData: state!.myShelfData, isLoading: true);
     SessionUser sessionUser = ref.read(sessionProvider);
+    logger.d("👉👉👉👉 ${sessionUser.jwt}");
 
     try {
       MyShelfData myShelfData =

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/pages/home/data/home_page_model.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/book_detail_page.dart';
 
 class BookCard extends StatelessWidget {

@@ -1,15 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/http.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
-import 'package:shelf/data/store/session_store.dart';
-
-final homeDataProvider = FutureProvider.autoDispose<HomeData>((ref) async {
-  final sessionUser = await ref.watch(sessionProvider);
-
-  final homeRepo = ref.watch(homeRepoProvider);
-  return await homeRepo.fetchHomeData(sessionUser.jwt!);
-});
+import 'package:shelf/ui/pages/home/data/home_page_model.dart';
 
 class HomeRepo {
   Future<HomeData> fetchHomeData(String token) async {

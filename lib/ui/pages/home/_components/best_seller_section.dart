@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/constants.dart';
-import 'package:shelf/_core/constants/size.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/pages/home/data/home_page_model.dart';
+
 import '../pages/best_seller_detail_page.dart';
 import '../widgets/best_seller_book_card.dart';
 
@@ -11,7 +11,6 @@ class BestSellerSection extends StatelessWidget {
   const BestSellerSection({
     required this.books,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +63,7 @@ class BestSellerSection extends StatelessWidget {
                 Row(
                   children: List.generate(
                     (books.length - 1) ~/ 2,
-                        (index) => Column(
+                    (index) => Column(
                       children: [
                         Container(
                           width: 120,
@@ -91,6 +90,4 @@ class BestSellerSection extends StatelessWidget {
       ),
     );
   }
-
-
 }

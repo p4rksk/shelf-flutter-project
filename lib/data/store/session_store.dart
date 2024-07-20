@@ -5,9 +5,9 @@ import 'package:shelf/_core/constants/move.dart';
 import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/data/model/user/user.dart';
 import 'package:shelf/data/model/user/user_request.dart';
-import 'package:shelf/data/repository/home_repo.dart';
 import 'package:shelf/data/repository/user_repo.dart';
 import 'package:shelf/main.dart';
+import 'package:shelf/ui/pages/home/data/home_page_repo.dart';
 
 import '../../_core/constants/http.dart';
 
@@ -53,13 +53,15 @@ class SessionStore extends StateNotifier<SessionUser> {
   }
 
   Future<void> login(LoginReqDTO reqDTO) async {
-    var (responseDTO, accessToken) = await userRepository.fetchLogin(reqDTO);
+    ResponseDTO responseDTO = await userRepository.fetchLogin(reqDTO);
 
-    if (responseDTO.code == 200) {
-      await secureStorage.write(key: "accessToken", value: accessToken);
+    logger.d("check response DTO");
+    if (responseDTO.token != null) {
+      await secureStorage.write(key: "accessToken", value: responseDTO.token);
 
-      state =
-          SessionUser(user: responseDTO.data, isLogin: true, jwt: accessToken);
+      state = SessionUser(
+          user: responseDTO.data, isLogin: true, jwt: responseDTO.token);
+      logger.d("check ${state.jwt}");
 
       Navigator.pushNamed(mContext!, Move.homePage);
     } else {

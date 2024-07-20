@@ -1,4 +1,4 @@
-import 'book_detail_data.dart';
+import 'package:shelf/data/model/home/book_detail_data.dart';
 
 class HistoryBook {
   final Book book;

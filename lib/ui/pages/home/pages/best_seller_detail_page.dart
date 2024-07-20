@@ -2,11 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/_core/constants/size.dart';
-import '../../../../data/model/home/home_page_data.dart';
+import 'package:shelf/ui/pages/home/data/home_page_data.dart';
+
 import '../../../../data/store/bestseller_provider.dart';
 
 class BestSellerDetailPage extends ConsumerWidget {
-  final List<String> categories = ['종합', '소설', '자기계발', '역사', '인문', '사회', '과학', '철학', '종교', 'IT'];
+  final List<String> categories = [
+    '종합',
+    '소설',
+    '자기계발',
+    '역사',
+    '인문',
+    '사회',
+    '과학',
+    '철학',
+    '종교',
+    'IT'
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,7 +44,8 @@ class BestSellerDetailPage extends ConsumerWidget {
                       ref.read(categoryProvider.notifier).state = category;
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
                       margin: EdgeInsets.symmetric(horizontal: 6.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),

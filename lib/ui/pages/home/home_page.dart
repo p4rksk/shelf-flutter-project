@@ -17,22 +17,19 @@ class HomePage extends ConsumerWidget {
       backgroundColor: Colors.white,
       body: homePageModel == null
           ? Center(child: CircularProgressIndicator())
-          : homePageModel.isloading
-              ? Center(child: CircularProgressIndicator())
-              : SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      TopPicksSection(
-                          books: homePageModel.homeData.bestSellers),
-                      HistorySection(
-                          historyBooks: homePageModel.homeData.bookHistory),
-                      BookOfTheDaySection(
-                          book: homePageModel.homeData.dayBestSeller),
-                      BestSellerSection(
-                          books: homePageModel.homeData.weekBestSellers),
-                    ],
-                  ),
-                ),
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  TopPicksSection(books: homePageModel.homeData.bestSellers),
+                  HistorySection(
+                      historyBooks: homePageModel.homeData.bookHistory),
+                  BookOfTheDaySection(
+                      book: homePageModel.homeData.dayBestSeller),
+                  BestSellerSection(
+                      books: homePageModel.homeData.weekBestSellers),
+                ],
+              ),
+            ),
       bottomNavigationBar: ModifiedBottomNavigator(
         selectedIndex: 0,
       ),

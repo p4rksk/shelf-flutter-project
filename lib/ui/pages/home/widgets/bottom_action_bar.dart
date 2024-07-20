@@ -2,11 +2,19 @@ import 'package:cosmos_epub/cosmos_epub.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/constants.dart';
-import 'package:shelf/_core/constants/style.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
 
 class BottomActionBar extends ConsumerWidget {
+  final int id;
+
+  const BottomActionBar({
+    required this.id,
+  });
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final bookDetailState = ref.watch(bookDetailProvider(id));
+
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -31,7 +39,12 @@ class BottomActionBar extends ConsumerWidget {
                       title: Center(child: Text('알림')),
                       content: Text(
                         '내 서재에 추가되었습니다.',
-                        style: h7(),
+                        style: TextStyle(
+                          color: TColor.secondaryColor1,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                       actions: [
                         Center(
@@ -53,7 +66,9 @@ class BottomActionBar extends ConsumerWidget {
                 side: BorderSide(color: kAccentColor1, width: 1),
                 minimumSize: Size(double.infinity, 50),
               ),
-              icon: Icon(Icons.add_circle_outline, color: kAccentColor1),
+              icon: bookDetailState.bookDetailDTO.isWish
+                  ? Icon(Icons.add_circle_outline, color: kAccentColor1)
+                  : Icon(Icons.add_circle_outline, color: kAccentColor1),
               label: Text(
                 '내 서재',
                 style: TextStyle(color: kAccentColor1),

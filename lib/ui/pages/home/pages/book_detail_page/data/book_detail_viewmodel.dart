@@ -1,52 +1,35 @@
-import '../../../../../../data/model/book/author_detail.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/main.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_repo.dart';
 
-class BookDetailDTO {
-  final int id;
-  final String path;
-  final String title;
-  final AuthorDetail author;
-  final String publisher;
-  final String category;
-  final DateTime createdAt;
-  final String bookIntro;
-  final String contentIntro;
-  final bool isWish;
-  final DateTime registrationDate;
-  final int totalViews;
-  final int completedViews;
+final bookDetailProvider =
+    StateNotifierProvider.family<BookDetailViewmodel, BookDetailModel?, int>(
+        (ref, id) {
+  return BookDetailViewmodel(ref, id)..loadBookDetail();
+});
 
-  const BookDetailDTO({
-    required this.id,
-    required this.path,
-    required this.title,
-    required this.author,
-    required this.publisher,
-    required this.category,
-    required this.createdAt,
-    required this.bookIntro,
-    required this.contentIntro,
-    required this.isWish,
-    required this.registrationDate,
-    required this.totalViews,
-    required this.completedViews,
+class BookDetailModel {
+  final BookDetailDTO bookDetailDTO;
+
+  const BookDetailModel({
+    required this.bookDetailDTO,
   });
+}
 
-  factory BookDetailDTO.fromJson(Map<String, dynamic> json) {
-    return BookDetailDTO(
-      id: json["id"],
-      path: json["path"],
-      title: json["title"],
-      author: AuthorDetail.fromJson(json["author"]),
-      publisher: json["publisher"],
-      category: json["category"],
-      createdAt: DateTime.parse(json["createdAt"]),
-      bookIntro: json["bookIntro"],
-      contentIntro: json["contentIntro"],
-      isWish: json["isWish"],
-      registrationDate: DateTime.parse(json["registrationDate"]),
-      totalViews: json["totalViews"],
-      completedViews: json["completedViews"],
-    );
+class BookDetailViewmodel extends StateNotifier<BookDetailModel?> {
+  final mContext = navigatorKey.currentContext;
+  final Ref ref;
+  final int id;
+
+  BookDetailViewmodel(this.ref, this.id) : super(null);
+
+  Future<void> loadBookDetail() async {
+    SessionUser sessionUser = ref.read(sessionProvider);
+
+    BookDetailDTO bookDetailDTO =
+        await BookDetailRepo().fetchBookDetails(sessionUser.jwt!, id);
+    state = BookDetailModel(bookDetailDTO: bookDetailDTO);
   }
-//
 }

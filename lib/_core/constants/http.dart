@@ -19,7 +19,6 @@ const secureStorage = FlutterSecureStorage();
 String? globalAccessToken = null;
 var logger = Logger();
 
-
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {

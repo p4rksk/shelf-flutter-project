@@ -5,9 +5,9 @@ import 'package:shelf/_core/constants/move.dart';
 import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/data/model/user/user.dart';
 import 'package:shelf/data/model/user/user_request.dart';
-import 'package:shelf/data/repository/home_repo.dart';
 import 'package:shelf/data/repository/user_repo.dart';
 import 'package:shelf/main.dart';
+import 'package:shelf/ui/pages/home/data/home_page_repo.dart';
 
 import '../../_core/constants/http.dart';
 

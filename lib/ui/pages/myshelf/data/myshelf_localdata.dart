@@ -1,7 +1,5 @@
 import 'package:shelf/data/model/home/book_detail_data.dart';
 
-import '../../../../data/model/home/home_page_data.dart';
-
 class MyReview {
   final String bookImagePath;
   final String reviewContent;
@@ -21,14 +19,12 @@ class MyReview {
 class UserData {
   final String userName;
   final DateTime createdAt;
-  final List<HistoryBook> historyBooks;
   final List<Book> readBooks;
   final List<MyReview> reviews;
 
   UserData({
     required this.userName,
     required this.createdAt,
-    required this.historyBooks,
     required this.readBooks,
     required this.reviews,
   });
@@ -41,10 +37,6 @@ class UserData {
 final UserData userData = UserData(
   userName: '김성훈',
   createdAt: DateTime(2023, 1, 1),
-  historyBooks: [
-    HistoryBook(book: newBooks[0], readingProgress: 0.7),
-    HistoryBook(book: newBooks[1], readingProgress: 0.8),
-  ],
   readBooks: [
     newBooks[0],
     newBooks[1],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/move.dart';
 import 'package:shelf/_core/constants/size.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/pages/home/data/home_page_model.dart';
 
 import '../../../../_core/constants/constants.dart';
 import '../widgets/book_card.dart';

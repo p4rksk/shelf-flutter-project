@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/data/repository/home_repo.dart';
 import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:shelf/ui/pages/home/_components/best_seller_section.dart';
 import 'package:shelf/ui/pages/home/_components/book_of_the_day_section.dart';
 import 'package:shelf/ui/pages/home/_components/top_pick_section.dart';
+import 'package:shelf/ui/pages/home/data/home_page_viewmodel.dart';
 
 import '_components/history_section.dart';
 
 class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeData = ref.watch(homeDataProvider);
+    final homePageModel = ref.watch(homePageProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: homeData.when(
-        data: (data) => SingleChildScrollView(
-          child: Column(
-            children: [
-              TopPicksSection(books: data.bestSellers),
-              HistorySection(historyBooks: data.bookHistory),
-              BookOfTheDaySection(book: data.dayBestSeller),
-              BestSellerSection(books: data.weekBestSellers),
-            ],
-          ),
-        ),
-        loading: () => Center(child: CircularProgressIndicator()),
-        error: (error, stack) => SizedBox(),
-      ),
+      body: homePageModel == null
+          ? Center(child: CircularProgressIndicator())
+          : homePageModel.isloading
+              ? Center(child: CircularProgressIndicator())
+              : SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      TopPicksSection(
+                          books: homePageModel.homeData.bestSellers),
+                      HistorySection(
+                          historyBooks: homePageModel.homeData.bookHistory),
+                      BookOfTheDaySection(
+                          book: homePageModel.homeData.dayBestSeller),
+                      BestSellerSection(
+                          books: homePageModel.homeData.weekBestSellers),
+                    ],
+                  ),
+                ),
       bottomNavigationBar: ModifiedBottomNavigator(
         selectedIndex: 0,
       ),

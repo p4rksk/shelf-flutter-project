@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:shelf/ui/pages/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
-import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_data.dart';
+import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_model.dart';
 import 'package:shelf/ui/pages/search/pages/writer_result_page/_components/writer_appbar.dart';
 import 'package:shelf/ui/pages/search/pages/writer_result_page/_components/writer_result_book_grid.dart';
 import 'package:shelf/ui/pages/search/pages/writer_result_page/_components/writer_sort_section.dart';
@@ -19,7 +19,6 @@ class WriterResultPage extends ConsumerWidget {
   build(BuildContext context, WidgetRef ref) {
     final writerResultAsyncValue = ref.watch(writerSearchProvider(authorName!));
     int _selectedIndex = 0;
-    int _curationIndex = 0;
     String selectedSort = "완독할 확률 높은 순";
 
     return Scaffold(

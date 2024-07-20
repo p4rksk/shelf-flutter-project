@@ -1,60 +1,41 @@
-class CategoryResultAuthor {
-  final int authorId;
-  final String authorName;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_model.dart';
+import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_repo.dart';
 
-  CategoryResultAuthor({
-    required this.authorId,
-    required this.authorName,
+import '../../../../../../main.dart';
+
+// 창고관리자
+final categoryResultProvider = StateNotifierProvider.family<
+    CategoryResultViewmodel, CategoryResultModel?, String>(
+  (ref, categoryName) {
+    return CategoryResultViewmodel(ref, categoryName)..loadCategoryResultData();
+  },
+);
+
+// 창고
+class CategoryResultModel {
+  final CategoryResultDTO categoryResultDTO;
+
+  const CategoryResultModel({
+    required this.categoryResultDTO,
   });
-
-  factory CategoryResultAuthor.fromJson(Map<String, dynamic> json) {
-    return CategoryResultAuthor(
-      authorId: json['authorId'],
-      authorName: json['authorName'],
-    );
-  }
 }
 
-class CategoryResultBook {
-  final int bookId;
-  final String bookTitle;
-  final String bookPath;
-  final CategoryResultAuthor author;
+// 창고 데이터
+class CategoryResultViewmodel extends StateNotifier<CategoryResultModel?> {
+  final mContext = navigatorKey.currentContext;
+  final Ref ref;
+  final String categoryName;
 
-  CategoryResultBook({
-    required this.bookId,
-    required this.bookTitle,
-    required this.bookPath,
-    required this.author,
-  });
+  CategoryResultViewmodel(this.ref, this.categoryName) : super(null);
 
-  factory CategoryResultBook.fromJson(Map<String, dynamic> json) {
-    return CategoryResultBook(
-      bookId: json['bookId'],
-      bookTitle: json['bookTitle'],
-      bookPath: json['bookPath'],
-      author: CategoryResultAuthor.fromJson(json['author']),
-    );
-  }
-}
+  Future<void> loadCategoryResultData() async {
+    SessionUser sessionUser = ref.read(sessionProvider);
 
-class CategoryResultDTO {
-  final int bookCount;
-  final List<CategoryResultBook> books;
+    CategoryResultDTO categoryResultDTO = await CategoryResultRepo()
+        .fetchBooksByCategory(sessionUser.jwt!, categoryName);
 
-  CategoryResultDTO({
-    required this.bookCount,
-    required this.books,
-  });
-
-  factory CategoryResultDTO.fromJson(Map<String, dynamic> json) {
-    var bookList = json['book'] as List;
-    List<CategoryResultBook> books =
-        bookList.map((i) => CategoryResultBook.fromJson(i)).toList();
-
-    return CategoryResultDTO(
-      bookCount: json['bookCount'],
-      books: books,
-    );
+    state = CategoryResultModel(categoryResultDTO: categoryResultDTO);
   }
 }

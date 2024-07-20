@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/line.dart';
 import 'package:shelf/data/model/category/category_list.dart';
-import 'package:shelf/data/repository/category_result_repo.dart';
 import 'package:shelf/ui/common/components/modified_bottom_navigation_bar.dart';
 import 'package:shelf/ui/pages/search/pages/category_result_page/_components/back_arrow_appbar.dart';
 import 'package:shelf/ui/pages/search/pages/category_result_page/_components/category_result_book_grid.dart';
@@ -10,6 +9,7 @@ import 'package:shelf/ui/pages/search/pages/category_result_page/_components/res
 import 'package:shelf/ui/pages/search/pages/category_result_page/_components/sort_bottm_sheet.dart';
 import 'package:shelf/ui/pages/search/pages/category_result_page/_components/sort_section.dart';
 import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_data.dart';
+import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_repo.dart';
 
 class CategoryResultPage extends ConsumerWidget {
   final String categoryName;

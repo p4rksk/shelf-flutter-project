@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/data/repository/category_result_repo.dart';
+import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_repo.dart';
 
 class ResultItem extends ConsumerWidget {
   final String categoryName;

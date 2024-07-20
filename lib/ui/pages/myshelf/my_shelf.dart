@@ -128,7 +128,7 @@ class MyShelf extends ConsumerWidget {
               ),
             ];
           },
-          body: model == null || model.isLoading
+          body: model == null
               ? Center(child: CircularProgressIndicator())
               : TabBarView(
                   children: [

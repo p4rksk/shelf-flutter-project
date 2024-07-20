@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/main.dart';
 import 'package:shelf/ui/pages/home/data/home_page_model.dart';
@@ -40,7 +39,6 @@ class HomePageViewmodel extends StateNotifier<HomePageModel?> {
   }
 
   Future<void> loadHomePageData(String jwt) async {
-    logger.d("enter into loading");
     HomeData homeData = await HomeRepo().fetchHomeData(jwt);
 
     state = HomePageModel(homeData: homeData);

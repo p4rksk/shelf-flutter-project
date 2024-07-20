@@ -55,13 +55,11 @@ class SessionStore extends StateNotifier<SessionUser> {
   Future<void> login(LoginReqDTO reqDTO) async {
     ResponseDTO responseDTO = await userRepository.fetchLogin(reqDTO);
 
-    logger.d("check response DTO");
     if (responseDTO.token != null) {
       await secureStorage.write(key: "accessToken", value: responseDTO.token);
 
       state = SessionUser(
           user: responseDTO.data, isLogin: true, jwt: responseDTO.token);
-      logger.d("check ${state.jwt}");
 
       Navigator.pushNamed(mContext!, Move.homePage);
     } else {

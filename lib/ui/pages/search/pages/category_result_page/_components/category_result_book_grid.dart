@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/book_detail_page.dart';
-import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_viewmodel.dart';
+import 'package:shelf/ui/pages/search/pages/category_result_page/data/category_result_model.dart';
 
 import '../../../../../../_core/constants/http.dart';
 

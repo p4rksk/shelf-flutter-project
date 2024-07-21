@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/_components/detail_page_tabs.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_repo.dart';
@@ -25,6 +26,8 @@ class BookDetailPage extends ConsumerWidget {
         data: (book) {
           final wishlist = ref.watch(wishlistProvider);
           final isFavorite = wishlist.contains(book);
+          final DateTime registrationDate = book.registrationDate;
+          final formattedDate = DateFormat('yyyy년 MM월 dd일').format(registrationDate);
 
           return Container(
             decoration: BoxDecoration(
@@ -66,8 +69,7 @@ class BookDetailPage extends ConsumerWidget {
                       ),
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.black54,
                         borderRadius: BorderRadius.circular(10),
@@ -119,7 +121,7 @@ class BookDetailPage extends ConsumerWidget {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  '${book.publisher} · ${book.category} · ${book.registrationDate}',
+                                  '${book.publisher} · ${book.category} · $formattedDate',
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey[700],
@@ -154,15 +156,15 @@ class BookDetailPage extends ConsumerWidget {
                                       SizedBox(width: 20),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '${((book.completedViews ?? 0) / (book.totalViews ?? 1) * 100).toStringAsFixed(1)}%의 구독자가 완독했어요!',
-                                            style: TextStyle(fontSize: 16),
+                                            style: TextStyle(fontSize: 14),
                                           ),
                                           Text(
                                             '총 완독자 수 ${book.completedViews ?? 0}명',
-                                            style: TextStyle(fontSize: 16),
+                                            style: TextStyle(fontSize: 14),
                                           ),
                                         ],
                                       ),

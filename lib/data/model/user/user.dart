@@ -8,6 +8,8 @@ class User {
   bool status;
   String avatar;
   DateTime? createdAt;
+  String? subPeriod;
+  String? nextPaymentDate;
 
   User({
     required this.id,
@@ -16,6 +18,8 @@ class User {
     required this.status,
     required this.avatar,
     this.createdAt,
+    this.subPeriod,
+    this.nextPaymentDate,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -26,6 +30,8 @@ class User {
       status: json["status"],
       avatar: json["avatar"],
       createdAt: json["createdAt"] != null ? DateTime.parse(json["createdAt"]) : null,
+      subPeriod: json["subPeriod"],
+      nextPaymentDate: json["nextPaymentDate"],
     );
   }
 
@@ -36,6 +42,8 @@ class User {
       "nickName": nickName,
       "status": status,
       "createdAt": createdAt?.toIso8601String(),
+      "subPeriod": subPeriod,
+      "nextPaymentDate": nextPaymentDate,
     };
   }
 

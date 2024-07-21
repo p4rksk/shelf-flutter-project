@@ -48,5 +48,64 @@ class BookDetailDTO {
       completedViews: json["completedViews"],
     );
   }
-//
+
+  BookDetailDTO copyWith({
+    int? id,
+    String? path,
+    String? title,
+    AuthorDetail? author,
+    String? publisher,
+    String? category,
+    DateTime? createdAt,
+    String? bookIntro,
+    String? contentIntro,
+    bool? isWish,
+    DateTime? registrationDate,
+    int? totalViews,
+    int? completedViews,
+  }) {
+    return BookDetailDTO(
+      id: id ?? this.id,
+      path: path ?? this.path,
+      title: title ?? this.title,
+      author: author ?? this.author,
+      publisher: publisher ?? this.publisher,
+      category: category ?? this.category,
+      createdAt: createdAt ?? this.createdAt,
+      bookIntro: bookIntro ?? this.bookIntro,
+      contentIntro: contentIntro ?? this.contentIntro,
+      isWish: isWish ?? this.isWish,
+      registrationDate: registrationDate ?? this.registrationDate,
+      totalViews: totalViews ?? this.totalViews,
+      completedViews: completedViews ?? this.completedViews,
+    );
+  }
+}
+
+class IsWish {
+  final int? userId;
+  final int? bookId;
+  final bool? isWish;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+
+  const IsWish({
+    required this.userId,
+    required this.bookId,
+    required this.isWish,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory IsWish.fromJson(Map<String, dynamic> json) {
+    return IsWish(
+      userId: json['userId'],
+      bookId: json['bookId'],
+      isWish: json['isWish'],
+      createdAt:
+          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      updatedAt:
+          json['updatedAt'] != null ? DateTime.parse(json['updatedAt']) : null,
+    );
+  }
 }

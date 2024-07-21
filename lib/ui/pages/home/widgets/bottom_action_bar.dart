@@ -14,7 +14,11 @@ class BottomActionBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bookDetailState = ref.watch(bookDetailProvider(id));
+    final bookDetailNotifier = ref.watch(bookDetailProvider(id).notifier);
 
+    if (bookDetailState == null) {
+      return Center(child: CircularProgressIndicator());
+    }
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -31,14 +35,23 @@ class BottomActionBar extends ConsumerWidget {
           Flexible(
             flex: 1,
             child: ElevatedButton.icon(
-              onPressed: () {
+              onPressed: () async {
+                await bookDetailNotifier.updateBookWishStatus(id);
+                final updatedBookDetailState =
+                    ref.watch(bookDetailProvider(id));
+
+                if (updatedBookDetailState == null) {
+                  return;
+                }
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: Center(child: Text('알림')),
                       content: Text(
-                        '내 서재에 추가되었습니다.',
+                        updatedBookDetailState.bookDetailDTO.isWish
+                            ? '내 서재에 추가되었습니다.'
+                            : '내 서재에서 제거되었습니다.',
                         style: TextStyle(
                           color: TColor.secondaryColor1,
                           fontSize: 17,
@@ -67,7 +80,7 @@ class BottomActionBar extends ConsumerWidget {
                 minimumSize: Size(double.infinity, 50),
               ),
               icon: bookDetailState.bookDetailDTO.isWish
-                  ? Icon(Icons.add_circle_outline, color: kAccentColor1)
+                  ? Icon(Icons.check_circle_rounded, color: kAccentColor1)
                   : Icon(Icons.add_circle_outline, color: kAccentColor1),
               label: Text(
                 '내 서재',

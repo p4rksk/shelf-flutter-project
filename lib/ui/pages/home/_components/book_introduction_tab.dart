@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/_core/constants/size.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
 
 class BookIntroductionTab extends StatelessWidget {
   final BookDetailDTO book;

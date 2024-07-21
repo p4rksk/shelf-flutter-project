@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/ui/pages/home/_components/book_introduction_tab.dart';
 import 'package:shelf/ui/pages/home/_components/review_tab.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
 
 class DetailPageTabs extends StatelessWidget {
   final BookDetailDTO book;

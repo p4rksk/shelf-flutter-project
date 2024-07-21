@@ -112,4 +112,14 @@ class MyShelfData {
       wishList: wishList.map((i) => WishBook.fromJson(i)).toList(),
     );
   }
+
+  MyShelfData copyWith({
+    List<BookList>? bookList,
+    List<WishBook>? wishList,
+  }) {
+    return MyShelfData(
+      bookList: bookList ?? this.bookList,
+      wishList: wishList ?? this.wishList,
+    );
+  }
 }

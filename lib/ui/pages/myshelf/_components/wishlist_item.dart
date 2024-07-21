@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/_core/constants/size.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/book_detail_page.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
+import 'package:shelf/ui/pages/myshelf/pages/book_detail_page.dart';
 
 class WishlistItem extends StatelessWidget {
   final WishBook book;
@@ -33,7 +33,7 @@ class WishlistItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => BookDetailPage(bookId: book.id),
+              builder: (context) => WishDetailPage(bookId: book.id),
             ),
           );
         },

@@ -133,7 +133,7 @@ class MyShelf extends ConsumerWidget {
               : TabBarView(
                   children: [
                     BookListTab(bookList: model.myShelfData.bookList),
-                    WishlistTab(wishList: model.myShelfData.wishList),
+                    WishlistTab(wishBookList: model.myShelfData.wishList),
                     ReviewManagementTab(),
                   ],
                 ),

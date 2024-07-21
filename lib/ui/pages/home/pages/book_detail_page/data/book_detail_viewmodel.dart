@@ -58,4 +58,17 @@ class BookDetailViewmodel extends StateNotifier<BookDetailModel?> {
       bookDetailDTO: state!.bookDetailDTO.copyWith(isWish: isWish.isWish),
     );
   }
+
+  // 내서재 위시리스트 통신
+  Future<void> updateMyShelfWishList(int bookId) async {
+    SessionUser sessionUser = ref.read(sessionProvider);
+
+    IsWish isWish = await BookDetailRepo()
+        .updateBookWishStatus(sessionUser.jwt!, sessionUser.user!.id, bookId);
+
+    // 상태 업데이트
+    state = state!.copyWith(
+      bookDetailDTO: state!.bookDetailDTO.copyWith(isWish: isWish.isWish),
+    );
+  }
 }

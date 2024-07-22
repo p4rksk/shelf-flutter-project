@@ -22,21 +22,26 @@ var logger = Logger();
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
-    if (globalAccessToken != null) {
-      options.headers["Authorization"] = "$globalAccessToken";
+    // /app으로 시작하는 경로에 대해서만 토큰 처리
+    if (options.path.startsWith('/app')) {
+      if (globalAccessToken != null) {
+        options.headers["Authorization"] = "Bearer $globalAccessToken";
+        logger.d("토큰이 추가된 요청: ${options.path}");
+      } else {
+        logger.d("토큰이 없습니다: ${options.path}");
+      }
     } else {
-      print("나 토큰이 없습니다.");
+      logger.d("토큰 처리 제외 경로: ${options.path}");
     }
 
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    // logger.d(response.headers["Authorization"]);
-
+    // 응답 처리
     return handler.next(response);
   },
   onError: (error, handler) {
-    //요청, 응답 오류일
+    // 요청, 응답 오류 처리
     return handler.next(error);
   },
 );

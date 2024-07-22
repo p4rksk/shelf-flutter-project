@@ -32,7 +32,7 @@ class MyshelfHistorySection extends StatelessWidget {
             itemBuilder: (context, index) {
               final book = historyBooks[index];
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.only(left: 20, top: 20),
                 child: MyShelfHistoryBookCard(historyBook: book),
               );
             },

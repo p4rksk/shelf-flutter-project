@@ -53,7 +53,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
                     if (response.success) {
                         console.log('결제 성공: ' + JSON.stringify(response));
                       // 결제 성공 시 서버에 데이터 전송 (Fetch API 사용)
-                      fetch('http://10.0.2.2:8080/pay', {
+                      fetch('http://10.0.2.2:8080/app/pay', {
                           method: 'POST',
                           mode: 'cors',
                           headers: {

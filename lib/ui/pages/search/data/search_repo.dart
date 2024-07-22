@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/data/dto/response_dto.dart';
 import 'package:shelf/ui/pages/search/data/author_result.dart';
-
-import '../../_core/constants/http.dart';
 
 class SearchRepo {
   Future<ResponseDTO> fetchAuthors(String token) async {

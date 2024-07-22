@@ -28,10 +28,26 @@ class BottomActionBar extends ConsumerWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Center(child: Text('알림')),
-                      content: Text(
-                        '내 서재에 추가되었습니다.',
-                        style: h7(),
+                      title: Center(child: Text('알림',
+                        style: TextStyle(
+                        fontSize: 17,
+                      ),)),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Divider(
+                            color: Colors.grey[300],
+                            thickness: 1,
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            '내 서재에 추가되었습니다.',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
                       ),
                       actions: [
                         Center(

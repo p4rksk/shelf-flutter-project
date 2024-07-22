@@ -26,7 +26,7 @@ class UserRepo {
     }
   }
 
-  Future<(ResponseDTO, String?)> fetchLogin(LoginReqDTO requestDTO) async {
+  Future<ResponseDTO> fetchLogin(LoginReqDTO requestDTO) async {
     try {
       Response<dynamic> response =
           await dio.post("/user/login", data: requestDTO.toJson());
@@ -35,11 +35,11 @@ class UserRepo {
       responseDTO.data = User.fromJson(responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
-      var accessToken = response.headers['authorization']?.first;
+      responseDTO.token = response.headers['authorization']?.first;
 
-      return (responseDTO, accessToken);
+      return responseDTO;
     } catch (e) {
-      return (ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다"), null);
+      return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");
     }
   }
 }

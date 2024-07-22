@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shelf/data/model/home/home_page_dto.dart';
+import 'package:shelf/ui/pages/home/data/home_page_model.dart';
 import 'package:shelf/ui/pages/home/widgets/history_book_card.dart';
 
 class HistorySection extends StatelessWidget {

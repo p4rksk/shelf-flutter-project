@@ -12,18 +12,24 @@ import '../widgets/show_custom_bottom_sheet.dart';
 final passwordProvider = StateProvider<String>((ref) => '');
 final confirmPasswordProvider = StateProvider<String>((ref) => '');
 
-class SignUp extends ConsumerWidget {
+class SignUp extends ConsumerStatefulWidget {
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends ConsumerState<SignUp> {
   final TextEditingController _emailController =
-  TextEditingController(text: "kim@nate.com");
+      TextEditingController(text: "kim@nate.com");
   final TextEditingController _nickNameController =
-  TextEditingController(text: "kim1");
+      TextEditingController(text: "kim1");
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final password = ref.watch(passwordProvider);
     final confirmPassword = ref.watch(confirmPasswordProvider);
     final passwordsMatch = password == confirmPassword && password.isNotEmpty;
-    final passwordsDoNotMatch = password != confirmPassword && confirmPassword.isNotEmpty;
+    final passwordsDoNotMatch =
+        password != confirmPassword && confirmPassword.isNotEmpty;
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -34,8 +40,8 @@ class SignUp extends ConsumerWidget {
             Text(
               '회원가입',
               style: textTheme().titleLarge?.copyWith(
-                color: kAccentColor3,
-              ),
+                    color: kAccentColor3,
+                  ),
             ),
             const SizedBox(height: 40.0),
             Row(
@@ -121,7 +127,8 @@ class SignUp extends ConsumerWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
-              onChanged: (value) => ref.read(passwordProvider.notifier).state = value,
+              onChanged: (value) =>
+                  ref.read(passwordProvider.notifier).state = value,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
@@ -140,11 +147,13 @@ class SignUp extends ConsumerWidget {
             ),
             const SizedBox(height: 25.0),
             TextFormField(
-              onChanged: (value) => ref.read(confirmPasswordProvider.notifier).state = value,
+              onChanged: (value) =>
+                  ref.read(confirmPasswordProvider.notifier).state = value,
               cursorColor: TColor.grey,
               obscureText: true,
               decoration: InputDecoration(
-                label: const Text('비밀번호 확인', style: TextStyle(color: Colors.grey)),
+                label:
+                    const Text('비밀번호 확인', style: TextStyle(color: Colors.grey)),
                 hintText: '비밀번호를 다시 입력하세요',
                 hintStyle: const TextStyle(color: Colors.black26),
                 border: OutlineInputBorder(
@@ -158,8 +167,8 @@ class SignUp extends ConsumerWidget {
                 suffixIcon: passwordsMatch
                     ? const Icon(Icons.check, color: Colors.green)
                     : passwordsDoNotMatch
-                    ? const Icon(Icons.close, color: Colors.red)
-                    : null,
+                        ? const Icon(Icons.close, color: Colors.red)
+                        : null,
               ),
             ),
             const SizedBox(height: 25.0),
@@ -201,7 +210,6 @@ class SignUp extends ConsumerWidget {
                         email: _emailController.text.trim(),
                         nickName: _nickNameController.text.trim(),
                         password: ref.read(passwordProvider).trim(),
-                        isAgreed: false,
                       );
                       ref.read(sessionProvider.notifier).join(joinReqDTO);
                     },
@@ -272,38 +280,38 @@ class SignUp extends ConsumerWidget {
       ),
     );
   }
+}
 
-  void _showPrivacyPolicyDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("개인정보 처리방침"),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: const <Widget>[
-              Text("1. 개인정보의 수집 및 이용 목적"),
-              Text("본 앱은 서비스 제공을 위해 다음과 같은 개인정보를 수집하고 있습니다."),
-              Text(" - 이름, 연락처, 이메일, 생년월일 등"),
-              Text("2. 개인정보의 보유 및 이용 기간"),
-              Text("귀하의 개인정보는 서비스 이용기간 동안 보유하며, 목적 달성 후 즉시 파기합니다."),
-              Text("3. 개인정보의 파기 절차 및 방법"),
-              Text("사용자의 개인정보는 목적이 달성된 후 내부 방침 및 관련 법률에 따라 안전하게 파기됩니다."),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("닫기", style: TextStyle(color: kAccentColor2)),
-          ),
-        ],
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+void _showPrivacyPolicyDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text("개인정보 처리방침"),
+      content: SingleChildScrollView(
+        child: ListBody(
+          children: const <Widget>[
+            Text("1. 개인정보의 수집 및 이용 목적"),
+            Text("본 앱은 서비스 제공을 위해 다음과 같은 개인정보를 수집하고 있습니다."),
+            Text(" - 이름, 연락처, 이메일, 생년월일 등"),
+            Text("2. 개인정보의 보유 및 이용 기간"),
+            Text("귀하의 개인정보는 서비스 이용기간 동안 보유하며, 목적 달성 후 즉시 파기합니다."),
+            Text("3. 개인정보의 파기 절차 및 방법"),
+            Text("사용자의 개인정보는 목적이 달성된 후 내부 방침 및 관련 법률에 따라 안전하게 파기됩니다."),
+          ],
         ),
       ),
-    );
-  }
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text("닫기", style: TextStyle(color: kAccentColor2)),
+        ),
+      ],
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
+  );
 }

@@ -7,9 +7,13 @@ import 'package:shelf/data/model/user/user_request.dart';
 class UserRepo {
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
     try {
+      logger.d(requestDTO.toJson());
+
       // dynamic -> http body
       Response<dynamic> response =
           await dio.post("/user/join", data: requestDTO.toJson());
+
+      logger.d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);

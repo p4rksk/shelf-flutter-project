@@ -3,18 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/http.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/_components/detail_page_tabs.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/home/widgets/pie_chart_widget.dart';
+import 'package:shelf/ui/pages/myshelf/pages/wish_bottom_action_bar.dart';
 
 import '../../../../../_core/constants/constants.dart';
 import '../../../../../_core/constants/size.dart';
 import '../../../../../data/model/home/book_detail_data.dart';
 import '../../../../../data/store/wishlist_toggle.dart';
-import '../../widgets/bottom_action_bar.dart';
-import '../../widgets/pie_chart_widget.dart';
 
-class BookDetailPage extends ConsumerWidget {
+class WishDetailPage extends ConsumerWidget {
   final int? bookId;
 
-  const BookDetailPage({Key? key, required this.bookId}) : super(key: key);
+  const WishDetailPage({Key? key, required this.bookId}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -184,7 +184,7 @@ class BookDetailPage extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar:
-          BottomActionBar(id: bookDetailState.bookDetailDTO.id),
+          WishBottomActionBar(id: bookDetailState.bookDetailDTO.id),
     );
   }
 }

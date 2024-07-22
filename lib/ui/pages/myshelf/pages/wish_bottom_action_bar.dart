@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/myshelf/data/myshelf_viewmodel.dart';
 
-class BottomActionBar extends ConsumerWidget {
+class WishBottomActionBar extends ConsumerWidget {
   final int id;
 
-  const BottomActionBar({
+  const WishBottomActionBar({
     required this.id,
   });
 
@@ -15,10 +16,12 @@ class BottomActionBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bookDetailState = ref.watch(bookDetailProvider(id));
     final bookDetailNotifier = ref.watch(bookDetailProvider(id).notifier);
+    final myShelfNotifier = ref.read(myShelfDataProvider.notifier);
 
     if (bookDetailState == null) {
       return Center(child: CircularProgressIndicator());
     }
+
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -35,14 +38,28 @@ class BottomActionBar extends ConsumerWidget {
           Flexible(
             flex: 1,
             child: ElevatedButton.icon(
+              // 서재 추가 버튼
               onPressed: () async {
-                await bookDetailNotifier.updateBookWishStatus(id);
+                await bookDetailNotifier.updateMyShelfWishList(id);
                 final updatedBookDetailState =
                     ref.watch(bookDetailProvider(id));
 
                 if (updatedBookDetailState == null) {
                   return;
                 }
+
+                // myShelfNotifier.toggleWishBook(
+                //   IsWish(
+                //     userId: updatedBookDetailState.bookDetailDTO.userId,
+                //     bookId: id,
+                //     isWish: updatedBookDetailState.bookDetailDTO.isWish,
+                //     createdAt: updatedBookDetailState.bookDetailDTO.createdAt
+                //         .toString(),
+                //     updatedAt: updatedBookDetailState.bookDetailDTO.updatedAt
+                //             ?.toString() ??
+                //         '',
+                //   ),
+                // );
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {

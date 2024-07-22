@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/book_detail_page.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
 
 class BookGrid extends StatelessWidget {
   final List<BookDetailDTO> books;

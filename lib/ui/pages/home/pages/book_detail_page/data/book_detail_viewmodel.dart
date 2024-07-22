@@ -1,52 +1,74 @@
-import '../../../../../../data/model/book/author_detail.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shelf/_core/constants/http.dart';
+import 'package:shelf/data/store/session_store.dart';
+import 'package:shelf/main.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_repo.dart';
 
-class BookDetailDTO {
-  final int id;
-  final String path;
-  final String title;
-  final AuthorDetail author;
-  final String publisher;
-  final String category;
-  final DateTime createdAt;
-  final String bookIntro;
-  final String contentIntro;
-  final bool isWish;
-  final DateTime registrationDate;
-  final int totalViews;
-  final int completedViews;
+final bookDetailProvider =
+    StateNotifierProvider.family<BookDetailViewmodel, BookDetailModel?, int>(
+        (ref, id) {
+  return BookDetailViewmodel(ref, id)..loadBookDetail();
+});
 
-  const BookDetailDTO({
-    required this.id,
-    required this.path,
-    required this.title,
-    required this.author,
-    required this.publisher,
-    required this.category,
-    required this.createdAt,
-    required this.bookIntro,
-    required this.contentIntro,
-    required this.isWish,
-    required this.registrationDate,
-    required this.totalViews,
-    required this.completedViews,
+class BookDetailModel {
+  final BookDetailDTO bookDetailDTO;
+
+  const BookDetailModel({
+    required this.bookDetailDTO,
   });
 
-  factory BookDetailDTO.fromJson(Map<String, dynamic> json) {
-    return BookDetailDTO(
-      id: json["id"],
-      path: json["path"],
-      title: json["title"],
-      author: AuthorDetail.fromJson(json["author"]),
-      publisher: json["publisher"],
-      category: json["category"],
-      createdAt: DateTime.parse(json["createdAt"]),
-      bookIntro: json["bookIntro"],
-      contentIntro: json["contentIntro"],
-      isWish: json["isWish"],
-      registrationDate: DateTime.parse(json["registrationDate"]),
-      totalViews: json["totalViews"],
-      completedViews: json["completedViews"],
+  BookDetailModel copyWith({
+    BookDetailDTO? bookDetailDTO,
+  }) {
+    return BookDetailModel(
+      bookDetailDTO: bookDetailDTO ?? this.bookDetailDTO,
     );
   }
-//
+}
+
+BookDetailModel? copyWith({required BookDetailDTO bookDetailDTO}) {}
+
+class BookDetailViewmodel extends StateNotifier<BookDetailModel?> {
+  final mContext = navigatorKey.currentContext;
+  final Ref ref;
+  final int id;
+
+  BookDetailViewmodel(this.ref, this.id) : super(null);
+
+  // 페이지 로드시 데이터 요청
+  Future<void> loadBookDetail() async {
+    logger.d("11111");
+    SessionUser sessionUser = ref.read(sessionProvider);
+
+    BookDetailDTO bookDetailDTO =
+        await BookDetailRepo().fetchBookDetails(sessionUser.jwt!, id);
+    state = BookDetailModel(bookDetailDTO: bookDetailDTO);
+  }
+
+  // 위시리스트 상태 업데이트
+  Future<void> updateBookWishStatus(int bookId) async {
+    SessionUser sessionUser = ref.read(sessionProvider);
+
+    IsWish isWish = await BookDetailRepo()
+        .updateBookWishStatus(sessionUser.jwt!, sessionUser.user!.id, bookId);
+
+    // 상태 업데이트
+    state = state!.copyWith(
+      bookDetailDTO: state!.bookDetailDTO.copyWith(isWish: isWish.isWish),
+    );
+  }
+
+  // 내서재 위시리스트 통신
+  Future<void> updateMyShelfWishList(int bookId) async {
+    SessionUser sessionUser = ref.read(sessionProvider);
+
+    IsWish isWish = await BookDetailRepo()
+        .updateBookWishStatus(sessionUser.jwt!, sessionUser.user!.id, bookId);
+
+    // 상태 업데이트
+    state = state!.copyWith(
+      bookDetailDTO: state!.bookDetailDTO.copyWith(isWish: isWish.isWish),
+    );
+  }
 }

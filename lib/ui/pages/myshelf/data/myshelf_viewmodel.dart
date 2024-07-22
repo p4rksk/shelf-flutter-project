@@ -19,7 +19,6 @@ class MyShelfModel {
   });
 }
 
-// 창고
 class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
   final mContext = navigatorKey.currentContext;
   final Ref ref;
@@ -33,4 +32,49 @@ class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
         await MyShelfRepo().fetchMyShelfData(sessionUser.jwt!);
     state = MyShelfModel(myShelfData: myShelfData);
   }
+
+  // 위시리스트 추가
+  void addWishBook(WishBook book) {
+    final currentState = state;
+    if (currentState != null) {
+      final updatedWishList = [...currentState.myShelfData.wishList, book];
+      state = MyShelfModel(
+        myShelfData:
+            currentState.myShelfData.copyWith(wishList: updatedWishList),
+      );
+    }
+  }
+
+  void removeWishBook(int bookId) {
+    final currentState = state;
+    if (currentState != null) {
+      final updatedWishList = currentState.myShelfData.wishList
+          .where((book) => book.id != bookId)
+          .toList();
+      state = MyShelfModel(
+        myShelfData:
+            currentState.myShelfData.copyWith(wishList: updatedWishList),
+      );
+    }
+  }
+
+// void toggleWishBook(IsWish isWish) {
+//   final currentState = state;
+//   if (currentState != null) {
+//     if (isWish.isWish) {
+//       // WishBook 생성 예시 - 실제 데이터로 교체 필요
+//       final newBook = WishBook(
+//         id: isWish.bookId,
+//         bookId: isWish.bookId,
+//         bookImagePath: 'path/to/image',
+//         bookTitle: 'Book Title',
+//         author: 'Author Name',
+//         createdAt: DateTime.now().toString(),
+//       );
+//       addWishBook(newBook);
+//     } else {
+//       removeWishBook(isWish.bookId);
+//     }
+//   }
+// }
 }

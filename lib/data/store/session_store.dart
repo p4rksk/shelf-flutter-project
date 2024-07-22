@@ -34,17 +34,21 @@ class SessionStore extends StateNotifier<SessionUser> {
   final UserRepo userRepository;
   SessionStore(this.userRepository) : super(SessionUser());
 
-  // 1. 화면 context에 접근하는 법
   final mContext = navigatorKey.currentContext;
 
+  // 회원가입
   Future<void> join(JoinReqDTO joinReqDTO) async {
-    // 1. 통신 코드
     ResponseDTO responseDTO = await userRepository.fetchJoin(joinReqDTO);
-    // 2. 비지니스 로직
-    if (responseDTO.code == 200) {
+
+    logger.d("👉👉👉👉👉👉");
+    logger.d(responseDTO.token);
+
+    if (responseDTO.token != null) {
+      await secureStorage.write(key: "accessToken", value: responseDTO.token);
+
       state = SessionUser(
           user: responseDTO.data, isLogin: true, jwt: responseDTO.token);
-      logger.d(responseDTO.toString());
+
       Navigator.pushNamed(mContext!, Move.homePage);
     } else {
       ScaffoldMessenger.of(mContext!)
@@ -52,6 +56,7 @@ class SessionStore extends StateNotifier<SessionUser> {
     }
   }
 
+  // 로그인
   Future<void> login(LoginReqDTO reqDTO) async {
     ResponseDTO responseDTO = await userRepository.fetchLogin(reqDTO);
 

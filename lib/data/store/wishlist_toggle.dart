@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
 
 final wishlistProvider =
     StateNotifierProvider<WishlistNotifier, Set<BookDetailDTO>>((ref) {

@@ -8,8 +8,8 @@ class BrandNewRespDTO {
   });
 
   factory BrandNewRespDTO.fromJson(Map<String, dynamic> json) {
-    var list = json['brandNewList'] as List;
-    List<BrandNewList> brandNewList = list.map((i) => BrandNewList.fromJson(i)).toList();
+    List<dynamic> prevList = json['brandNewList'];
+    List<BrandNewList> brandNewList = prevList.map((i) => BrandNewList.fromJson(i)).toList();
 
     return BrandNewRespDTO(
       brandNewWeekly: json['brandNewWeekly'],
@@ -30,20 +30,23 @@ class BrandNewList {
   final String title;
   final String author;
   final String path;
+  final String registrationDate;
 
   BrandNewList({
     required this.bookId,
     required this.title,
     required this.author,
     required this.path,
+    required this.registrationDate,
   });
 
   factory BrandNewList.fromJson(Map<String, dynamic> json) {
     return BrandNewList(
-      bookId: json['bookId'],
-      title: json['title'],
-      author: json['author'],
-      path: json['path'],
+        bookId: json['bookId'],
+        title: json['title'],
+        author: json['author'],
+        path: json['path'],
+        registrationDate: json['registrationDate']
     );
   }
 
@@ -53,6 +56,7 @@ class BrandNewList {
       'title': title,
       'author': author,
       'path': path,
+      'registrationDate': registrationDate,
     };
   }
 }

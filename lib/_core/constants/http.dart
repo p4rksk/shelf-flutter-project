@@ -4,14 +4,14 @@ import 'package:logger/logger.dart';
 
 // http 통신
 // android 에뮬레이터에서 루트백주소는 10.0.2.2:8080
-final baseURL = "http://192.168.219.115:8080";
+final baseURL = "http://192.168.0.134:8080";
 
 final dio = Dio(
   BaseOptions(
     baseUrl: baseURL, // 내 IP 입력
     contentType: "application/json; charset=utf-8",
   ),
-);
+)..interceptors.add(interceptor);
 
 // 휴대폰 로컬에 파일로 저장
 const secureStorage = FlutterSecureStorage();

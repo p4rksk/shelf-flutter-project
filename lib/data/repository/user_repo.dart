@@ -35,7 +35,8 @@ class UserRepo {
       responseDTO.data = User.fromJson(responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
-      responseDTO.token = response.headers['authorization']?.first;
+      responseDTO.token = response.headers['Authorization']?.first;
+      globalAccessToken = "Bearer ${responseDTO.token}";
 
       return responseDTO;
     } catch (e) {

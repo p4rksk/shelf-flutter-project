@@ -37,7 +37,7 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
 
     try {
       // 요청할 URL
-      final url = Uri.parse('http://10.0.2.2:8080/unschedule');
+      final url = Uri.parse('http://10.0.2.2:8080/app/unschedule');
 
       // 요청 본문 데이터
       final body = jsonEncode({

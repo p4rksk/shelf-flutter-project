@@ -79,4 +79,3 @@ class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
       }
     }
   }
-}

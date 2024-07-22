@@ -90,11 +90,11 @@ class IsWish {
   final DateTime? updatedAt;
 
   const IsWish({
-    this.userId,
-    this.bookId,
-    this.isWish,
-    this.createdAt,
-    this.updatedAt,
+    required this.userId,
+    required this.bookId,
+    required this.isWish,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   factory IsWish.fromJson(Map<String, dynamic> json) {

@@ -40,6 +40,7 @@ class WishBottomActionBar extends ConsumerWidget {
           Flexible(
             flex: 1,
             child: ElevatedButton.icon(
+              // 서재 추가 버튼
               onPressed: () async {
                 await bookDetailNotifier.updateMyShelfWishList(id);
                 final updatedBookDetailState =
@@ -49,11 +50,18 @@ class WishBottomActionBar extends ConsumerWidget {
                   return;
                 }
 
-                myShelfNotifier.toggleWishBook(IsWish(
-                  bookId: id,
-                  isWish: updatedBookDetailState.bookDetailDTO.isWish,
-                ));
-
+                myShelfNotifier.toggleWishBook(
+                  IsWish(
+                    userId: updatedBookDetailState.bookDetailDTO.userId,
+                    bookId: id,
+                    isWish: updatedBookDetailState.bookDetailDTO.isWish,
+                    createdAt: updatedBookDetailState.bookDetailDTO.createdAt
+                        .toString(),
+                    updatedAt: updatedBookDetailState.bookDetailDTO.updatedAt
+                            ?.toString() ??
+                        '',
+                  ),
+                );
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {

@@ -14,6 +14,7 @@ class BookCard extends StatelessWidget {
     final imageUrl = '$baseURL${book.bookImagePath}';
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InkWell(
           onTap: () {
@@ -37,21 +38,34 @@ class BookCard extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10),
-        Text(
-          book.bookTitle,
-          style: TextStyle(
-            color: isFocused ? Colors.black87 : Colors.grey,
-            fontSize: 13,
-            fontWeight: FontWeight.bold,
+        Container(
+          width: 120,
+          height: 45,
+          child: Text(
+            book.bookTitle,
+            style: TextStyle(
+              color: isFocused ? Colors.black87 : Colors.grey,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+            overflow: TextOverflow.ellipsis,
+            softWrap: true,
+            maxLines: 2,
+            textAlign: TextAlign.center,
           ),
-          overflow: TextOverflow.ellipsis,
-          maxLines: 2,
         ),
-        Text(
-          book.author,
-          style: TextStyle(
-            color: isFocused ? Colors.black54 : Colors.grey,
-            fontSize: 12,
+        SizedBox(height: 5),
+        Container(
+          width: 120,
+          child: Text(
+            book.author,
+            style: TextStyle(
+              color: isFocused ? Colors.black54 : Colors.grey,
+              fontSize: 12,
+            ),
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
           ),
         ),
       ],

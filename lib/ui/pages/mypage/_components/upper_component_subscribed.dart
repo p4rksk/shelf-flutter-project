@@ -54,6 +54,7 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
       if (response.statusCode == 200) {
         // 성공 처리
         print('결제 해지 성공');
+        _showSuccessDialog(); // 성공 메시지 표시
       } else {
         // 실패 처리
         print('결제 해지 실패: ${response.body}');
@@ -70,6 +71,53 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
     }
   }
 
+  void _showConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('구독 해지'),
+          content: Text('구독을 해지하시겠습니까?'),
+          actions: [
+            TextButton(
+              child: Text('취소'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('확인'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                handleUnschedulePayment();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('구독 해지 완료'),
+          content: Text('구독 해지가 완료되었습니다. 잔여 기간 2024.07.21 까지는 정상적인 이용이 가능합니다.'),
+          actions: [
+            TextButton(
+              child: Text('확인'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -83,7 +131,7 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                 child: CircleAvatar(
                   radius: 20,
                   backgroundImage:
-                      AssetImage(getAvatarPath(widget.user!.avatar)),
+                  AssetImage(getAvatarPath(widget.user!.avatar)),
                 ),
               ),
               SizedBox(height: 20, width: 5),
@@ -163,14 +211,13 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                         children: [
                           SubPeriod(),
                           NextPurchase(),
-
                         ],
                       ),
                       SizedBox(height: 10),
                       SizedBox(
                         width: double.infinity,
                         child: FilledButton(
-                          onPressed: handleUnschedulePayment,
+                          onPressed: _showConfirmationDialog,
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 TColor.primaryColor1), // 버튼 배경 색상

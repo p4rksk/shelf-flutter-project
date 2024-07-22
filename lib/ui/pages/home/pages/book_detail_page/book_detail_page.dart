@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/_core/constants/http.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/_components/detail_page_tabs.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
+import 'package:shelf/ui/pages/home/pages/book_detail_page/_components/detail_page_tabsmodel.dart';
 
 import '../../../../../_core/constants/constants.dart';
 import '../../../../../_core/constants/size.dart';

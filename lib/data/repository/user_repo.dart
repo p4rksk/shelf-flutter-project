@@ -7,22 +7,17 @@ import 'package:shelf/data/model/user/user_request.dart';
 class UserRepo {
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
     try {
-      logger.d(requestDTO.toJson());
-
       // dynamic -> http body
       Response<dynamic> response =
           await dio.post("/user/join", data: requestDTO.toJson());
-
-      logger.d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.data = User.fromJson(responseDTO.data);
 
       // 헤더에서 JWT 토큰 추출
-      if (response.headers['authorization'] != null) {
-        responseDTO.token = response.headers['authorization']?.first;
-      }
+      responseDTO.token = response.headers['authorization']?.first;
 
+      logger.d("responseDTO ${responseDTO.token}");
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감

@@ -4,6 +4,7 @@ import 'package:shelf/ui/pages/home/data/home_page_model.dart';
 
 class HomeRepo {
   Future<HomeData> fetchHomeData(String token) async {
+    logger.d("👉👉👉👉 Sending request to fetch home data with JWT: $token");
     try {
       final response = await dio.get(
         '/app/main',

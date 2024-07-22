@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shelf/data/store/session_store.dart';
 import 'package:shelf/main.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_repo.dart';
 
@@ -19,7 +18,6 @@ class MyShelfModel {
     required this.myShelfData,
   });
 }
-
 
 class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
   final mContext = navigatorKey.currentContext;
@@ -60,22 +58,23 @@ class MyShelfViewModel extends StateNotifier<MyShelfModel?> {
     }
   }
 
-  void toggleWishBook(IsWish isWish) {
-    final currentState = state;
-    if (currentState != null) {
-      if (isWish.isWish) {
-        // WishBook 생성 예시 - 실제 데이터로 교체 필요
-        final newBook = WishBook(
-          id: isWish.bookId,
-          bookId: isWish.bookId,
-          bookImagePath: 'path/to/image',
-          bookTitle: 'Book Title',
-          author: 'Author Name',
-          createdAt: DateTime.now().toString(),
-        );
-        addWishBook(newBook);
-      } else {
-        removeWishBook(isWish.bookId);
-      }
-    }
-  }
+// void toggleWishBook(IsWish isWish) {
+//   final currentState = state;
+//   if (currentState != null) {
+//     if (isWish.isWish) {
+//       // WishBook 생성 예시 - 실제 데이터로 교체 필요
+//       final newBook = WishBook(
+//         id: isWish.bookId,
+//         bookId: isWish.bookId,
+//         bookImagePath: 'path/to/image',
+//         bookTitle: 'Book Title',
+//         author: 'Author Name',
+//         createdAt: DateTime.now().toString(),
+//       );
+//       addWishBook(newBook);
+//     } else {
+//       removeWishBook(isWish.bookId);
+//     }
+//   }
+// }
+}

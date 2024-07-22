@@ -5,8 +5,6 @@ import 'package:shelf/_core/constants/constants.dart';
 import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_viewmodel.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_viewmodel.dart';
 
-import '../../home/pages/book_detail_page/data/book_detail_model.dart';
-
 class WishBottomActionBar extends ConsumerWidget {
   final int id;
 
@@ -50,18 +48,18 @@ class WishBottomActionBar extends ConsumerWidget {
                   return;
                 }
 
-                myShelfNotifier.toggleWishBook(
-                  IsWish(
-                    userId: updatedBookDetailState.bookDetailDTO.userId,
-                    bookId: id,
-                    isWish: updatedBookDetailState.bookDetailDTO.isWish,
-                    createdAt: updatedBookDetailState.bookDetailDTO.createdAt
-                        .toString(),
-                    updatedAt: updatedBookDetailState.bookDetailDTO.updatedAt
-                            ?.toString() ??
-                        '',
-                  ),
-                );
+                // myShelfNotifier.toggleWishBook(
+                //   IsWish(
+                //     userId: updatedBookDetailState.bookDetailDTO.userId,
+                //     bookId: id,
+                //     isWish: updatedBookDetailState.bookDetailDTO.isWish,
+                //     createdAt: updatedBookDetailState.bookDetailDTO.createdAt
+                //         .toString(),
+                //     updatedAt: updatedBookDetailState.bookDetailDTO.updatedAt
+                //             ?.toString() ??
+                //         '',
+                //   ),
+                // );
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {

@@ -1,9 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelf/data/store/session_store.dart';
-import 'package:shelf/ui/pages/home/pages/book_detail_page/data/book_detail_model.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_model.dart';
 import 'package:shelf/ui/pages/myshelf/data/myshelf_viewmodel.dart';
-import 'package:shelf/ui/pages/myshelf/data/wishlist_repo.dart';
 
 final wishListProvider =
     StateNotifierProvider<WishlistViewmodel, WishListModel>((ref) {
@@ -45,20 +42,20 @@ class WishlistViewmodel extends StateNotifier<WishListModel> {
     );
   }
 
-  Future<void> toggleBookWishStatus(IsWish isWish) async {
-    SessionUser sessionUser = ref.read(sessionProvider);
-
-    if (isWish.isWish) {
-      if (!state.bookList.any((book) => book.bookId == isWish.bookId)) {
-        // Create a WishBook instance and add to the list
-        // Assuming you have a method to fetch the details of the book using bookId
-        final WishBook newBook = await WishlistRepo()
-            .fetchBookData(sessionUser.jwt!, isWish.bookId!);
-        addBook(newBook);
-      }
-    } else {
-      // Remove book from wish list
-      removeBook(isWish.bookId);
-    }
-  }
+  // Future<void> toggleBookWishStatus(IsWish isWish) async {
+  //   SessionUser sessionUser = ref.read(sessionProvider);
+  //
+  //   if (isWish.isWish) {
+  //     if (!state.bookList.any((book) => book.bookId == isWish.bookId)) {
+  //       // Create a WishBook instance and add to the list
+  //       // Assuming you have a method to fetch the details of the book using bookId
+  //       final WishBook newBook = await WishlistRepo()
+  //           .fetchBookData(sessionUser.jwt!, isWish.bookId!);
+  //       addBook(newBook);
+  //     }
+  //   } else {
+  //     // Remove book from wish list
+  //     removeBook(isWish.bookId);
+  //   }
+  // }
 }

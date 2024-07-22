@@ -59,10 +59,10 @@ final List<PaymentMethod> paymentMethods = [
     registrationDate: '2024-07-14',
     cardImagePath: 'assets/images/card.png',
   ),
-  PaymentMethod(
-    bankName: '신한',
-    cardNumber: '5678 - **** - **** - 5678',
-    registrationDate: '2024-07-15',
-    cardImagePath: 'assets/images/card.png',
-  ),
+  // PaymentMethod(
+  //   bankName: '신한',
+  //   cardNumber: '5678 - **** - **** - 5678',
+  //   registrationDate: '2024-07-15',
+  //   cardImagePath: 'assets/images/card.png',
+  // ),
 ];

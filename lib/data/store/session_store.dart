@@ -38,6 +38,7 @@ class SessionStore extends StateNotifier<SessionUser> {
   final mContext = navigatorKey.currentContext;
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
+    logger.d("통신전");
     // 1. 통신 코드
     ResponseDTO responseDTO = await userRepository.fetchJoin(joinReqDTO);
     // 2. 비지니스 로직

@@ -13,6 +13,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../pages/payment_management_page.dart';
+
 class UpperComponentSubscribed extends StatefulWidget {
   User? user;
 
@@ -172,7 +174,20 @@ class _UpperComponentSubscribedState extends State<UpperComponentSubscribed> {
                           '나의 정기구독',
                           style: h8(),
                         ),
-                        Icon(Icons.arrow_forward_ios, color: TColor.white),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PaymentManagementPage(),
+                          ),
+                        );
+                      },
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: TColor.white,
+                      ),
+                    ),
                       ],
                     ),
                   ),

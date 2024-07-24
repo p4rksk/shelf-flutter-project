@@ -1,24 +1,22 @@
-# 🚀 "OHFLIX" - 영상 스트리밍 플랫폼
+# 🚀 "SHELF" - E-book 플랫폼
 
 <br>
 
 <p align="center">
-  <img src="https://github.com/chugue/project-ohflix/assets/30003848/3ba28c1a-6ab4-444a-8832-e07f103bfe85)"  style="width: 50%; height: auto;"/>
+  <img src="https://github.com/user-attachments/assets/d2e697d9-4364-41ce-b855-889bfe3514a5"  style="width: 50%; height: auto;"/>
 </p>
-
-
 
 <br>
 
 # 👉 영상 스트리밍 플랫폼
-> ### 개발기간: 2024.06.12 ~ 2024.07.03
+> ### 개발기간: 2024.07.04 ~ 2024.07.24
 
 <br>
 
 # 👉 깃허브 주소
   
-> #### 애플리케이션 서버          : [https://github.com/chugue/project-ohflix](https://github.com/chugue/project-ohflix)<br>
-> #### 인코딩 / 라이센스 서버     : [https://github.com/chugue/video-server](https://github.com/chugue/video-server)<br>
+> #### 플러터 서버          : [https://github.com/chugue/project-ohflix](https://github.com/chugue/shelf-project)<br>
+> #### 관리자 서버     : [https://github.com/chugue/shelf-project](https://github.com/chugue/shelf-project)<br>
 <br>
 
 # 👉 개발팀 소개
@@ -27,24 +25,27 @@
 <table style="width:100%; text-align:center;">
   <tr>
     <th style="text-align:center;">김성훈(팀장)</th>
-    <th style="text-align:center;">박동기</th>
+    <th style="text-align:center;">김주혁</th>
+    <th style="text-align:center;">장유진</th>
     <th style="text-align:center;">양승호</th>
-    <th style="text-align:center;">공지영</th>
-    <th style="text-align:center;">최윤정</th>
+    <th style="text-align:center;">박선규</th>
+    <th style="text-align:center;">서지민</th>
   </tr>
   <tr>
     <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/30003848?v=4" /></td>
-    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/153582240?v=4" /></td>
-    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/97007464?v=4"/></td>
-    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/52162820?v=4" /></td>
-    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/129649095?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/153582123?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/161176345?v=4"/></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/97007464?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/153582360?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/118310514?v=4" /></td>
   </tr>
   <tr>
     <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/chugue">@chugue</a></td>
-    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/dongkipark1">@dongkipark1</a></td>
-    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/LifeIsOne">@LifeIsOne</a></td>
-    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/Kongjiyoung">@Kongjiyoung</a></td>
-    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/yunchocopie">@yunchocopie</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/dongkipark1">@kjh5848</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/LifeIsOne">@hillview0303</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/Kongjiyoung">@LifeIsOne</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/yunchocopie">@p4rksk</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/yunchocopie">@minmeanmin</a></td>
   </tr>
 </table>
 
@@ -52,9 +53,9 @@
 <br>
 
 # 👉프로젝트 소개 (핵심로직 설명)
-> #### 오플릭스는 영상 스트리밍 서비스를 제공하는 플랫폼입니다.
-> #### 사용자는 서비스를 구독하고, 오플릭스는 사용자에게 암호화된
-> #### 영상을 DASH 프로토콜로 네트워크 상황에 따라 품질을 다르게 전송하여
+> #### Shelf는 서재라는 의미로, 
+> #### 사용자들이 구독이라는 상태로 정기결제를 하여
+> #### 온라인 독서 서비스를 제공합니다.
 > #### 끊김이 없는 영상 서비스를 제공합니다.
 
 <br>
@@ -62,7 +63,7 @@
 
 | 시연영상 링크 ( 사진 클릭 👇👇) |
 |:---------------------------:|
-| [![시연02](https://img.youtube.com/vi/3YMpCAriG0Y/0.jpg)](https://www.youtube.com/watch?v=3YMpCAriG0Y) |
+| [![시연02](https://img.youtube.com/vi/jXa_rS_uIPI/0.jpg)](https://www.youtube.com/watch?v=jXa_rS_uIPI) |
 
 
 <br>
@@ -70,8 +71,7 @@
 
 # 👉 프로젝트 구조
 
-![프로젝트구조 1](https://github.com/chugue/project-ohflix/assets/30003848/15e36619-ed3a-4d78-9639-122ff89c0d9f)
-![프로젝트구조 2](https://github.com/chugue/project-ohflix/assets/30003848/e9a1d443-f4ab-4176-b2a9-fdb4b29dc27f)
+![프로젝트 구조](https://github.com/user-attachments/assets/c0af544d-8262-4eee-a8db-55da673920c1)
 
 
 <br>

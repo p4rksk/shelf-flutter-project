@@ -15,7 +15,7 @@
 
 # 👉 깃허브 주소
   
-> #### 플러터 서버          : [https://github.com/chugue/project-ohflix](https://github.com/chugue/shelf-project)<br>
+> #### 플러터 서버     : [https://github.com/chugue/project-ohflix](https://github.com/chugue/shelf-project)<br>
 > #### 관리자 서버     : [https://github.com/chugue/shelf-project](https://github.com/chugue/shelf-project)<br>
 <br>
 
@@ -56,7 +56,6 @@
 > #### Shelf는 서재라는 의미로, 
 > #### 사용자들이 구독이라는 상태로 정기결제를 하여
 > #### 온라인 독서 서비스를 제공합니다.
-> #### 끊김이 없는 영상 서비스를 제공합니다.
 
 <br>
 
@@ -77,16 +76,15 @@
 <br>
 <br>
 
-# 👉 오플릭스 PPT 발표자료
-[오플릭스 PPT - pdf](https://github.com/user-attachments/files/16082996/OHFLIX-PPT.pdf)
+# 👉 SHELF PPT 발표자료
+[SHELF 발표 PPT](https://www.canva.com/design/DAGLwfc8c_0/4B7VG1T4ZvANuR5U9L7ffg/view?utm_content=DAGLwfc8c_0&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 <br>
 <br>
 
 # 👉 Stacks
 
-![기술스택](https://github.com/chugue/project-ohflix/assets/30003848/b169db7a-e2a7-46d2-9d6c-7eda6fe892d7)
-
+![image](https://github.com/user-attachments/assets/2f757938-0613-49d0-826b-24e7f28cf771)
 
 
 ### Communication
@@ -96,71 +94,71 @@
 
 <br>
 
-# 👉 Dependencies
+# 👉 Flutter Dependencies
 ```java
-dependencies {
-    implementation 'com.github.iamport:iamport-rest-client-java:0.1.6' // iamport
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    /////////// 추가 의존성 //////////
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-aop'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
-    implementation group: 'com.auth0', name: 'java-jwt', version: '4.3.0'
-    implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation group: 'org.qlrm', name: 'qlrm', version: '4.0.1'
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    implementation 'commons-codec:commons-codec:1.15'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.session:spring-session-data-redis'
-    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
-}
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  font_awesome_flutter: ^10.5.0
+  flutter_riverpod: ^2.5.1
+  loop_page_view: ^1.2.5
+  carousel_slider: ^4.2.1
+  infinite_scroll_pagination: ^4.0.0
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_svg: ^2.0.10+1
+  cosmos_epub: ^0.0.2 #epub 뷰어
+  fl_chart: ^0.68.0
+  intl: ^0.19.0
+  logger: 2.3.0
+  dio: ^5.4.3+1
+  flutter_secure_storage: ^9.2.2
+  get: ^4.3.8
+  image_picker: ^1.1.2
+  video_player: ^2.9.1
+  pull_to_refresh: ^2.0.0
+  shimmer: ^3.0.0
+  flutter_launcher_icons: ^0.11.0
+  shared_preferences: ^2.2.3
+  url_launcher: 6.2.5
+  flutter_naver_login: ^1.8.0
+  http: ^1.2.2
+  webview_flutter: ^4.8.0
+  webview_flutter_android: ^3.16.3
+  webview_flutter_wkwebview: ^3.13.1
+  flutter_dotenv: ^5.1.0
 ```
 
 <br>
 
 # 👉 테이블 설계
-![ERD구조](https://github.com/chugue/project-ohflix/assets/30003848/2aebd0c4-c789-4a7a-8572-8e7b7adeb784)
+![image](https://github.com/user-attachments/assets/d6fca4b5-4882-4adb-afd6-b7ad38a59254)
 
 
 <br>
 
 
 # 👉 팀 블로깅  
-[팀 블로그 링크](https://www.notion.so/stephenkiim/a382fcac61694a7297ffad6c39bd86cb)
+[팀 블로그 링크](https://www.notion.so/stephenkiim/5b91773884db4d07a98d3007f0cf4d0f?pvs=4)
+
 
 <br>
 <br>
 
 # 👉 프로젝트 주요 기능 정리
-* #### Redis 세션 인증
-* #### 카카오 OAuth 인증
-* #### 로그인 인터셉터 - 세션 기반
-* #### 영상 CRUD 구현
-* #### DASH 프로토콜 영상 재생
-* #### 영상 암호화 패키징 - Shaka Packager
-* #### 인코딩 / 라이센스 서버 구축 (DRM)
-* #### 카카오 페이 결제
-* #### 아임포트 카드 결제
-* #### 비밀번호 암호화 - Bcrypt
-* #### AI 추천 컨텐츠 - OpenAI
-* #### 영상 시청 중단점 프로그레스 바
-* #### 영상 찜하기
-* #### 영상 좋아요
-* #### 매출 페이지 chart.js 표현
-* #### 키보드 입력 동시 검색기능
-* #### AWS S3 스토리지 서버 구축
-* #### 매출페이지 Chart.js 사용
-* #### 메인페이지 Swiper 사용
+* #### 🟨 Naver OAuth 인증
+* #### 🟨 Cosmus Epub을 활용한 읽기 모드
+* #### 🟦 Record를 활용한 DTO 핸들링
+* #### 🟦 JWT 인증 
+* #### 🟦 Base64 이미지 송수신
+* #### 🟦 Port One을 활용한 정기결제
+* #### 🟦 ChartJS를 활용한 매출현황
+* #### 🟨 RiverPod 상태관리
+* #### 🟨 Dio 통신
+* #### 🟦 RestDoc을 활용한 API 문서 + 통합테스트
+* #### 🟦 Gitflow 브랜치 전략 활용
+
 <br>
 <br>
 

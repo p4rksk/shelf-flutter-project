@@ -164,76 +164,59 @@ dependencies:
 
 
 # 👉 핵심 시나리오 시연
-### 🔹영상 등록 => 인코딩 서버로 비동기로 전송
+### 🔹관리자 화면 
 
-![영상등록](https://github.com/chugue/project-ohflix/assets/30003848/d5448404-c8e2-4aba-a5ff-a90a42c91c7e)
-
-<br>
-
-### 🔹 사용자 회원가입 => 구독결제하지 않아도 메인페이지 접속 가능
-
-![사용자 회원가입](https://github.com/chugue/project-ohflix/assets/30003848/117ce445-d963-4497-ba00-0b7fb0dcd359)
+![관리자 화면](https://github.com/user-attachments/assets/4414cfaf-4057-41d7-93b6-ecdac44e7380)
 
 <br>
 
-### 🔹 카카오 OAuth => 회원정보가 없으면 자동가입, 있으면 자동로그인
+### 🔹 책 CRUD
 
-![카카오 OAuth](https://github.com/chugue/project-ohflix/assets/30003848/55441b35-945f-4f25-b738-08ec40e9ed7a)
-
+![책 CRUD](https://github.com/user-attachments/assets/abd87c0d-cd74-49d7-b553-e15fe8aa0f6e)
 
 <br>
 
-### 🔹 아엠포트 카드 결제
+### 🔹 앱 화면 둘러보기
 
-![아엠포트 카드결제](https://github.com/chugue/project-ohflix/assets/30003848/17f5c302-c4fe-4c55-a69c-6ec644f34a8e)
+![앱 화면 둘러보기](https://github.com/user-attachments/assets/1019fbbf-d728-4d36-9304-f980f93d87b4)
 
 
 <br>
 
-### 🔹 카카오 페이 결제
+### 🔹 내 서재 디자인
 
-![카카오 페이 결제](https://github.com/chugue/project-ohflix/assets/30003848/33218062-1e59-4194-9686-efda654e8160)
+![내 서재 디자인](https://github.com/user-attachments/assets/288fb4e3-8282-4755-9aab-c7e4ae0fd2ad)
 
-
-
-### 🔹 관리자 매출확인
-![매출확인](https://github.com/chugue/project-ohflix/assets/30003848/4d1d5eba-40a3-4ced-839e-490b407433a0)
 
 <br>
 
-### 🔹 영상 보기 => 세그먼트 호출
-![영상보기](https://github.com/chugue/project-ohflix/assets/30003848/77ccd66e-4c52-431f-9e71-c6c8a3e11ba6)
+### 🔹 다크 모드
+
+ ![다크 모드](https://github.com/user-attachments/assets/7414c3cd-2eb5-4f60-b594-7363210399db)
+
+
+
+### 🔹 결제 하기
+
+![결제하기](https://github.com/user-attachments/assets/2c6820fe-704f-4aa2-9f26-053b374e836e)
 
 <br>
 
-### 🔹 영상 보기 => 재생 시점부터 세그먼트 호출
-![재생 시점부터 세그먼트 호출](https://github.com/chugue/project-ohflix/assets/30003848/8798943c-269a-460e-b2bb-f81257c9f3ec)
+### 🔹 책 상세보기
+
+![책 상세보기](https://github.com/user-attachments/assets/845f4bb3-296c-4f8a-8337-e31c69befbc9)
 
 <br>
 
-### 🔹 영상 보기 => 캐시데이터 호출
-![캐시 데이터 호출](https://github.com/chugue/project-ohflix/assets/30003848/f27e2407-4983-4524-a9a7-f4ffe632ed87)
+### 🔹 책 읽기
+
+![책 읽기](https://github.com/user-attachments/assets/112c4d70-ba85-4126-bfb5-1d0db16650bf)
 
 <br>
 
-### 🔹 영상 보기 => 최근 종료된 재생시점에서 이어보기
-![영상 이어보기](https://github.com/chugue/project-ohflix/assets/30003848/2c97922b-490a-4389-8821-bb92a3a1b644)
+### 🔹 책 검색하기
 
-<br>
- 
-### 🔹 영상 찜하기
-![영상 찜하기](https://github.com/chugue/project-ohflix/assets/30003848/19553edd-8058-47a6-821d-f8790ce6a884)
-
-<br>
- 
-### 🔹 AI추천 컨텐츠
-![AI추천 컨텐츠](https://github.com/chugue/project-ohflix/assets/30003848/3b2342e3-53ab-47a3-a4bb-b97227a1456f)
-
-<br>
-
-### 🔹 KeyUp 검색
-![KeyUp 검색](https://github.com/chugue/project-ohflix/assets/30003848/0e97ba24-32fc-44d0-892a-1b0c6cc763b1)
-
+![검색하기](https://github.com/user-attachments/assets/d6441907-3a90-4a5e-ac4a-866b970da946)
 
 <br>
 <br>

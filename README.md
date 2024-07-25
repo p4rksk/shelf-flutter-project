@@ -1,3 +1,10 @@
+# I am
+| 이름 | 사진 | 역할 |  
+|:--:|:--:|:---------------:|
+| 박선규   |<img src="https://github.com/p4rksk/miniproject-jobala-v2-ssr/assets/153582360/cf8fd9c6-50d9-40b5-9914-09527344bf92" width="100">  | ERD설계, 프로젝트 초기 세팅 초기 더미 작업 <br/> 관리자:책 목록보기, 상세보기, 수정, 삭제, <br/>사용자: 회원가입, 메인(히스토리,(일간,주간,누적 베스트셀러)), <br/>사용자: 내서재(책목록, 위시리스트, 리뷰 관리), 랭크(카데고리별 베스트셀러)<br/> 시연영상 촬영, PPT준비, 발표|
+---
+
+
 # 🚀 "SHELF" - E-book 플랫폼
 
 <br>
@@ -8,17 +15,16 @@
 
 <br>
 
-# 👉 영상 스트리밍 플랫폼
+# 👉  E-book 플랫폼
 > ### 개발기간: 2024.07.04 ~ 2024.07.24
 
 <br>
 
 # 👉 깃허브 주소
   
-> #### 플러터 서버     : [https://github.com/chugue/project-ohflix](https://github.com/chugue/shelf-project)<br>
+> #### 플러터 서버     : [https://github.com/chugue/shelf-flutter-project](https://github.com/chugue/shelf-flutter-project)<br>
 > #### 관리자 서버     : [https://github.com/chugue/shelf-project](https://github.com/chugue/shelf-project)<br>
 <br>
-
 # 👉 개발팀 소개
 
 
